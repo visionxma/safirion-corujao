@@ -28,7 +28,9 @@
   --wrap:1120px;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+section[id]{scroll-margin-top:76px}
 body{
   margin:0;background:var(--ink-950);color:var(--white);
   font-family:var(--body);font-size:16px;line-height:1.62;
@@ -81,6 +83,15 @@ a{color:inherit}
 .brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
 .brand img{height:30px;width:auto}
 @media (max-width:520px){.brand img{height:24px}}
+.topbar__nav{display:none}
+@media (min-width:820px){
+  .topbar__nav{display:flex;gap:24px;margin-left:28px;padding-left:28px;border-left:1px solid var(--line-soft)}
+}
+.topbar__nav a{
+  font-size:.84rem;font-weight:600;color:var(--muted);text-decoration:none;
+  transition:color .16s ease;
+}
+.topbar__nav a:hover{color:var(--white)}
 .topbar__sep{flex:1 1 auto}
 .topbar__clock{font-size:.8rem;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
 
@@ -393,6 +404,10 @@ a{color:inherit}
     <a class="brand" href="https://safirion.com" target="_blank" rel="noopener" aria-label="Safirion">
       <img src="assets/safirion-logo-horizontal.svg" alt="Safirion — confiança para investir" width="234" height="55">
     </a>
+    <nav class="topbar__nav" aria-label="Seções da página">
+      <a href="#disputas">As disputas</a>
+      <a href="#regras">Como participar</a>
+    </nav>
     <span class="topbar__sep"></span>
     <span class="topbar__clock" id="barClock">—</span>
     <a class="btn btn--solid btn--sm" href="#disputas">Ver disputas</a>
@@ -405,7 +420,7 @@ a{color:inherit}
   <div class="hero__in">
     <p class="hero__pre">Safirion apresenta</p>
     <h1 class="hero__title">Corujão</h1>
-    <p class="hero__dates"><b>24 horas</b> — dia 18 às 18h até dia 19 às 18h</p>
+    <p class="hero__dates"><b>24 horas</b> — 18/09 às 18h até 19/09 às 18h</p>
     <p class="hero__note">Cinco disputas rodando ao mesmo tempo, da largada à virada do dia seguinte.</p>
 
     <div class="count" aria-live="polite">
@@ -460,31 +475,31 @@ a{color:inherit}
 
     <div class="bouts">
       <div class="bouts__head" aria-hidden="true">
-        <span>Categoria</span>
-        <span>Disputa e como se ganha</span>
-        <span>Para entrar na contagem</span>
+        <span>Para quem é</span>
+        <span>A disputa e como se ganha</span>
+        <span>Você precisa de</span>
       </div>
 
       <article class="bout">
-        <p class="bout__cat">Mesa</p>
+        <p class="bout__cat">Quem opera</p>
         <div class="bout__main">
           <h3 class="bout__name">PNL</h3>
           <p class="bout__crit">Maior PNL do período.</p>
         </div>
         <div class="bout__q">
-          <span class="bout__qlab">Qualificação</span>
+          <span class="bout__qlab">Você precisa de</span>
           <ul class="bout__qlist"><li><b>20K dólares</b> no mínimo</li></ul>
         </div>
       </article>
 
       <article class="bout">
-        <p class="bout__cat">Conteúdo</p>
+        <p class="bout__cat">Quem grava</p>
         <div class="bout__main">
           <h3 class="bout__name">Vídeo no YouTube</h3>
           <p class="bout__crit">Mais vídeos publicados que qualifiquem.</p>
         </div>
         <div class="bout__q">
-          <span class="bout__qlab">Qualificação</span>
+          <span class="bout__qlab">Você precisa de</span>
           <ul class="bout__qlist">
             <li><b>5 min</b> de vídeo</li>
             <li><b>+50 views</b> em cada vídeo</li>
@@ -493,13 +508,13 @@ a{color:inherit}
       </article>
 
       <article class="bout">
-        <p class="bout__cat">Rede</p>
+        <p class="bout__cat">Quem indica</p>
         <div class="bout__main">
           <h3 class="bout__name">Rede de afiliado</h3>
           <p class="bout__crit">Mais afiliados qualificados.</p>
         </div>
         <div class="bout__q">
-          <span class="bout__qlab">Qualificação</span>
+          <span class="bout__qlab">Você precisa de</span>
           <ul class="bout__qlist">
             <li>Mínimo <b>20 afiliados</b></li>
             <li><b>10 FTD</b> por afiliado</li>
@@ -508,26 +523,26 @@ a{color:inherit}
       </article>
 
       <article class="bout bout--tbd">
-        <p class="bout__cat">Ao vivo</p>
+        <p class="bout__cat">Quem faz live</p>
         <div class="bout__main">
           <h3 class="bout__name">Live no TikTok</h3>
           <p class="bout__crit">Melhor balanço das métricas da live.</p>
         </div>
         <div class="bout__q">
-          <span class="bout__qlab">Qualificação</span>
+          <span class="bout__qlab">Você precisa de</span>
           <ul class="bout__qlist"><li>A definir, divulgada antes da largada</li></ul>
         </div>
       </article>
 
       <article class="bout">
-        <p class="bout__cat">Vendas</p>
+        <p class="bout__cat">Quem vende</p>
         <div class="bout__main">
           <h3 class="bout__name">Venda de produto</h3>
           <p class="bout__crit">Maior volume vendido.</p>
           <p class="bout__prods">Copy Trade · Jarvis · Máquina de Dólar · e demais produtos</p>
         </div>
         <div class="bout__q">
-          <span class="bout__qlab">Qualificação</span>
+          <span class="bout__qlab">Você precisa de</span>
           <ul class="bout__qlist"><li>Mínimo <b>100K</b> em vendas</li></ul>
         </div>
       </article>
