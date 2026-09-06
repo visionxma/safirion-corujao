@@ -59,6 +59,7 @@ a{color:inherit}
 .lede b{color:var(--white);font-weight:700}
 
 .btn{
+  -webkit-appearance:none;appearance:none;background:transparent;
   display:inline-flex;align-items:center;justify-content:center;
   font-family:var(--display);
   font-variation-settings:"wdth" 92,"wght" 700;
@@ -69,7 +70,7 @@ a{color:inherit}
 }
 .btn--solid{background:var(--blue);color:#fff}
 .btn--solid:hover{background:#3f9df0}
-.btn--line{border-color:var(--line);color:var(--white)}
+.btn--line{border-color:var(--line-strong);color:var(--white);background:transparent}
 .btn--line:hover{border-color:var(--blue-hi);color:var(--blue-hi)}
 .btn--sm{padding:10px 18px;font-size:.68rem}
 
@@ -388,6 +389,58 @@ a{color:inherit}
 .foot__logo{height:34px;width:auto;opacity:.9}
 .foot p{margin:0;font-size:.78rem;color:var(--muted-2)}
 
+/* ---------- banner do passo a passo ---------- */
+.banner{
+  position:fixed;inset:0;z-index:200;
+  display:none;place-items:center;padding:20px;
+}
+.banner.is-open{display:grid}
+.banner__scrim{position:absolute;inset:0;background:rgba(2,4,9,.84);backdrop-filter:blur(8px)}
+.banner__box{
+  position:relative;
+  width:min(430px,100%);max-height:88vh;overflow-y:auto;
+  background:var(--ink-800);
+  border:1px solid var(--line-strong);border-radius:20px;
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+  animation:bannerSobe .34s cubic-bezier(.2,.7,.3,1) both;
+}
+@keyframes bannerSobe{from{opacity:0;transform:translateY(20px) scale(.985)}}
+.banner__img{display:block;width:100%;height:auto;border-radius:19px 19px 0 0}
+.banner__x{
+  position:absolute;top:12px;right:12px;z-index:2;
+  width:34px;height:34px;padding:0;border-radius:50%;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(4,7,15,.6);backdrop-filter:blur(4px);
+  color:#fff;font-size:17px;line-height:1;cursor:pointer;
+  transition:background .16s ease,border-color .16s ease;
+}
+.banner__x:hover{background:rgba(4,7,15,.9);border-color:var(--blue-hi)}
+.banner__cta{display:flex;flex-wrap:wrap;gap:10px;padding:16px 18px 18px}
+.banner__cta .btn{flex:1 1 auto;justify-content:center}
+
+/* texto real dos passos: fica atras do leitor de tela sempre, e vira o
+   conteudo visivel se a imagem nao carregar */
+.banner__txt{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.banner.no-img .banner__img{display:none}
+.banner.no-img .banner__txt{
+  position:static;width:auto;height:auto;overflow:visible;clip-path:none;white-space:normal;
+  padding:26px 22px 4px;
+}
+.banner__t{
+  font-family:var(--display);font-variation-settings:"wdth" 70,"wght" 800;
+  font-size:1.7rem;line-height:1;text-transform:uppercase;margin:0 0 4px;
+}
+.banner__s{margin:0 0 18px;color:var(--muted);font-size:.92rem}
+.banner__txt ol{list-style:none;counter-reset:bp;margin:0;padding:0;display:grid;gap:14px}
+.banner__txt li{counter-increment:bp;display:grid;grid-template-columns:26px 1fr;gap:2px 12px}
+.banner__txt li::before{
+  content:counter(bp,decimal-leading-zero);
+  font-family:var(--display);font-variation-settings:"wdth" 74,"wght" 800;
+  font-variant-numeric:tabular-nums;color:var(--blue-hi);font-size:.95rem;
+}
+.banner__txt b{display:block;font-size:.92rem;text-transform:uppercase;letter-spacing:.04em}
+.banner__txt span{grid-column:2;color:var(--muted);font-size:.88rem}
+
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms !important;transition-duration:.001ms !important}
 }
@@ -613,6 +666,31 @@ a{color:inherit}
 
 </main>
 
+<div class="banner" id="banner" hidden>
+  <div class="banner__scrim" data-fechar></div>
+  <div class="banner__box" role="dialog" aria-modal="true" aria-labelledby="bannerTit">
+    <button class="banner__x" type="button" data-fechar aria-label="Fechar">&times;</button>
+    <img class="banner__img" src="assets/banner-passo-a-passo.png"
+         alt="Como participar do Corujão em quatro passos: escolha suas disputas, bata a qualificação, produza dentro da janela de 18/09 às 18h a 19/09 às 18h, e guarde a comprovação."
+         width="1080" height="1350"
+         onerror="document.getElementById('banner').classList.add('no-img')">
+    <div class="banner__txt">
+      <h2 class="banner__t" id="bannerTit">Como participar</h2>
+      <p class="banner__s">Quatro passos, 24 horas.</p>
+      <ol>
+        <li><b>Escolha suas disputas</b><span>Entre em quantas quiser. As cinco são independentes.</span></li>
+        <li><b>Bata a qualificação</b><span>Cada disputa tem um mínimo. Abaixo dele você sai da contagem.</span></li>
+        <li><b>Produza dentro da janela</b><span>18/09 às 18h até 19/09 às 18h, horário de Brasília.</span></li>
+        <li><b>Guarde a comprovação</b><span>Prints, links e relatórios para a apuração.</span></li>
+      </ol>
+    </div>
+    <div class="banner__cta">
+      <a class="btn btn--solid" href="#disputas" data-fechar>Ver as disputas</a>
+      <button class="btn btn--line" type="button" data-fechar>Fechar</button>
+    </div>
+  </div>
+</div>
+
 <footer class="foot">
   <div class="wrap foot__in">
     <img class="foot__logo" src="assets/safirion-logo-horizontal.svg" alt="Safirion — confiança para investir" width="234" height="55">
@@ -701,6 +779,77 @@ a{color:inherit}
   }, {passive:true});
   window.addEventListener("resize", sync);
   sync();
+})();
+
+/* banner do passo a passo: abre depois de rolar um pouco alem do heroi */
+(function(){
+  var banner = document.getElementById("banner");
+  var hero = document.querySelector(".hero");
+  if(!banner || !hero) return;
+
+  var caixa = banner.querySelector(".banner__box");
+  var img = banner.querySelector(".banner__img");
+  var focoAnterior = null;
+  var aberto = false, jaAbriu = false;
+
+  /* se a arte ainda nao existe, o proprio texto dos passos vira o conteudo */
+  if(img){
+    img.addEventListener("error", function(){ banner.classList.add("no-img"); });
+    if(img.complete && img.naturalWidth === 0) banner.classList.add("no-img");
+  }
+
+  function visto(){
+    try { return sessionStorage.getItem("corujao_banner") === "1"; } catch(e){ return false; }
+  }
+  function marcar(){
+    try { sessionStorage.setItem("corujao_banner","1"); } catch(e){}
+  }
+
+  function abrir(){
+    if(aberto || jaAbriu || visto()) return;
+    aberto = jaAbriu = true;
+    focoAnterior = document.activeElement;
+    banner.hidden = false;
+    banner.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    marcar();
+    var alvo = banner.querySelector(".banner__x");
+    if(alvo) alvo.focus();
+  }
+
+  function fechar(){
+    if(!aberto) return;
+    aberto = false;
+    banner.classList.remove("is-open");
+    banner.hidden = true;
+    document.body.style.overflow = "";
+    if(focoAnterior && focoAnterior.focus) focoAnterior.focus();
+  }
+
+  banner.addEventListener("click", function(e){
+    if(e.target.closest("[data-fechar]")) fechar();
+  });
+  document.addEventListener("keydown", function(e){
+    if(!aberto) return;
+    if(e.key === "Escape"){ fechar(); return; }
+    if(e.key !== "Tab") return;
+    var foco = caixa.querySelectorAll("button, a[href]");
+    if(!foco.length) return;
+    var primeiro = foco[0], ultimo = foco[foco.length-1];
+    if(e.shiftKey && document.activeElement === primeiro){ e.preventDefault(); ultimo.focus(); }
+    else if(!e.shiftKey && document.activeElement === ultimo){ e.preventDefault(); primeiro.focus(); }
+  });
+
+  var raf;
+  function checa(){
+    if(jaAbriu){ window.removeEventListener("scroll", agenda); return; }
+    if(window.scrollY > hero.offsetHeight * 0.55) abrir();
+  }
+  function agenda(){
+    if(raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(checa);
+  }
+  if(!visto()) window.addEventListener("scroll", agenda, {passive:true});
 })();
 </script>
 
