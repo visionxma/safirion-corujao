@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corujão Safirion</title>
+<meta name="description" content="24 horas de competição na Safirion. Dia 18 às 18h até dia 19 às 18h. Cinco disputas, cinco vencedores.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Manrope:wght@400..800&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --ink-950:#04070f;
+  --ink-900:#060b18;
+  --ink-800:#0a1120;
+  --ink-700:#111a2b;
+  --line:rgba(161,184,195,.16);
+  --line-soft:rgba(161,184,195,.09);
+  --blue:#2389e6;
+  --blue-hi:#7cc0ff;
+  --amber:#f6b83c;
+  --white:#fff;
+  --muted:#a1b8c3;
+  --muted-2:#7a8f9b;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Manrope","Helvetica Neue",Arial,sans-serif;
+  --wrap:1120px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ink-950);color:var(--white);
+  font-family:var(--body);font-size:16px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blue-hi);outline-offset:3px}
+.wrap{width:min(100% - 40px,var(--wrap));margin-inline:auto}
+.tnum{font-variant-numeric:tabular-nums}
+
+.label{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 88,"wght" 700;
+  font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--muted-2);margin:0;
+}
+.h2{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 74,"wght" 800;
+  font-size:clamp(1.9rem,4.4vw,2.9rem);line-height:1;
+  letter-spacing:-.005em;text-transform:uppercase;
+  margin:.55rem 0 0;text-wrap:balance;
+}
+.lede{color:var(--muted);max-width:58ch;margin:.9rem 0 0}
+.lede b{color:var(--white);font-weight:700}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--display);
+  font-variation-settings:"wdth" 92,"wght" 700;
+  font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:14px 26px;border-radius:100px;border:1px solid transparent;
+  text-decoration:none;cursor:pointer;
+  transition:background .16s ease,border-color .16s ease,color .16s ease;
+}
+.btn--solid{background:var(--blue);color:#fff}
+.btn--solid:hover{background:#3f9df0}
+.btn--line{border-color:var(--line);color:var(--white)}
+.btn--line:hover{border-color:var(--blue-hi);color:var(--blue-hi)}
+.btn--sm{padding:10px 18px;font-size:.68rem}
+
+/* ---------- topo ---------- */
+.topbar{
+  position:sticky;top:0;z-index:60;
+  background:rgba(4,7,15,.86);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line-soft);
+}
+.topbar__in{display:flex;align-items:center;gap:16px;height:58px}
+.brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
+.brand img{height:30px;width:auto}
+@media (max-width:520px){.brand img{height:24px}}
+.topbar__sep{flex:1 1 auto}
+.topbar__clock{font-size:.8rem;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  background:var(--ink-950);
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+}
+@media (min-width:900px){
+  .hero{grid-template-columns:minmax(480px,1fr) minmax(0,1.05fr)}
+}
+.hero__in{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(40px,6vw,74px) 24px clamp(40px,6vw,74px)
+          max(24px,calc((100vw - var(--wrap)) / 2));
+  min-height:clamp(430px,58vh,600px);
+  position:relative;z-index:2;
+}
+@media (max-width:899px){
+  .hero__in{order:2;padding-inline:20px;min-height:0}
+}
+.hero__pre{
+  font-family:var(--display);font-variation-settings:"wdth" 88,"wght" 700;
+  font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted-2);
+  margin:0 0 12px;
+}
+.hero__title{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 62,"wght" 900;
+  font-size:clamp(3.4rem,7.6vw,6.4rem);line-height:.78;
+  letter-spacing:-.03em;text-transform:uppercase;margin:0;
+}
+.hero__dates{
+  font-family:var(--display);font-variation-settings:"wdth" 78,"wght" 800;
+  font-size:clamp(.92rem,1.5vw,1.22rem);line-height:1.3;
+  letter-spacing:.1em;text-transform:uppercase;
+  margin:22px 0 0;padding-top:18px;border-top:1px solid var(--line);
+  max-width:30ch;
+}
+.hero__dates b{color:var(--blue-hi);font-weight:inherit}
+.hero__note{color:var(--muted);margin:12px 0 0;max-width:38ch;font-size:.97rem}
+
+.hero__media{position:relative;min-height:280px;background:var(--ink-800)}
+@media (max-width:899px){.hero__media{order:1;aspect-ratio:16/9;min-height:0}}
+.hero__media img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:44% 30%;
+}
+.hero__media::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(to right,var(--ink-950) 0%,rgba(4,7,15,.55) 14%,transparent 38%),
+    linear-gradient(to top,rgba(4,7,15,.5) 0%,transparent 34%);
+}
+@media (max-width:899px){
+  .hero__media::after{
+    background:linear-gradient(to bottom,rgba(4,7,15,.25) 0%,transparent 30%,rgba(4,7,15,.55) 100%);
+  }
+}
+
+.count{margin-top:26px}
+.count__state{
+  font-family:var(--display);font-variation-settings:"wdth" 88,"wght" 700;
+  font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-hi);
+  margin:0 0 9px;
+}
+.count__row{display:flex;align-items:flex-end;width:max-content;max-width:100%}
+.count__cell{padding:0 15px;border-left:1px solid var(--line-soft)}
+.count__cell:first-child{padding-left:0;border-left:0}
+.count__num{
+  display:block;font-family:var(--display);
+  font-variation-settings:"wdth" 72,"wght" 800;
+  font-variant-numeric:tabular-nums;
+  font-size:clamp(1.6rem,3vw,2.1rem);line-height:1;
+}
+.count__lab{
+  display:block;margin-top:5px;font-size:.56rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted-2);font-weight:700;
+}
+.hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+
+/* ---------- trilho de 24h ---------- */
+.rail{
+  position:relative;
+  border-top:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(4,7,15,.75),var(--ink-950));
+  padding:24px 0 30px;
+}
+.rail__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px;margin-bottom:16px}
+.rail__span{margin:0;font-size:.86rem;color:var(--muted-2);font-variant-numeric:tabular-nums}
+.rail__span b{color:var(--white);font-weight:800}
+.rail__track{
+  position:relative;height:8px;border-radius:100px;
+  background:var(--ink-700);overflow:hidden;
+}
+.rail__night{
+  position:absolute;top:0;bottom:0;left:25%;width:50%;
+  background:repeating-linear-gradient(135deg,rgba(161,184,195,.1) 0 2px,transparent 2px 7px);
+}
+.rail__fill{position:absolute;top:0;bottom:0;left:0;width:0;background:var(--blue-hi);transition:width .8s linear}
+.rail__ticks{display:grid;grid-template-columns:repeat(9,1fr);margin-top:9px}
+.rail__tick{
+  font-size:.66rem;font-weight:700;letter-spacing:.06em;color:var(--muted-2);
+  font-variant-numeric:tabular-nums;text-align:center;
+}
+.rail__tick:first-child{text-align:left}
+.rail__tick:last-child{text-align:right}
+.rail__tick[data-mark]{color:var(--white)}
+.rail__legend{margin:12px 0 0;font-size:.8rem;color:var(--muted-2)}
+
+/* ---------- disputas: tabela, nao cards ---------- */
+.sect{padding:clamp(56px,8vw,96px) 0}
+.sect--card{border-top:1px solid var(--line);background:var(--ink-950)}
+.sect__head{max-width:64ch}
+
+.bouts{margin-top:clamp(30px,5vw,46px);border-top:1px solid var(--line)}
+.bout{
+  display:grid;gap:4px 32px;
+  padding:26px 0;
+  border-bottom:1px solid var(--line-soft);
+  align-items:baseline;
+}
+@media (min-width:880px){
+  .bout{grid-template-columns:118px minmax(0,1fr) minmax(0,300px)}
+}
+.bout__cat{
+  font-family:var(--display);font-variation-settings:"wdth" 86,"wght" 700;
+  font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-2);
+  margin:0;padding-top:.55em;
+}
+.bout__main{min-width:0}
+.bout__name{
+  font-family:var(--display);font-variation-settings:"wdth" 72,"wght" 800;
+  font-size:clamp(1.45rem,3.2vw,2rem);line-height:1.02;
+  text-transform:uppercase;margin:0;letter-spacing:-.005em;
+}
+.bout__crit{margin:.5rem 0 0;color:var(--muted);max-width:46ch;font-size:.96rem}
+.bout__crit b{color:var(--white);font-weight:700}
+.bout__q{margin:0;min-width:0}
+.bout__qlab{
+  display:block;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted-2);font-weight:700;margin-bottom:7px;
+}
+.bout__qlist{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+.bout__qlist li{
+  font-size:.94rem;color:var(--white);font-weight:600;
+  font-variant-numeric:tabular-nums;
+  padding-left:15px;position:relative;
+}
+.bout__qlist li::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:6px;height:1px;background:var(--blue);
+}
+.bout__qlist li b{font-weight:800}
+.bout--tbd .bout__qlist li{color:var(--amber)}
+.bout--tbd .bout__qlist li::before{background:var(--amber)}
+.bout__prods{
+  margin:.7rem 0 0;font-size:.86rem;color:var(--muted-2);
+}
+
+/* ---------- regras ---------- */
+.sect--rules{background:var(--ink-900);border-top:1px solid var(--line)}
+.rules{margin-top:clamp(28px,4vw,40px);border-top:1px solid var(--line)}
+.rules__row{display:grid;gap:4px 32px;padding:20px 0;border-bottom:1px solid var(--line-soft)}
+@media (min-width:760px){.rules__row{grid-template-columns:200px minmax(0,1fr);align-items:baseline}}
+.rules__k{
+  font-family:var(--display);font-variation-settings:"wdth" 86,"wght" 700;
+  font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-hi);margin:0;
+}
+.rules__v{margin:0;color:var(--muted);max-width:62ch}
+.rules__v b{color:var(--white);font-weight:700}
+.rules__v .tbd{color:var(--amber);font-weight:700}
+
+/* ---------- fecho ---------- */
+.close{
+  border-top:1px solid var(--line);
+  background:var(--ink-950);
+  padding:clamp(56px,8vw,100px) 0;
+}
+.close__title{
+  font-family:var(--display);font-variation-settings:"wdth" 66,"wght" 900;
+  font-size:clamp(2.4rem,7vw,4.6rem);line-height:.9;
+  text-transform:uppercase;margin:.5rem 0 0;text-wrap:balance;max-width:16ch;
+}
+.close__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+
+.foot{border-top:1px solid var(--line-soft);padding:22px 0}
+.foot__in{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between}
+.foot__logo{height:34px;width:auto;opacity:.9}
+.foot p{margin:0;font-size:.78rem;color:var(--muted-2)}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+@media (max-width:560px){
+  .count__cell{padding:0 12px}
+  .topbar__clock{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar__in">
+    <a class="brand" href="https://safirion.com" target="_blank" rel="noopener" aria-label="Safirion">
+      <img src="assets/safirion-logo-horizontal.svg" alt="Safirion — confiança para investir" width="234" height="55">
+    </a>
+    <span class="topbar__sep"></span>
+    <span class="topbar__clock" id="barClock">—</span>
+    <a class="btn btn--solid btn--sm" href="#disputas">Ver disputas</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="hero__in">
+    <p class="hero__pre">Safirion apresenta</p>
+    <h1 class="hero__title">Corujão</h1>
+    <p class="hero__dates"><b>24 horas</b> — dia 18 às 18h até dia 19 às 18h</p>
+    <p class="hero__note">Cinco disputas rodando ao mesmo tempo, da largada à virada do dia seguinte.</p>
+
+    <div class="count" aria-live="polite">
+      <p class="count__state" id="countState">Faltam para a largada</p>
+      <div class="count__row">
+        <div class="count__cell"><span class="count__num tnum" id="cd-d">--</span><span class="count__lab">Dias</span></div>
+        <div class="count__cell"><span class="count__num tnum" id="cd-h">--</span><span class="count__lab">Horas</span></div>
+        <div class="count__cell"><span class="count__num tnum" id="cd-m">--</span><span class="count__lab">Min</span></div>
+        <div class="count__cell"><span class="count__num tnum" id="cd-s">--</span><span class="count__lab">Seg</span></div>
+      </div>
+    </div>
+
+    <div class="hero__cta">
+      <a class="btn btn--solid" href="#disputas">Quero competir</a>
+      <a class="btn btn--line" href="#regras">Regras gerais</a>
+    </div>
+  </div>
+
+  <div class="hero__media">
+    <img src="assets/hero-dubai.jpg" alt="Trader apoiado em um esportivo preto com o skyline de Dubai e o deserto ao pôr do sol">
+  </div>
+</section>
+
+<section class="rail">
+    <div class="wrap">
+      <div class="rail__head">
+        <p class="label">A janela</p>
+        <p class="rail__span"><b>18/09, 18:00</b> → <b>19/09, 18:00</b> · horário de Brasília</p>
+      </div>
+      <div class="rail__track" role="img" aria-label="Linha do tempo de 24 horas, das 18h do dia 18 às 18h do dia 19">
+        <div class="rail__night"></div>
+        <div class="rail__fill" id="railFill"></div>
+      </div>
+      <div class="rail__ticks" aria-hidden="true">
+        <span class="rail__tick" data-mark>18h</span><span class="rail__tick">21h</span>
+        <span class="rail__tick" data-mark>00h</span><span class="rail__tick">03h</span>
+        <span class="rail__tick">06h</span><span class="rail__tick">09h</span>
+        <span class="rail__tick" data-mark>12h</span><span class="rail__tick">15h</span>
+        <span class="rail__tick" data-mark>18h</span>
+      </div>
+      <p class="rail__legend" id="railLegend">O trecho hachurado é a madrugada, das 21h às 09h.</p>
+    </div>
+</section>
+
+<section class="sect sect--card" id="disputas">
+  <div class="wrap">
+    <div class="sect__head">
+      <p class="label">As competições</p>
+      <h2 class="h2">Cinco disputas, cinco vencedores</h2>
+      <p class="lede">Cada disputa tem duas medidas: o <b>critério</b>, que define quem ganha, e a <b>qualificação</b>, que define quem entra na contagem. Abaixo do mínimo, o resultado não é apurado.</p>
+    </div>
+
+    <div class="bouts">
+
+      <article class="bout">
+        <p class="bout__cat">Mesa</p>
+        <div class="bout__main">
+          <h3 class="bout__name">PNL</h3>
+          <p class="bout__crit">Ganha <b>o maior PNL</b> apurado dentro da janela.</p>
+        </div>
+        <div class="bout__q">
+          <span class="bout__qlab">Qualificação</span>
+          <ul class="bout__qlist"><li><b>20K dólares</b> no mínimo</li></ul>
+        </div>
+      </article>
+
+      <article class="bout">
+        <p class="bout__cat">Conteúdo</p>
+        <div class="bout__main">
+          <h3 class="bout__name">Vídeo no YouTube</h3>
+          <p class="bout__crit">Ganha <b>a maior quantidade</b> de vídeos publicados, contando só os que qualificam.</p>
+        </div>
+        <div class="bout__q">
+          <span class="bout__qlab">Qualificação</span>
+          <ul class="bout__qlist">
+            <li><b>5 min</b> de vídeo</li>
+            <li><b>+50 views</b> em cada vídeo</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="bout">
+        <p class="bout__cat">Rede</p>
+        <div class="bout__main">
+          <h3 class="bout__name">Rede de afiliado</h3>
+          <p class="bout__crit">Ganha <b>a maior quantidade</b> de afiliados qualificados na janela.</p>
+        </div>
+        <div class="bout__q">
+          <span class="bout__qlab">Qualificação</span>
+          <ul class="bout__qlist">
+            <li>Mínimo <b>20 afiliados</b></li>
+            <li><b>10 FTD</b> por afiliado</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="bout bout--tbd">
+        <p class="bout__cat">Ao vivo</p>
+        <div class="bout__main">
+          <h3 class="bout__name">Live no TikTok</h3>
+          <p class="bout__crit">Ganha o melhor <b>balanço das métricas</b> da live.</p>
+        </div>
+        <div class="bout__q">
+          <span class="bout__qlab">Qualificação</span>
+          <ul class="bout__qlist"><li>A definir, divulgada antes da largada</li></ul>
+        </div>
+      </article>
+
+      <article class="bout">
+        <p class="bout__cat">Vendas</p>
+        <div class="bout__main">
+          <h3 class="bout__name">Venda de produto</h3>
+          <p class="bout__crit">Ganha <b>o maior volume vendido</b> no período.</p>
+          <p class="bout__prods">Copy Trade · Jarvis · Máquina de Dólar · e demais produtos</p>
+        </div>
+        <div class="bout__q">
+          <span class="bout__qlab">Qualificação</span>
+          <ul class="bout__qlist"><li>Mínimo <b>100K</b> em vendas</li></ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="sect sect--rules" id="regras">
+  <div class="wrap">
+    <div class="sect__head">
+      <p class="label">Como funciona</p>
+      <h2 class="h2">Regras gerais</h2>
+    </div>
+    <div class="rules">
+      <div class="rules__row">
+        <p class="rules__k">Janela</p>
+        <p class="rules__v">Vale o que acontecer entre <b>18/09 às 18:00</b> e <b>19/09 às 18:00</b>, horário de Brasília. Fora disso não conta, nem antes nem depois.</p>
+      </div>
+      <div class="rules__row">
+        <p class="rules__k">Quantas disputas</p>
+        <p class="rules__v">Você entra em <b>quantas quiser</b>. As cinco são independentes e cada uma tem o seu vencedor.</p>
+      </div>
+      <div class="rules__row">
+        <p class="rules__k">Qualificação</p>
+        <p class="rules__v">O critério só é apurado depois que a <b>qualificação é batida</b>. Quem fica abaixo do mínimo sai da contagem, mesmo com número alto.</p>
+      </div>
+      <div class="rules__row">
+        <p class="rules__k">Comprovação</p>
+        <p class="rules__v">Guarde <b>prints, links e relatórios</b>. A apuração cruza os dados da plataforma com o que você enviar.</p>
+      </div>
+      <div class="rules__row">
+        <p class="rules__k">Live no TikTok</p>
+        <p class="rules__v">A regra de qualificação desta disputa está <span class="tbd">em definição</span> e será divulgada antes das 18h do dia 18.</p>
+      </div>
+      <div class="rules__row">
+        <p class="rules__k">Resultado</p>
+        <p class="rules__v">Apuração logo após o encerramento, com os vencedores anunciados nos canais oficiais da Safirion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <p class="label">18/09, 18:00</p>
+    <h2 class="close__title">A noite é de quem não dorme</h2>
+    <p class="lede">Escolha sua disputa, bata a qualificação e atravesse as 24 horas.</p>
+    <div class="close__cta">
+      <a class="btn btn--solid" href="https://safirion.com" target="_blank" rel="noopener">Abrir minha conta na Safirion</a>
+      <a class="btn btn--line" href="#disputas">Rever as disputas</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <img class="foot__logo" src="assets/safirion-logo-horizontal.svg" alt="Safirion — confiança para investir" width="234" height="55">
+    <p>Corujão · 18 a 19 de setembro · horários em Brasília (GMT−3)</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var START = new Date("2026-09-18T18:00:00-03:00").getTime();
+  var END   = new Date("2026-09-19T18:00:00-03:00").getTime();
+  var TOTAL = END - START;
+  var d=document.getElementById("cd-d"), h=document.getElementById("cd-h"),
+      m=document.getElementById("cd-m"), s=document.getElementById("cd-s"),
+      state=document.getElementById("countState"), fill=document.getElementById("railFill"),
+      legend=document.getElementById("railLegend"), bar=document.getElementById("barClock");
+  var baseLegend = legend.textContent;
+  function pad(n){ return n<10 ? "0"+n : ""+n; }
+  function tick(){
+    var now=Date.now(), left, label, pct;
+    if(now<START){
+      left=START-now; label="Faltam para a largada"; pct=0;
+      bar.textContent="Começa em "+Math.floor(left/86400000)+"d "+pad(Math.floor(left/3600000)%24)+"h";
+      legend.textContent=baseLegend;
+    } else if(now<END){
+      left=END-now; label="Ao vivo · falta para o encerramento";
+      pct=((now-START)/TOTAL)*100;
+      bar.textContent="Ao vivo · faltam "+pad(Math.floor(left/3600000))+"h"+pad(Math.floor(left/60000)%60);
+      legend.textContent="Decorrido: "+pct.toFixed(1)+"% das 24 horas.";
+    } else {
+      left=0; label="Corujão encerrado"; pct=100;
+      bar.textContent="Encerrado";
+      legend.textContent="As 24 horas se encerraram. Apuração em andamento.";
+    }
+    fill.style.width=pct.toFixed(2)+"%";
+    if(state.textContent!==label) state.textContent=label;
+    d.textContent=pad(Math.floor(left/86400000));
+    h.textContent=pad(Math.floor(left/3600000)%24);
+    m.textContent=pad(Math.floor(left/60000)%60);
+    s.textContent=pad(Math.floor(left/1000)%60);
+  }
+  tick(); setInterval(tick,1000);
+})();
+</script>
+
+</body>
+</html>
