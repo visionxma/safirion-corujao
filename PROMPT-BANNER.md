@@ -1,7 +1,13 @@
 # Prompt da arte do banner
 
-A página espera o arquivo em **`assets/banner-passo-a-passo.png`**, em **1080 × 1350 px (4:5)**.
-Enquanto ele não existir, o banner mostra os quatro passos em texto real — funciona, só não tem arte.
+> **Feito.** A arte foi gerada com o Prompt A e está em `assets/banner-passo-a-passo.jpg`
+> (1080 × 1350). Revisada letra por letra: acentos e datas corretos. O PNG original do
+> gerador ficou em `assets/banner-passo-a-passo-original.png`.
+>
+> Este arquivo fica como referência para regerar a arte se alguma regra mudar.
+
+A página espera o arquivo em **`assets/banner-passo-a-passo.jpg`**, em **1080 × 1350 px (4:5)**.
+Se ele sumir, o banner volta a mostrar os quatro passos em texto real — funciona, só sem arte.
 
 > **Leia antes:** gerador de imagem erra texto. Ele troca letras, come acentos e inventa
 > palavras — e aqui o texto carrega datas e regras, onde errar é caro. Por isso existem dois

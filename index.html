@@ -399,10 +399,14 @@ a{color:inherit}
 .banner__box{
   position:relative;
   width:min(430px,100%);max-height:88vh;overflow-y:auto;
+  /* a arte carrega texto embutido, entao ela precisa de largura para ser lida */
   background:var(--ink-800);
   border:1px solid var(--line-strong);border-radius:20px;
   box-shadow:0 30px 80px rgba(0,0,0,.6);
   animation:bannerSobe .34s cubic-bezier(.2,.7,.3,1) both;
+}
+@media (min-width:900px) and (min-height:820px){
+  .banner__box{width:min(540px,100%)}
 }
 @keyframes bannerSobe{from{opacity:0;transform:translateY(20px) scale(.985)}}
 .banner__img{display:block;width:100%;height:auto;border-radius:19px 19px 0 0}
@@ -670,7 +674,7 @@ a{color:inherit}
   <div class="banner__scrim" data-fechar></div>
   <div class="banner__box" role="dialog" aria-modal="true" aria-labelledby="bannerTit">
     <button class="banner__x" type="button" data-fechar aria-label="Fechar">&times;</button>
-    <img class="banner__img" src="assets/banner-passo-a-passo.png"
+    <img class="banner__img" src="assets/banner-passo-a-passo.jpg"
          alt="Como participar do Corujão em quatro passos: escolha suas disputas, bata a qualificação, produza dentro da janela de 18/09 às 18h a 19/09 às 18h, e guarde a comprovação."
          width="1080" height="1350"
          onerror="document.getElementById('banner').classList.add('no-img')">
