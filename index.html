@@ -139,7 +139,14 @@ a{color:inherit}
 }
 @media (max-width:899px){
   .hero__media::after{
-    background:linear-gradient(to bottom,rgba(4,7,15,.25) 0%,transparent 30%,rgba(4,7,15,.55) 100%);
+    background:linear-gradient(to bottom,
+      rgba(4,7,15,.30) 0%,
+      rgba(4,7,15,.05) 18%,
+      rgba(4,7,15,0) 34%,
+      rgba(4,7,15,.22) 56%,
+      rgba(4,7,15,.58) 74%,
+      rgba(4,7,15,.86) 88%,
+      var(--ink-950) 100%);
   }
 }
 
@@ -198,63 +205,100 @@ a{color:inherit}
 .sect--card{border-top:1px solid var(--line);background:var(--ink-950)}
 .sect__head{max-width:64ch}
 
-.bouts{margin-top:clamp(30px,5vw,46px);border-top:1px solid var(--line)}
+.bouts{margin-top:clamp(28px,4.5vw,42px)}
+.bouts__head{
+  display:none;
+  padding-bottom:10px;border-bottom:1px solid var(--line-strong);
+}
+.bouts__head span{
+  font-family:var(--display);font-variation-settings:"wdth" 86,"wght" 700;
+  font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-2);
+}
 .bout{
   display:grid;gap:4px 32px;
-  padding:26px 0;
+  padding:24px 0;
   border-bottom:1px solid var(--line-soft);
   align-items:baseline;
 }
+.bout:first-of-type{border-top:1px solid var(--line)}
 @media (min-width:880px){
+  .bouts__head{display:grid;grid-template-columns:118px minmax(0,1fr) minmax(0,300px);gap:32px}
   .bout{grid-template-columns:118px minmax(0,1fr) minmax(0,300px)}
+  .bout:first-of-type{border-top:0}
 }
 .bout__cat{
   font-family:var(--display);font-variation-settings:"wdth" 86,"wght" 700;
   font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-2);
-  margin:0;padding-top:.55em;
+  margin:0;padding-top:.5em;
 }
 .bout__main{min-width:0}
 .bout__name{
   font-family:var(--display);font-variation-settings:"wdth" 72,"wght" 800;
-  font-size:clamp(1.45rem,3.2vw,2rem);line-height:1.02;
+  font-size:clamp(1.4rem,3vw,1.9rem);line-height:1.02;
   text-transform:uppercase;margin:0;letter-spacing:-.005em;
 }
-.bout__crit{margin:.5rem 0 0;color:var(--muted);max-width:46ch;font-size:.96rem}
-.bout__crit b{color:var(--white);font-weight:700}
+.bout__crit{margin:.45rem 0 0;color:var(--white);max-width:42ch;font-size:1rem;font-weight:600}
+.bout__prods{margin:.5rem 0 0;font-size:.84rem;color:var(--muted-2)}
 .bout__q{margin:0;min-width:0}
 .bout__qlab{
-  display:block;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;
+  display:block;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
   color:var(--muted-2);font-weight:700;margin-bottom:7px;
 }
-.bout__qlist{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+.bout__qlist{margin:0;padding:0;list-style:none;display:grid;gap:6px}
 .bout__qlist li{
-  font-size:.94rem;color:var(--white);font-weight:600;
+  font-size:.93rem;color:var(--muted);font-weight:500;
   font-variant-numeric:tabular-nums;
-  padding-left:15px;position:relative;
+  padding-left:16px;position:relative;
 }
 .bout__qlist li::before{
   content:"";position:absolute;left:0;top:.62em;
-  width:6px;height:1px;background:var(--blue);
+  width:7px;height:1px;background:var(--blue);
 }
-.bout__qlist li b{font-weight:800}
+.bout__qlist li b{font-weight:800;color:var(--white)}
+@media (min-width:880px){.bout__qlab{display:none}}
 .bout--tbd .bout__qlist li{color:var(--amber)}
 .bout--tbd .bout__qlist li::before{background:var(--amber)}
-.bout__prods{
-  margin:.7rem 0 0;font-size:.86rem;color:var(--muted-2);
-}
 
-/* ---------- regras ---------- */
+/* ---------- passo a passo ---------- */
 .sect--rules{background:var(--ink-900);border-top:1px solid var(--line)}
-.rules{margin-top:clamp(28px,4vw,40px);border-top:1px solid var(--line)}
-.rules__row{display:grid;gap:4px 32px;padding:20px 0;border-bottom:1px solid var(--line-soft)}
-@media (min-width:760px){.rules__row{grid-template-columns:200px minmax(0,1fr);align-items:baseline}}
-.rules__k{
-  font-family:var(--display);font-variation-settings:"wdth" 86,"wght" 700;
-  font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-hi);margin:0;
+.steps{
+  list-style:none;margin:clamp(28px,4vw,40px) 0 0;padding:0;
+  counter-reset:step;
+  border-top:1px solid var(--line);
 }
-.rules__v{margin:0;color:var(--muted);max-width:62ch}
-.rules__v b{color:var(--white);font-weight:700}
-.rules__v .tbd{color:var(--amber);font-weight:700}
+.steps li{
+  counter-increment:step;
+  display:grid;gap:4px 28px;
+  padding:22px 0;border-bottom:1px solid var(--line-soft);
+  align-items:start;
+}
+@media (min-width:760px){
+  .steps li{grid-template-columns:46px minmax(0,1fr)}
+}
+.steps li::before{
+  content:counter(step,decimal-leading-zero);
+  font-family:var(--display);font-variation-settings:"wdth" 74,"wght" 800;
+  font-variant-numeric:tabular-nums;
+  font-size:1.05rem;color:var(--blue-hi);line-height:1.15;
+}
+.step__t{
+  font-family:var(--display);font-variation-settings:"wdth" 80,"wght" 800;
+  font-size:1.05rem;letter-spacing:.02em;text-transform:uppercase;margin:0;
+}
+.step__d{margin:.35rem 0 0;color:var(--muted);max-width:60ch}
+.step__d b{color:var(--white);font-weight:700}
+
+.notes{display:grid;gap:14px;margin-top:clamp(30px,4vw,44px)}
+@media (min-width:760px){.notes{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}}
+.note{padding-left:16px;border-left:2px solid var(--line-strong)}
+.note--tbd{border-left-color:var(--amber)}
+.note__k{
+  font-family:var(--display);font-variation-settings:"wdth" 86,"wght" 700;
+  font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-2);margin:0 0 6px;
+}
+.note--tbd .note__k{color:var(--amber)}
+.note__v{margin:0;color:var(--muted);font-size:.94rem;max-width:46ch}
+.note__v b{color:var(--white);font-weight:700}
 
 /* ---------- fecho ---------- */
 .close{
@@ -317,7 +361,7 @@ a{color:inherit}
 
     <div class="hero__cta">
       <a class="btn btn--solid" href="#disputas">Quero competir</a>
-      <a class="btn btn--line" href="#regras">Regras gerais</a>
+      <a class="btn btn--line" href="#regras">Como participar</a>
     </div>
   </div>
 
@@ -352,16 +396,21 @@ a{color:inherit}
     <div class="sect__head">
       <p class="label">As competições</p>
       <h2 class="h2">Cinco disputas, cinco vencedores</h2>
-      <p class="lede">Cada disputa tem duas medidas: o <b>critério</b>, que define quem ganha, e a <b>qualificação</b>, que define quem entra na contagem. Abaixo do mínimo, o resultado não é apurado.</p>
+      <p class="lede">As cinco rodam ao mesmo tempo e são independentes — cada uma tem o seu vencedor. Você só entra na contagem de uma disputa depois de bater o mínimo dela.</p>
     </div>
 
     <div class="bouts">
+      <div class="bouts__head" aria-hidden="true">
+        <span>Categoria</span>
+        <span>Disputa e como se ganha</span>
+        <span>Para entrar na contagem</span>
+      </div>
 
       <article class="bout">
         <p class="bout__cat">Mesa</p>
         <div class="bout__main">
           <h3 class="bout__name">PNL</h3>
-          <p class="bout__crit">Ganha <b>o maior PNL</b> apurado dentro da janela.</p>
+          <p class="bout__crit">Maior PNL do período.</p>
         </div>
         <div class="bout__q">
           <span class="bout__qlab">Qualificação</span>
@@ -373,7 +422,7 @@ a{color:inherit}
         <p class="bout__cat">Conteúdo</p>
         <div class="bout__main">
           <h3 class="bout__name">Vídeo no YouTube</h3>
-          <p class="bout__crit">Ganha <b>a maior quantidade</b> de vídeos publicados, contando só os que qualificam.</p>
+          <p class="bout__crit">Mais vídeos publicados que qualifiquem.</p>
         </div>
         <div class="bout__q">
           <span class="bout__qlab">Qualificação</span>
@@ -388,7 +437,7 @@ a{color:inherit}
         <p class="bout__cat">Rede</p>
         <div class="bout__main">
           <h3 class="bout__name">Rede de afiliado</h3>
-          <p class="bout__crit">Ganha <b>a maior quantidade</b> de afiliados qualificados na janela.</p>
+          <p class="bout__crit">Mais afiliados qualificados.</p>
         </div>
         <div class="bout__q">
           <span class="bout__qlab">Qualificação</span>
@@ -403,7 +452,7 @@ a{color:inherit}
         <p class="bout__cat">Ao vivo</p>
         <div class="bout__main">
           <h3 class="bout__name">Live no TikTok</h3>
-          <p class="bout__crit">Ganha o melhor <b>balanço das métricas</b> da live.</p>
+          <p class="bout__crit">Melhor balanço das métricas da live.</p>
         </div>
         <div class="bout__q">
           <span class="bout__qlab">Qualificação</span>
@@ -415,7 +464,7 @@ a{color:inherit}
         <p class="bout__cat">Vendas</p>
         <div class="bout__main">
           <h3 class="bout__name">Venda de produto</h3>
-          <p class="bout__crit">Ganha <b>o maior volume vendido</b> no período.</p>
+          <p class="bout__crit">Maior volume vendido.</p>
           <p class="bout__prods">Copy Trade · Jarvis · Máquina de Dólar · e demais produtos</p>
         </div>
         <div class="bout__q">
@@ -431,33 +480,45 @@ a{color:inherit}
 <section class="sect sect--rules" id="regras">
   <div class="wrap">
     <div class="sect__head">
-      <p class="label">Como funciona</p>
-      <h2 class="h2">Regras gerais</h2>
+      <p class="label">Passo a passo</p>
+      <h2 class="h2">Como participar</h2>
     </div>
-    <div class="rules">
-      <div class="rules__row">
-        <p class="rules__k">Janela</p>
-        <p class="rules__v">Vale o que acontecer entre <b>18/09 às 18:00</b> e <b>19/09 às 18:00</b>, horário de Brasília. Fora disso não conta, nem antes nem depois.</p>
+
+    <ol class="steps">
+      <li>
+        <div>
+          <h3 class="step__t">Escolha suas disputas</h3>
+          <p class="step__d">Entre em <b>quantas quiser</b>. As cinco são independentes e cada uma premia o seu próprio vencedor.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3 class="step__t">Bata a qualificação</h3>
+          <p class="step__d">Cada disputa tem um mínimo. <b>Abaixo dele você sai da contagem</b>, mesmo com número alto — a qualificação é conferida antes do critério.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3 class="step__t">Produza dentro da janela</h3>
+          <p class="step__d">Só vale o que acontecer entre <b>18/09 às 18:00</b> e <b>19/09 às 18:00</b>, horário de Brasília. Nem antes, nem depois.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3 class="step__t">Guarde a comprovação</h3>
+          <p class="step__d">Separe <b>prints, links e relatórios</b>. A apuração cruza os dados da plataforma com o que você enviar.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="notes">
+      <div class="note note--tbd">
+        <p class="note__k">Ainda em definição</p>
+        <p class="note__v">A qualificação da <b>Live no TikTok</b> será divulgada antes das 18h do dia 18. As outras quatro já estão fechadas.</p>
       </div>
-      <div class="rules__row">
-        <p class="rules__k">Quantas disputas</p>
-        <p class="rules__v">Você entra em <b>quantas quiser</b>. As cinco são independentes e cada uma tem o seu vencedor.</p>
-      </div>
-      <div class="rules__row">
-        <p class="rules__k">Qualificação</p>
-        <p class="rules__v">O critério só é apurado depois que a <b>qualificação é batida</b>. Quem fica abaixo do mínimo sai da contagem, mesmo com número alto.</p>
-      </div>
-      <div class="rules__row">
-        <p class="rules__k">Comprovação</p>
-        <p class="rules__v">Guarde <b>prints, links e relatórios</b>. A apuração cruza os dados da plataforma com o que você enviar.</p>
-      </div>
-      <div class="rules__row">
-        <p class="rules__k">Live no TikTok</p>
-        <p class="rules__v">A regra de qualificação desta disputa está <span class="tbd">em definição</span> e será divulgada antes das 18h do dia 18.</p>
-      </div>
-      <div class="rules__row">
-        <p class="rules__k">Resultado</p>
-        <p class="rules__v">Apuração logo após o encerramento, com os vencedores anunciados nos canais oficiais da Safirion.</p>
+      <div class="note">
+        <p class="note__k">Resultado</p>
+        <p class="note__v">Apuração logo após o encerramento, com os vencedores anunciados nos <b>canais oficiais da Safirion</b>.</p>
       </div>
     </div>
   </div>
