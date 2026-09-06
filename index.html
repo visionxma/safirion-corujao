@@ -256,6 +256,44 @@ a{color:inherit}
 }
 .bout__qlist li b{font-weight:800;color:var(--white)}
 @media (min-width:880px){.bout__qlab{display:none}}
+
+/* carrossel: so abaixo de 880px, onde a tabela ja nao permite comparar mesmo */
+@media (max-width:879px){
+  .bouts{
+    position:relative;
+    display:flex;gap:12px;align-items:stretch;
+    overflow-x:auto;overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory;
+    scroll-padding-inline:20px;
+    margin-inline:-20px;padding-inline:20px;
+    scrollbar-width:none;
+  }
+  .bouts::-webkit-scrollbar{display:none}
+  .bout{
+    flex:0 0 min(80%,320px);
+    scroll-snap-align:start;
+    display:flex;flex-direction:column;gap:0;
+    padding:22px;
+    border:1px solid var(--line);border-radius:16px;
+    background:linear-gradient(158deg,var(--ink-700),var(--ink-900) 72%);
+  }
+  .bout:first-of-type{border-top:1px solid var(--line)}
+  .bout__cat{padding-top:0;margin-bottom:10px}
+  .bout__q{margin-top:auto;padding-top:16px;border-top:1px solid var(--line-soft)}
+  .bout--tbd{border-color:rgba(246,184,60,.3)}
+}
+
+.dots{display:none}
+@media (max-width:879px){
+  .dots{display:flex;gap:9px;justify-content:center;margin-top:20px}
+}
+.dot{
+  width:8px;height:8px;padding:0;border:0;border-radius:50%;
+  background:rgba(161,184,195,.32);cursor:pointer;
+  transition:background .18s ease,transform .18s ease;
+}
+.dot:hover{background:rgba(161,184,195,.6)}
+.dot.is-on{background:var(--blue-hi);transform:scale(1.35)}
 .bout--tbd .bout__qlist li{color:var(--amber)}
 .bout--tbd .bout__qlist li::before{background:var(--amber)}
 
@@ -474,6 +512,7 @@ a{color:inherit}
       </article>
 
     </div>
+    <div class="dots" id="boutDots" role="group" aria-label="Navegar entre as disputas"></div>
   </div>
 </section>
 
@@ -580,6 +619,52 @@ a{color:inherit}
     s.textContent=pad(Math.floor(left/1000)%60);
   }
   tick(); setInterval(tick,1000);
+})();
+
+/* carrossel das disputas (mobile) — scroll-snap nativo, os pontos so refletem a posicao */
+(function(){
+  var scroller = document.querySelector(".bouts");
+  var wrap = document.getElementById("boutDots");
+  if(!scroller || !wrap) return;
+  var cards = Array.prototype.slice.call(scroller.querySelectorAll(".bout"));
+  if(!cards.length) return;
+
+  var suave = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var dots = cards.map(function(card, i){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "dot";
+    b.setAttribute("aria-label","Disputa " + (i+1) + " de " + cards.length + ": " +
+      (card.querySelector(".bout__name") || {textContent:""}).textContent.trim());
+    b.addEventListener("click", function(){
+      card.scrollIntoView({inline:"start", block:"nearest", behavior: suave ? "smooth" : "auto"});
+    });
+    wrap.appendChild(b);
+    return b;
+  });
+
+  function sync(){
+    var r = scroller.getBoundingClientRect();
+    var meio = r.left + r.width / 2;
+    var ativo = 0, menor = Infinity;
+    cards.forEach(function(c, i){
+      var cr = c.getBoundingClientRect();
+      var d = Math.abs(cr.left + cr.width / 2 - meio);
+      if(d < menor){ menor = d; ativo = i; }
+    });
+    dots.forEach(function(d, i){
+      d.classList.toggle("is-on", i === ativo);
+      if(i === ativo){ d.setAttribute("aria-current","true"); } else { d.removeAttribute("aria-current"); }
+    });
+  }
+
+  var raf;
+  scroller.addEventListener("scroll", function(){
+    if(raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(sync);
+  }, {passive:true});
+  window.addEventListener("resize", sync);
+  sync();
 })();
 </script>
 

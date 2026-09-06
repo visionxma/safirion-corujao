@@ -42,6 +42,16 @@ Derivada de [safirion.com](https://safirion.com):
 A fonte da marca (Mazzard) é proprietária; a página usa **Archivo** no display e
 **Manrope** no corpo, via Google Fonts.
 
+## Disputas: tabela no desktop, carrossel no mobile
+
+A partir de 880px as cinco disputas são uma tabela com cabeçalho de coluna — a comparação
+lado a lado dos mínimos (20K em PNL, 100K em vendas, 20 afiliados) é o que faz o
+competidor escolher onde entrar.
+
+Abaixo disso vira carrossel com `scroll-snap` nativo, sem biblioteca. O JS só lê a posição
+do scroll para acender o ponto correspondente; quem arrasta é o navegador. Se o JS não
+rodar, o carrossel continua deslizando — só os pontos não aparecem.
+
 ## Datas
 
 A janela vive em duas constantes no `<script>` ao final do `index.html`:
