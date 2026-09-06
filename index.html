@@ -270,12 +270,33 @@ a{color:inherit}
   }
   .bouts::-webkit-scrollbar{display:none}
   .bout{
+    position:relative;overflow:hidden;isolation:isolate;
     flex:0 0 min(80%,320px);
     scroll-snap-align:start;
     display:flex;flex-direction:column;gap:0;
     padding:22px;
     border:1px solid var(--line);border-radius:16px;
     background:linear-gradient(158deg,var(--ink-700),var(--ink-900) 72%);
+  }
+  /* foto transparecida ao fundo — uma regiao diferente da mesma cena por card */
+  .bout::before{
+    content:"";position:absolute;inset:0;z-index:-2;
+    background-image:url("assets/hero-dubai.jpg");
+    background-size:cover;
+    background-position:50% 45%;
+    opacity:.26;
+  }
+  .bout::after{
+    content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(168deg,rgba(6,11,24,.5) 0%,rgba(4,7,15,.82) 62%,rgba(4,7,15,.94) 100%);
+  }
+  .bout:nth-of-type(1)::before{background-position:38% 40%}  /* o trader   */
+  .bout:nth-of-type(2)::before{background-position:70% 38%}  /* o skyline  */
+  .bout:nth-of-type(3)::before{background-position:9%  62%}  /* os camelos */
+  .bout:nth-of-type(4)::before{background-position:96% 45%}  /* a palmeira */
+  .bout:nth-of-type(5)::before{background-position:54% 70%}  /* o carro    */
+  .bout--tbd::after{
+    background:linear-gradient(168deg,rgba(6,11,24,.5) 0%,rgba(4,7,15,.8) 60%,rgba(20,14,4,.92) 100%);
   }
   .bout:first-of-type{border-top:1px solid var(--line)}
   .bout__cat{padding-top:0;margin-bottom:10px}
