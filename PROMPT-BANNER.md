@@ -4,9 +4,9 @@
 > no topo, os passos ligados por um fio vertical e o botão do WhatsApp dentro do passo 01.
 > Texto em HTML escala, é lido por leitor de tela e se corrige sem regerar nada.
 >
-> Este arquivo continua útil para **peça de divulgação** — 1080 × 1350 é 4:5, o formato de
-> feed do Instagram. Se for usar para isso, atualize o nome (*Dubai Experience 2.0*, não
-> *Corujão*) e as datas (até **31/12**, não 19/09) antes de gerar.
+> Este arquivo serve agora para **peça de divulgação** — 1080 × 1350 é 4:5, o formato de
+> feed do Instagram. O prompt abaixo já está sincronizado com os quatro passos atuais da
+> página, com o nome novo e com o prazo de 31/12.
 
 > **Leia antes:** gerador de imagem erra texto. Ele troca letras, come acentos e inventa
 > palavras — e aqui o texto carrega datas e regras, onde errar é caro. Por isso existem dois
@@ -74,6 +74,7 @@ COMPOSIÇÃO, de cima para baixo
    corpo um pouco menor.
 
 4. Linha de apoio: Quatro passos, até 31 de dezembro.
+   (mantenha exatamente assim, com o acento em "até")
    Caixa baixa, sans geométrica, cor #a1b8c3, corpo pequeno.
 
 5. Um fio horizontal de 1 px em #a1b8c3 a 16% de opacidade, largura total útil.
@@ -81,30 +82,31 @@ COMPOSIÇÃO, de cima para baixo
 6. Quatro blocos empilhados, com espaçamento igual entre eles. Cada bloco tem
    um número à esquerda, em coluna própria de 60 px, e o texto à direita:
 
-   01   ESCOLHA SUAS DISPUTAS
+   01   ATIVE SUA AFILIAÇÃO
+        Fale no WhatsApp e receba seu link de afiliado.
+
+   02   ESCOLHA SUAS DISPUTAS
         Entre em quantas quiser. As cinco são independentes.
 
-   02   BATA A QUALIFICAÇÃO
+   03   BATA A QUALIFICAÇÃO
         Cada disputa tem um mínimo. Abaixo dele você sai da contagem.
 
-   03   PRODUZA DENTRO DA JANELA
-        18/09 às 18h até 31/12 às 23:59, horário de Brasília.
-
-   04   GUARDE A COMPROVAÇÃO
-        Prints, links e relatórios para a apuração.
+   04   PRODUZA E COMPROVE
+        18/09 às 18h até 31/12 às 23:59. Guarde prints e relatórios.
 
    Os números 01 a 04 em #7cc0ff, sans geométrica seminegrito, alinhados à esquerda.
    Os títulos em caixa alta, branco #ffffff, seminegrito, com leve espaçamento entre
    letras. As descrições em caixa baixa, #a1b8c3, corpo menor.
    Entre um bloco e o seguinte, um fio de 1 px em #a1b8c3 a 9% de opacidade.
 
-7. Rodapé: 18/09, 18:00 — 31/12, 23:59 · horário de Brasília
-   Corpo pequeno, #7a8f9b, alinhado à esquerda.
+7. Rodapé em duas linhas, corpo pequeno, alinhado à esquerda:
+   18/09, 18:00 — 31/12, 23:59 · horário de Brasília       em #7a8f9b
+   WhatsApp +55 87 99201-3884                              em #ffffff
 
 REGRAS DE TEXTO
 Escreva exatamente as palavras acima, em português do Brasil, com todos os acentos:
-Dubai Experience 2.0, participar, disputas, qualificação, mínimo, você, horário,
-Brasília, relatórios, apuração. Não traduza, não reescreva, não abrevie, não invente linhas
+Dubai Experience 2.0, participar, ative, afiliação, disputas, qualificação,
+mínimo, você, horário, Brasília, relatórios, comprove. Não traduza, não reescreva, não abrevie, não invente linhas
 novas. Nenhuma outra palavra na imagem.
 
 NÃO INCLUIR
