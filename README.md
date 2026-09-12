@@ -23,16 +23,24 @@ são referenciados por caminho absoluto a partir da raiz do projeto.
 
 ```
 index.html                          página inteira: markup, CSS e o contador
-assets/hero-dubai.jpg               hero, 1920×730 — recorte da arte original
-assets/hero-dubai-original.png      arte-fonte 1920×1080, com o lockup gravado
+assets/hero-dubai-skyline.jpg       hero — skyline, carros azuis e o touro na areia
+assets/cards-deserto.jpg            fundo dos cards do carrossel (5 recortes)
 assets/banner-dubai-experience.jpg  arte do banner, 1080×1350 — A GERAR
+assets/mapa-mundi.svg               mapa pontilhado, de safirion.com/_ext/icons/
 assets/safirion-logo-horizontal.svg logo oficial, de safirion.com/_ext/icons/
 assets/safirion-icon.svg            marca isolada (touro no círculo), não usada
-assets/arquivo/                     arte do banner com o nome antigo (Corujão)
+assets/arquivo/                     arte substituída (hero antigo, banner "Corujão")
 ```
 
-O hero é um recorte dos 730px superiores da arte original: os 350px de baixo trazem o
-lockup *SAFIRION EXPERIENCE DUBAI* gravado nos pixels, que competia com o título da página.
+O `mapa-mundi.svg` é o mesmo da área de membros (`members.partnersafirion.com`): 6.240
+círculos de raio 2,4 em `#4B8FD6`. Entra como fundo ambiente só no bloco de fechamento,
+a 18% e com máscara radial, para não competir com as fotos.
+
+## Contato
+
+O CTA de conversão é um link `wa.me` com mensagem pré-preenchida, para **+55 87 99201-3884**.
+Ele aparece duas vezes: no botão da barra fixa e no fechamento. Se o número mudar, são duas
+ocorrências do mesmo link no `index.html` — a mensagem vai codificada na query `?text=`.
 
 ## Identidade
 
