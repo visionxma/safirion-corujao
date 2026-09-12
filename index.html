@@ -398,60 +398,85 @@ a{color:inherit}
 .foot p{margin:0;font-size:.78rem;color:var(--muted-2)}
 
 /* ---------- banner do passo a passo ---------- */
-.banner{
-  position:fixed;inset:0;z-index:200;
-  display:none;place-items:center;padding:20px;
-}
+.banner{position:fixed;inset:0;z-index:200;display:none;place-items:center;padding:18px}
 .banner.is-open{display:grid}
-.banner__scrim{position:absolute;inset:0;background:rgba(2,4,9,.84);backdrop-filter:blur(8px)}
+.banner__scrim{position:absolute;inset:0;background:rgba(2,4,9,.86);backdrop-filter:blur(10px)}
 .banner__box{
   position:relative;
-  width:min(430px,100%);max-height:88vh;overflow-y:auto;
-  /* a arte carrega texto embutido, entao ela precisa de largura para ser lida */
+  width:min(460px,100%);max-height:90vh;overflow-y:auto;
   background:var(--ink-800);
-  border:1px solid var(--line-strong);border-radius:20px;
-  box-shadow:0 30px 80px rgba(0,0,0,.6);
-  animation:bannerSobe .34s cubic-bezier(.2,.7,.3,1) both;
+  border:1px solid var(--line-strong);border-radius:18px;
+  box-shadow:0 34px 90px rgba(0,0,0,.68);
+  animation:bannerSobe .36s cubic-bezier(.2,.7,.3,1) both;
 }
-@media (min-width:900px) and (min-height:820px){
-  .banner__box{width:min(540px,100%)}
-}
-@keyframes bannerSobe{from{opacity:0;transform:translateY(20px) scale(.985)}}
-.banner__img{display:block;width:100%;height:auto;border-radius:19px 19px 0 0}
-.banner__x{
-  position:absolute;top:12px;right:12px;z-index:2;
-  width:34px;height:34px;padding:0;border-radius:50%;
-  border:1px solid rgba(255,255,255,.22);
-  background:rgba(4,7,15,.6);backdrop-filter:blur(4px);
-  color:#fff;font-size:17px;line-height:1;cursor:pointer;
-  transition:background .16s ease,border-color .16s ease;
-}
-.banner__x:hover{background:rgba(4,7,15,.9);border-color:var(--blue-hi)}
-.banner__cta{display:flex;flex-wrap:wrap;gap:10px;padding:16px 18px 18px}
-.banner__cta .btn{flex:1 1 auto;justify-content:center}
+@keyframes bannerSobe{from{opacity:0;transform:translateY(22px) scale(.985)}}
 
-/* texto real dos passos: fica atras do leitor de tela sempre, e vira o
-   conteudo visivel se a imagem nao carregar */
-.banner__txt{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.banner.no-img .banner__img{display:none}
-.banner.no-img .banner__txt{
-  position:static;width:auto;height:auto;overflow:visible;clip-path:none;white-space:normal;
-  padding:26px 22px 4px;
+/* faixa de topo: a mesma cena da hero, com o titulo em HTML por cima */
+.banner__cap{position:relative;height:138px;overflow:hidden;border-radius:17px 17px 0 0}
+.banner__cap img{width:100%;height:100%;object-fit:cover;object-position:52% 60%}
+.banner__cap::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,var(--ink-800) 1%,rgba(10,17,32,.8) 40%,rgba(4,7,15,.25) 100%);
+}
+.banner__lock{position:absolute;left:24px;right:60px;bottom:15px;z-index:1}
+.banner__k{
+  font-family:var(--display);font-variation-settings:"wdth" 86,"wght" 700;
+  font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--blue-hi);margin:0 0 7px;
 }
 .banner__t{
-  font-family:var(--display);font-variation-settings:"wdth" 70,"wght" 800;
-  font-size:1.7rem;line-height:1;text-transform:uppercase;margin:0 0 4px;
+  font-family:var(--display);font-variation-settings:"wdth" 68,"wght" 900;
+  font-size:1.95rem;line-height:.9;text-transform:uppercase;margin:0;letter-spacing:-.02em;
 }
-.banner__s{margin:0 0 18px;color:var(--muted);font-size:.92rem}
-.banner__txt ol{list-style:none;counter-reset:bp;margin:0;padding:0;display:grid;gap:14px}
-.banner__txt li{counter-increment:bp;display:grid;grid-template-columns:26px 1fr;gap:2px 12px}
-.banner__txt li::before{
-  content:counter(bp,decimal-leading-zero);
-  font-family:var(--display);font-variation-settings:"wdth" 74,"wght" 800;
-  font-variant-numeric:tabular-nums;color:var(--blue-hi);font-size:.95rem;
+.banner__x{
+  position:absolute;top:12px;right:12px;z-index:3;
+  width:32px;height:32px;padding:0;border-radius:50%;
+  border:1px solid rgba(255,255,255,.26);
+  background:rgba(4,7,15,.55);backdrop-filter:blur(4px);
+  color:#fff;font-size:16px;line-height:1;cursor:pointer;
+  transition:background .16s ease,border-color .16s ease;
 }
-.banner__txt b{display:block;font-size:.92rem;text-transform:uppercase;letter-spacing:.04em}
-.banner__txt span{grid-column:2;color:var(--muted);font-size:.88rem}
+.banner__x:hover{background:rgba(4,7,15,.92);border-color:var(--blue-hi)}
+
+/* os passos como caminho: fio vertical ligando marcadores, nao numeros soltos */
+.passos{list-style:none;margin:0;padding:24px 24px 4px}
+.passos li{position:relative;padding:0 0 22px 34px}
+.passos li::before{
+  content:"";position:absolute;left:8px;top:15px;bottom:0;width:1px;
+  background:linear-gradient(to bottom,rgba(161,184,195,.34),rgba(161,184,195,.08));
+}
+.passos li:last-child::before{display:none}
+.passos li::after{
+  content:"";position:absolute;left:4px;top:6px;
+  width:9px;height:9px;border-radius:2px;
+  background:var(--ink-700);border:1px solid rgba(161,184,195,.5);
+  transform:rotate(45deg);
+}
+.passos li.e-ativar::after{background:var(--blue);border-color:var(--blue-hi)}
+.passo__n{
+  display:block;margin-bottom:4px;
+  font-variant-numeric:tabular-nums;
+  font-size:.58rem;font-weight:800;letter-spacing:.18em;color:var(--muted-2);text-transform:uppercase;
+}
+.passo__t{
+  font-family:var(--display);font-variation-settings:"wdth" 80,"wght" 800;
+  font-size:1rem;letter-spacing:.02em;text-transform:uppercase;margin:0;
+}
+.passo__d{margin:.32rem 0 0;color:var(--muted);font-size:.88rem;line-height:1.55}
+.passo__d b{color:var(--white);font-weight:700}
+.e-ativar .passo__t,.e-ativar .passo__n{color:var(--blue-hi)}
+.passos .btn{margin-top:13px}
+
+.banner__pe{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;
+  padding:15px 24px 18px;border-top:1px solid var(--line-soft);
+}
+.banner__pe p{margin:0;font-size:.78rem;color:var(--muted-2);font-variant-numeric:tabular-nums}
+.banner__pe button{
+  border:0;background:transparent;padding:0;cursor:pointer;
+  font-family:var(--body);font-size:.82rem;font-weight:700;color:var(--muted);
+  border-bottom:1px solid var(--line-strong);
+}
+.banner__pe button:hover{color:var(--white);border-bottom-color:var(--blue-hi)}
 
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms !important;transition-duration:.001ms !important}
@@ -662,23 +687,42 @@ a{color:inherit}
   <div class="banner__scrim" data-fechar></div>
   <div class="banner__box" role="dialog" aria-modal="true" aria-labelledby="bannerTit">
     <button class="banner__x" type="button" data-fechar aria-label="Fechar">&times;</button>
-    <img class="banner__img" src="assets/banner-dubai-experience.jpg"
-         alt="Como participar do Dubai Experience 2.0 em quatro passos: escolha suas disputas, bata a qualificação, produza dentro da janela de 18/09 às 18h a 31/12, e guarde a comprovação."
-         width="1080" height="1350"
-         onerror="document.getElementById('banner').classList.add('no-img')">
-    <div class="banner__txt">
-      <h2 class="banner__t" id="bannerTit">Como participar</h2>
-      <p class="banner__s">Quatro passos, até 31 de dezembro.</p>
-      <ol>
-        <li><b>Escolha suas disputas</b><span>Entre em quantas quiser. As cinco são independentes.</span></li>
-        <li><b>Bata a qualificação</b><span>Cada disputa tem um mínimo. Abaixo dele você sai da contagem.</span></li>
-        <li><b>Produza dentro da janela</b><span>18/09 às 18h até 31/12 às 23:59, horário de Brasília.</span></li>
-        <li><b>Guarde a comprovação</b><span>Prints, links e relatórios para a apuração.</span></li>
-      </ol>
+
+    <div class="banner__cap">
+      <img src="assets/hero-dubai-skyline.jpg" alt="">
+      <div class="banner__lock">
+        <p class="banner__k">Dubai Experience 2.0</p>
+        <h2 class="banner__t" id="bannerTit">Ative sua<br>afiliação</h2>
+      </div>
     </div>
-    <div class="banner__cta">
-      <a class="btn btn--solid" href="#disputas" data-fechar>Ver as disputas</a>
-      <button class="btn btn--line" type="button" data-fechar>Fechar</button>
+
+    <ol class="passos">
+      <li class="e-ativar">
+        <span class="passo__n">Passo 01</span>
+        <h3 class="passo__t">Ative sua afiliação</h3>
+        <p class="passo__d">Fale com a gente no WhatsApp e receba <b>seu link de afiliado</b>. Sem ele, o que você produzir não entra na contagem.</p>
+        <a class="btn btn--solid" href="https://wa.me/5587992013884?text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20de%20um%20amigo%20e%20quero%20me%20tornar%20afiliado%20da%20Safirion." target="_blank" rel="noopener"><svg class="btn__ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>Ativar no WhatsApp</a>
+      </li>
+      <li>
+        <span class="passo__n">Passo 02</span>
+        <h3 class="passo__t">Escolha suas disputas</h3>
+        <p class="passo__d">Entre em <b>quantas quiser</b>. As cinco são independentes e cada uma premia o seu próprio vencedor.</p>
+      </li>
+      <li>
+        <span class="passo__n">Passo 03</span>
+        <h3 class="passo__t">Bata a qualificação</h3>
+        <p class="passo__d">Cada disputa tem um mínimo. <b>Abaixo dele você sai da contagem</b>, mesmo com número alto.</p>
+      </li>
+      <li>
+        <span class="passo__n">Passo 04</span>
+        <h3 class="passo__t">Produza e comprove</h3>
+        <p class="passo__d">Vale o que acontecer entre <b>18/09 às 18h</b> e <b>31/12 às 23:59</b>. Guarde prints, links e relatórios para a apuração.</p>
+      </li>
+    </ol>
+
+    <div class="banner__pe">
+      <p>WhatsApp +55 87 99201-3884</p>
+      <button type="button" data-fechar>Ver a página</button>
     </div>
   </div>
 </div>
@@ -772,15 +816,8 @@ a{color:inherit}
   if(!banner || !hero) return;
 
   var caixa = banner.querySelector(".banner__box");
-  var img = banner.querySelector(".banner__img");
   var focoAnterior = null;
   var aberto = false, jaAbriu = false;
-
-  /* se a arte ainda nao existe, o proprio texto dos passos vira o conteudo */
-  if(img){
-    img.addEventListener("error", function(){ banner.classList.add("no-img"); });
-    if(img.complete && img.naturalWidth === 0) banner.classList.add("no-img");
-  }
 
   function visto(){
     try { return sessionStorage.getItem("dubai_banner") === "1"; } catch(e){ return false; }

@@ -1,11 +1,12 @@
 # Prompt da arte do banner
 
-> **A arte precisa ser regerada.** A competição se chamava *Corujão* e passou a se chamar
-> **Dubai Experience 2.0** em 12/09/2026. A arte antiga tem `CORUJÃO` gravado nos pixels e
-> foi movida para `assets/arquivo/`. Até a nova chegar, o banner mostra os quatro passos em
-> texto real — funciona, só sem arte.
-
-A página espera o arquivo em **`assets/banner-dubai-experience.jpg`**, em **1080 × 1350 px (4:5)**.
+> **O banner da página não usa mais arte gerada.** Ele virou HTML desenhado: faixa de foto
+> no topo, os passos ligados por um fio vertical e o botão do WhatsApp dentro do passo 01.
+> Texto em HTML escala, é lido por leitor de tela e se corrige sem regerar nada.
+>
+> Este arquivo continua útil para **peça de divulgação** — 1080 × 1350 é 4:5, o formato de
+> feed do Instagram. Se for usar para isso, atualize o nome (*Dubai Experience 2.0*, não
+> *Corujão*) e as datas (até **31/12**, não 19/09) antes de gerar.
 
 > **Leia antes:** gerador de imagem erra texto. Ele troca letras, come acentos e inventa
 > palavras — e aqui o texto carrega datas e regras, onde errar é caro. Por isso existem dois

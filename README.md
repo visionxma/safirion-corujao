@@ -25,7 +25,6 @@ são referenciados por caminho absoluto a partir da raiz do projeto.
 index.html                          página inteira: markup, CSS e o contador
 assets/hero-dubai-skyline.jpg       hero — skyline, carros azuis e o touro na areia
 assets/cards-deserto.jpg            fundo dos cards do carrossel (5 recortes)
-assets/banner-dubai-experience.jpg  arte do banner, 1080×1350 — A GERAR
 assets/mapa-mundi.svg               mapa pontilhado, de safirion.com/_ext/icons/
 assets/safirion-logo-horizontal.svg logo oficial, de safirion.com/_ext/icons/
 assets/safirion-icon.svg            marca isolada (touro no círculo), não usada
@@ -35,6 +34,15 @@ assets/arquivo/                     arte substituída (hero antigo, banner "Coru
 O `mapa-mundi.svg` é o mesmo da área de membros (`members.partnersafirion.com`): 6.240
 círculos de raio 2,4 em `#4B8FD6`. Entra como fundo ambiente só no bloco de fechamento,
 a 18% e com máscara radial, para não competir com as fotos.
+
+## O banner do passo a passo
+
+Abre uma vez por sessão quando o scroll passa de 55% da altura do herói. É HTML, não imagem:
+faixa de foto no topo com o título por cima, os quatro passos ligados por um fio vertical, e
+o botão do WhatsApp dentro do passo 01 — que é onde a conversão acontece.
+
+Fecha no X, no Esc, no clique fora e no "Ver a página". Prende o foco do teclado enquanto
+aberto, trava o scroll do corpo e devolve o foco ao sair.
 
 ## Contato
 
