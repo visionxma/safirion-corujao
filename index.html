@@ -109,11 +109,19 @@ a{color:inherit}
   .hero{grid-template-columns:minmax(480px,1fr) minmax(0,1.05fr)}
 }
 .hero__in{
+  position:relative;isolation:isolate;overflow:hidden;
   display:flex;flex-direction:column;justify-content:center;
   padding:clamp(40px,6vw,74px) 24px clamp(40px,6vw,74px)
           max(24px,calc((100vw - var(--wrap)) / 2));
   min-height:clamp(430px,58vh,600px);
-  position:relative;z-index:2;
+  z-index:2;
+}
+.hero__in::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:url("assets/mapa-mundi.svg") no-repeat right center/auto 132%;
+  opacity:.15;
+  -webkit-mask-image:linear-gradient(to right,rgba(0,0,0,.45) 0%,#000 60%,transparent 94%);
+  mask-image:linear-gradient(to right,rgba(0,0,0,.45) 0%,#000 60%,transparent 94%);
 }
 @media (max-width:899px){
   .hero__in{order:2;padding-inline:20px;min-height:0}
@@ -218,7 +226,17 @@ a{color:inherit}
 
 /* ---------- disputas: tabela, nao cards ---------- */
 .sect{padding:clamp(56px,8vw,96px) 0}
-.sect--card{border-top:1px solid var(--line);background:var(--ink-950)}
+.sect--card{
+  position:relative;isolation:isolate;overflow:hidden;
+  border-top:1px solid var(--line);background:var(--ink-950);
+}
+.sect--card::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:url("assets/mapa-mundi.svg") no-repeat center top/110% auto;
+  opacity:.13;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.5) 58%,transparent 92%);
+  mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.5) 58%,transparent 92%);
+}
 .sect__head{max-width:64ch}
 
 .bouts{margin-top:clamp(28px,4.5vw,42px)}
@@ -386,7 +404,7 @@ a{color:inherit}
 .close::before{
   content:"";position:absolute;inset:0;z-index:-1;
   background:url("assets/mapa-mundi.svg") no-repeat center/cover;
-  opacity:.18;
+  opacity:.2;
   -webkit-mask-image:radial-gradient(110% 92% at 50% 42%,#000 18%,transparent 74%);
   mask-image:radial-gradient(110% 92% at 50% 42%,#000 18%,transparent 74%);
 }
