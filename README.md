@@ -50,30 +50,27 @@ O CTA de conversão é um link `wa.me` com mensagem pré-preenchida, para **+55 
 Ele aparece duas vezes: no botão da barra fixa e no fechamento. Se o número mudar, são duas
 ocorrências do mesmo link no `index.html` — a mensagem vai codificada na query `?text=`.
 
+## A ideia da página
+
+**O limiar é o herói.** Numa competição o que decide tudo é o mínimo que te coloca na
+contagem — então esse número é o sistema visual: `20K`, `5min`, `20`, `100K` em corpo
+gigante abrindo cada linha, e `?` em âmbar na única disputa cujo mínimo ainda não saiu.
+
+Decorre daí o resto:
+
+- **Herói sangrando**, com a tipografia dentro da cena, e não um painel dividido
+  tipo-à-esquerda / foto-à-direita. Barra do topo transparente sobre a foto, sólida depois.
+- **Faixa de informação** no rodapé da foto — largada, encerramento, contador e CTA numa
+  linha só, como placa de dia de prova.
+- **Uma segunda voz tipográfica.** Instrument Serif em itálico aparece em três momentos
+  (subtítulo do herói, apoio dos passos, título do fecho) contra a condensada pesada.
+  Sem ela a página era caixa alta condensada do começo ao fim.
+- **Aberturas de seção variadas.** O padrão "rótulo pequeno + título grande" repetido em
+  toda seção é assinatura de template; aqui cada seção entra de um jeito.
+- **Os passos correm na horizontal**, com marcadores ligados por um fio — as disputas já
+  são linhas empilhadas, repetir o mesmo recurso achataria a hierarquia.
+
 ## Identidade
-
-Derivada de [safirion.com](https://safirion.com):
-
-| Papel | Valor |
-|---|---|
-| Fundos | `#04070f` `#060b18` `#0a1120` `#111a2b` |
-| Azul da marca | `#2389e6` → `#7cc0ff` |
-| Texto secundário | `#a1b8c3` `#7a8f9b` |
-| Âmbar (regra em definição) | `#f6b83c` |
-
-A fonte da marca (Mazzard) é proprietária; a página usa **Archivo** no display e
-**Manrope** no corpo, via Google Fonts.
-
-## Disputas: tabela no desktop, carrossel no mobile
-
-A partir de 880px as cinco disputas são uma tabela com cabeçalho de coluna — a comparação
-lado a lado dos mínimos (20K em PNL, 100K em vendas, 20 afiliados) é o que faz o
-competidor escolher onde entrar.
-
-Abaixo disso vira carrossel com `scroll-snap` nativo, sem biblioteca. O JS só lê a posição
-do scroll para acender o ponto correspondente; quem arrasta é o navegador. Se o JS não
-rodar, o carrossel continua deslizando — só os pontos não aparecem.
-
 ## Datas
 
 A janela vive em duas constantes no `<script>` ao final do `index.html`:
