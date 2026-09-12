@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dubai Experience 2.0</title>
-<meta name="description" content="Dubai Experience 2.0 — 24 horas de competição na Safirion, de 18/09 às 18h a 19/09 às 18h. Cinco disputas, cinco vencedores.">
+<meta name="description" content="Dubai Experience 2.0 — competição da Safirion de 18/09 às 18h até 31 de dezembro. Cinco disputas, cinco vencedores.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Manrope:wght@400..800&display=swap">
@@ -146,7 +146,7 @@ a{color:inherit}
   margin:22px 0 0;padding-top:18px;border-top:1px solid var(--line);
   max-width:30ch;
 }
-.hero__dates b{color:var(--blue-hi);font-weight:inherit}
+.hero__dates b{color:var(--blue-hi);font-weight:inherit;display:block}
 .hero__note{color:var(--muted);margin:12px 0 0;max-width:38ch;font-size:.97rem}
 
 .hero__media{position:relative;min-height:280px;background:var(--ink-800)}
@@ -194,35 +194,6 @@ a{color:inherit}
   text-transform:uppercase;color:var(--muted-2);font-weight:700;
 }
 .hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-
-/* ---------- trilho de 24h ---------- */
-.rail{
-  position:relative;
-  border-top:1px solid var(--line);
-  background:linear-gradient(180deg,rgba(4,7,15,.75),var(--ink-950));
-  padding:24px 0 30px;
-}
-.rail__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px;margin-bottom:16px}
-.rail__span{margin:0;font-size:.86rem;color:var(--muted-2);font-variant-numeric:tabular-nums}
-.rail__span b{color:var(--white);font-weight:800}
-.rail__track{
-  position:relative;height:8px;border-radius:100px;
-  background:var(--ink-700);overflow:hidden;
-}
-.rail__night{
-  position:absolute;top:0;bottom:0;left:25%;width:50%;
-  background:repeating-linear-gradient(135deg,rgba(161,184,195,.1) 0 2px,transparent 2px 7px);
-}
-.rail__fill{position:absolute;top:0;bottom:0;left:0;width:0;background:var(--blue-hi);transition:width .8s linear}
-.rail__ticks{display:grid;grid-template-columns:repeat(9,1fr);margin-top:9px}
-.rail__tick{
-  font-size:.66rem;font-weight:700;letter-spacing:.06em;color:var(--muted-2);
-  font-variant-numeric:tabular-nums;text-align:center;
-}
-.rail__tick:first-child{text-align:left}
-.rail__tick:last-child{text-align:right}
-.rail__tick[data-mark]{color:var(--white)}
-.rail__legend{margin:12px 0 0;font-size:.8rem;color:var(--muted-2)}
 
 /* ---------- disputas: tabela, nao cards ---------- */
 .sect{padding:clamp(56px,8vw,96px) 0}
@@ -514,8 +485,8 @@ a{color:inherit}
   <div class="hero__in">
     <p class="hero__pre">Safirion apresenta</p>
     <h1 class="hero__title">Dubai<br>Experience <em>2.0</em></h1>
-    <p class="hero__dates"><b>24 horas</b> — 18/09 às 18h até 19/09 às 18h</p>
-    <p class="hero__note">Cinco disputas rodando ao mesmo tempo, da largada à virada do dia seguinte.</p>
+    <p class="hero__dates"><b>Até 31 de dezembro</b>Começa 18/09 às 18h</p>
+    <p class="hero__note">Cinco disputas rodando ao mesmo tempo, da largada em setembro até a virada do ano.</p>
 
     <div class="count" aria-live="polite">
       <p class="count__state" id="countState">Faltam para a largada</p>
@@ -536,27 +507,6 @@ a{color:inherit}
   <div class="hero__media">
     <img src="assets/hero-dubai-skyline.jpg" alt="Dois esportivos azuis na areia diante do skyline de Dubai ao pôr do sol, com o touro da Safirion entre eles e um avião da Emirates no céu">
   </div>
-</section>
-
-<section class="rail">
-    <div class="wrap">
-      <div class="rail__head">
-        <p class="label">A janela</p>
-        <p class="rail__span"><b>18/09, 18:00</b> → <b>19/09, 18:00</b> · horário de Brasília</p>
-      </div>
-      <div class="rail__track" role="img" aria-label="Linha do tempo de 24 horas, das 18h do dia 18 às 18h do dia 19">
-        <div class="rail__night"></div>
-        <div class="rail__fill" id="railFill"></div>
-      </div>
-      <div class="rail__ticks" aria-hidden="true">
-        <span class="rail__tick" data-mark>18h</span><span class="rail__tick">21h</span>
-        <span class="rail__tick" data-mark>00h</span><span class="rail__tick">03h</span>
-        <span class="rail__tick">06h</span><span class="rail__tick">09h</span>
-        <span class="rail__tick" data-mark>12h</span><span class="rail__tick">15h</span>
-        <span class="rail__tick" data-mark>18h</span>
-      </div>
-      <p class="rail__legend" id="railLegend">O trecho hachurado é a madrugada, das 21h às 09h.</p>
-    </div>
 </section>
 
 <section class="sect sect--card" id="disputas">
@@ -669,7 +619,7 @@ a{color:inherit}
       <li>
         <div>
           <h3 class="step__t">Produza dentro da janela</h3>
-          <p class="step__d">Só vale o que acontecer entre <b>18/09 às 18:00</b> e <b>19/09 às 18:00</b>, horário de Brasília. Nem antes, nem depois.</p>
+          <p class="step__d">Só vale o que acontecer entre <b>18/09 às 18:00</b> e <b>31/12 às 23:59</b>, horário de Brasília. Nem antes, nem depois.</p>
         </div>
       </li>
       <li>
@@ -695,9 +645,9 @@ a{color:inherit}
 
 <section class="close">
   <div class="wrap">
-    <p class="label">18/09, 18:00</p>
-    <h2 class="close__title">A noite é de quem não dorme</h2>
-    <p class="lede">Escolha sua disputa, bata a qualificação e atravesse as 24 horas.</p>
+    <p class="label">Até 31 de dezembro</p>
+    <h2 class="close__title">O ano termina em Dubai</h2>
+    <p class="lede">Escolha sua disputa, bata a qualificação e fique no placar até a virada do ano.</p>
     <div class="close__cta">
       <a class="btn btn--solid" href="https://wa.me/5587992013884?text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20de%20um%20amigo%20e%20quero%20me%20tornar%20afiliado%20da%20Safirion." target="_blank" rel="noopener"><svg class="btn__ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>Quero ser afiliado</a>
       <a class="btn btn--line" href="https://safirion.com" target="_blank" rel="noopener">Abrir minha conta</a>
@@ -713,16 +663,16 @@ a{color:inherit}
   <div class="banner__box" role="dialog" aria-modal="true" aria-labelledby="bannerTit">
     <button class="banner__x" type="button" data-fechar aria-label="Fechar">&times;</button>
     <img class="banner__img" src="assets/banner-dubai-experience.jpg"
-         alt="Como participar do Dubai Experience 2.0 em quatro passos: escolha suas disputas, bata a qualificação, produza dentro da janela de 18/09 às 18h a 19/09 às 18h, e guarde a comprovação."
+         alt="Como participar do Dubai Experience 2.0 em quatro passos: escolha suas disputas, bata a qualificação, produza dentro da janela de 18/09 às 18h a 31/12, e guarde a comprovação."
          width="1080" height="1350"
          onerror="document.getElementById('banner').classList.add('no-img')">
     <div class="banner__txt">
       <h2 class="banner__t" id="bannerTit">Como participar</h2>
-      <p class="banner__s">Quatro passos, 24 horas.</p>
+      <p class="banner__s">Quatro passos, até 31 de dezembro.</p>
       <ol>
         <li><b>Escolha suas disputas</b><span>Entre em quantas quiser. As cinco são independentes.</span></li>
         <li><b>Bata a qualificação</b><span>Cada disputa tem um mínimo. Abaixo dele você sai da contagem.</span></li>
-        <li><b>Produza dentro da janela</b><span>18/09 às 18h até 19/09 às 18h, horário de Brasília.</span></li>
+        <li><b>Produza dentro da janela</b><span>18/09 às 18h até 31/12 às 23:59, horário de Brasília.</span></li>
         <li><b>Guarde a comprovação</b><span>Prints, links e relatórios para a apuração.</span></li>
       </ol>
     </div>
@@ -736,38 +686,30 @@ a{color:inherit}
 <footer class="foot">
   <div class="wrap foot__in">
     <img class="foot__logo" src="assets/safirion-logo-horizontal.svg" alt="Safirion — confiança para investir" width="234" height="55">
-    <p>Dubai Experience 2.0 · 18 a 19 de setembro · horários em Brasília (GMT−3)</p>
+    <p>Dubai Experience 2.0 · 18 de setembro a 31 de dezembro · horários em Brasília (GMT−3)</p>
   </div>
 </footer>
 
 <script>
 (function(){
   var START = new Date("2026-09-18T18:00:00-03:00").getTime();
-  var END   = new Date("2026-09-19T18:00:00-03:00").getTime();
-  var TOTAL = END - START;
+  var END   = new Date("2026-12-31T23:59:59-03:00").getTime();
   var d=document.getElementById("cd-d"), h=document.getElementById("cd-h"),
       m=document.getElementById("cd-m"), s=document.getElementById("cd-s"),
-      state=document.getElementById("countState"), fill=document.getElementById("railFill"),
-      legend=document.getElementById("railLegend"), bar=document.getElementById("barClock");
-  var baseLegend = legend.textContent;
+      state=document.getElementById("countState"), bar=document.getElementById("barClock");
   function pad(n){ return n<10 ? "0"+n : ""+n; }
   function tick(){
-    var now=Date.now(), left, label, pct;
+    var now=Date.now(), left, label;
     if(now<START){
-      left=START-now; label="Faltam para a largada"; pct=0;
+      left=START-now; label="Faltam para a largada";
       bar.textContent="Começa em "+Math.floor(left/86400000)+"d "+pad(Math.floor(left/3600000)%24)+"h";
-      legend.textContent=baseLegend;
     } else if(now<END){
       left=END-now; label="Ao vivo · falta para o encerramento";
-      pct=((now-START)/TOTAL)*100;
       bar.textContent="Ao vivo · faltam "+pad(Math.floor(left/3600000))+"h"+pad(Math.floor(left/60000)%60);
-      legend.textContent="Decorrido: "+pct.toFixed(1)+"% das 24 horas.";
     } else {
-      left=0; label="Dubai Experience 2.0 encerrado"; pct=100;
+      left=0; label="Dubai Experience 2.0 encerrado";
       bar.textContent="Encerrado";
-      legend.textContent="As 24 horas se encerraram. Apuração em andamento.";
     }
-    fill.style.width=pct.toFixed(2)+"%";
     if(state.textContent!==label) state.textContent=label;
     d.textContent=pad(Math.floor(left/86400000));
     h.textContent=pad(Math.floor(left/3600000)%24);

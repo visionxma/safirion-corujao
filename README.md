@@ -1,11 +1,11 @@
 # Dubai Experience 2.0
 
-Landing page da competição **Dubai Experience 2.0**, da Safirion — 24 horas corridas, de
-18/09 às 18h a 19/09 às 18h (horário de Brasília), com cinco disputas simultâneas.
+Landing page da competição **Dubai Experience 2.0**, da Safirion — de 18/09 às 18h a
+31/12 às 23:59 (horário de Brasília), com cinco disputas simultâneas.
 
-A competição chamava **Corujão** até 12/09/2026. O nome mudou, mas a janela de 24 horas
-continua atravessando a madrugada — por isso a página mantém o vocabulário noturno
-("a noite é de quem não dorme", a madrugada hachurada no trilho).
+Histórico: chamava **Corujão** e era um evento de 24 horas (18/09 18h → 19/09 18h).
+Em 12/09/2026 mudou de nome; em seguida o prazo foi estendido até 31 de dezembro. Com isso
+saiu o trilho de 24 horas ("a janela") e todo o vocabulário de virada de noite.
 
 Página estática: um `index.html` sem build, sem dependências de runtime.
 
@@ -72,11 +72,14 @@ A janela vive em duas constantes no `<script>` ao final do `index.html`:
 
 ```js
 var START = new Date("2026-09-18T18:00:00-03:00").getTime();
-var END   = new Date("2026-09-19T18:00:00-03:00").getTime();
+var END   = new Date("2026-12-31T23:59:59-03:00").getTime();
 ```
 
-Elas alimentam o contador, o relógio do topo e o trilho de 24h, que troca de estado
-sozinho entre *faltam para a largada*, *ao vivo* e *encerrado*.
+Elas alimentam o contador e o relógio do topo, que trocam de estado sozinhos entre
+*faltam para a largada*, *ao vivo* e *encerrado*.
+
+O horário de encerramento — **23:59 do dia 31/12** — foi assumido a partir de "acaba dia 31
+de dezembro". Se for outro horário, é a constante `END`.
 
 ## Pendência
 

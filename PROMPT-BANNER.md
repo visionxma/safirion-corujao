@@ -72,7 +72,7 @@ COMPOSIÇÃO, de cima para baixo
    Caixa alta, mesma família condensada pesada, branco, logo abaixo do sobretítulo,
    corpo um pouco menor.
 
-4. Linha de apoio: Quatro passos, 24 horas.
+4. Linha de apoio: Quatro passos, até 31 de dezembro.
    Caixa baixa, sans geométrica, cor #a1b8c3, corpo pequeno.
 
 5. Um fio horizontal de 1 px em #a1b8c3 a 16% de opacidade, largura total útil.
@@ -87,7 +87,7 @@ COMPOSIÇÃO, de cima para baixo
         Cada disputa tem um mínimo. Abaixo dele você sai da contagem.
 
    03   PRODUZA DENTRO DA JANELA
-        18/09 às 18h até 19/09 às 18h, horário de Brasília.
+        18/09 às 18h até 31/12 às 23:59, horário de Brasília.
 
    04   GUARDE A COMPROVAÇÃO
         Prints, links e relatórios para a apuração.
@@ -97,7 +97,7 @@ COMPOSIÇÃO, de cima para baixo
    letras. As descrições em caixa baixa, #a1b8c3, corpo menor.
    Entre um bloco e o seguinte, um fio de 1 px em #a1b8c3 a 9% de opacidade.
 
-7. Rodapé: 18/09, 18:00 — 19/09, 18:00 · horário de Brasília
+7. Rodapé: 18/09, 18:00 — 31/12, 23:59 · horário de Brasília
    Corpo pequeno, #7a8f9b, alinhado à esquerda.
 
 REGRAS DE TEXTO
