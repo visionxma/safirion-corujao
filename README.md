@@ -37,9 +37,13 @@ a 18% e com máscara radial, para não competir com as fotos.
 
 ## O banner do passo a passo
 
-Abre uma vez por sessão quando o scroll passa de 55% da altura do herói. É HTML, não imagem:
-faixa de foto no topo com o título por cima, os quatro passos ligados por um fio vertical, e
-o botão do WhatsApp dentro do passo 01 — que é onde a conversão acontece.
+Abre uma vez por sessão quando o scroll passa de 55% da altura do herói. O cabeçalho é a arte
+enquadrada no lockup cromado; os quatro passos abaixo são HTML, ligados por um fio vertical,
+com o botão do WhatsApp dentro do passo 01 — que é onde a conversão acontece.
+
+A arte completa **não** é usada inteira aqui de propósito: as quatro colunas de texto dela,
+reduzidas à largura do modal, ficam com cerca de 5px e são ilegíveis. Ela serve inteira como
+peça de divulgação — 1122×1402 é 4:5, formato de feed.
 
 Fecha no X, no Esc, no clique fora e no "Ver a página". Prende o foco do teclado enquanto
 aberto, trava o scroll do corpo e devolve o foco ao sair.
@@ -49,6 +53,21 @@ aberto, trava o scroll do corpo e devolve o foco ao sair.
 O CTA de conversão é um link `wa.me` com mensagem pré-preenchida, para **+55 87 99201-3884**.
 Ele aparece duas vezes: no botão da barra fixa e no fechamento. Se o número mudar, são duas
 ocorrências do mesmo link no `index.html` — a mensagem vai codificada na query `?text=`.
+
+## A pegada visual
+
+Vem da arte do banner (`assets/banner-dubai-experience.jpg`), gerada pelo prompt em
+`PROMPT-BANNER.md`. Três assinatura dela foram levadas para a página inteira:
+
+- **Tipografia cromada** — gradiente prata com brilho no meio, via `background-clip: text`
+  na classe `.cromo`. Aplicada ao título do herói, aos títulos de seção e aos números-limiar.
+  Há um `@supports not` que devolve branco sólido onde `background-clip: text` não pega.
+- **Composição centralizada** nos títulos e no herói. As linhas de dados das disputas seguem
+  alinhadas à esquerda — centralizar tabela prejudica a leitura.
+- **Mapa pontilhado bem mais presente**, com véu radial atrás dos blocos de texto para os
+  pontos não comerem o parágrafo.
+
+Mais os fios finos ladeando os títulos (`.fios`) e separando as colunas dos passos.
 
 ## A ideia da página
 

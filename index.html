@@ -46,6 +46,29 @@ a{color:inherit}
 .wrap{width:min(100% - 44px,var(--wrap));margin-inline:auto}
 .tnum{font-variant-numeric:tabular-nums}
 
+/* cromado da arte: prata com brilho no meio. cor solida como base, para o
+   caso de background-clip:text nao pegar */
+.cromo{
+  color:var(--white);
+  background-image:linear-gradient(177deg,
+    #ffffff 0%, #f0f5fa 24%, #adc0d0 46%,
+    #ffffff 58%, #dfe8f0 78%, #aabdcd 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 3px 14px rgba(4,7,15,.6));
+}
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){
+  .cromo{-webkit-text-fill-color:var(--white);background-image:none}
+}
+
+/* titulo ladeado por fios, como na arte */
+.fios{display:flex;align-items:center;gap:clamp(14px,3vw,26px);justify-content:center}
+.fios::before,.fios::after{
+  content:"";height:1px;flex:1 1 0;min-width:18px;
+  background:linear-gradient(to right,transparent,var(--line-strong));
+}
+.fios::after{background:linear-gradient(to left,transparent,var(--line-strong))}
+
 .btn{
   -webkit-appearance:none;appearance:none;background:transparent;
   display:inline-flex;align-items:center;justify-content:center;
@@ -97,23 +120,32 @@ a{color:inherit}
 .hero__bg::after{
   content:"";position:absolute;inset:0;
   background:
-    linear-gradient(to top,var(--ink-950) 0%,rgba(4,7,15,.86) 22%,rgba(4,7,15,.24) 56%,rgba(4,7,15,.5) 100%),
-    linear-gradient(to right,rgba(4,7,15,.78) 0%,rgba(4,7,15,.18) 46%,transparent 76%);
+    linear-gradient(to top,var(--ink-950) 0%,rgba(4,7,15,.9) 20%,rgba(4,7,15,.34) 54%,rgba(4,7,15,.52) 100%),
+    radial-gradient(120% 70% at 50% 100%,rgba(4,7,15,.72),transparent 62%);
 }
-.hero__in{position:relative;z-index:1;padding-bottom:clamp(26px,4vw,44px)}
+.hero__in{position:relative;z-index:1;padding-bottom:clamp(26px,4vw,44px);text-align:center}
+.hero__in::before{
+  content:"";position:absolute;left:50%;top:-6%;transform:translateX(-50%);
+  width:min(1000px,120%);height:128%;z-index:-1;pointer-events:none;
+  background:radial-gradient(56% 62% at 50% 52%,rgba(4,7,15,.78) 22%,rgba(4,7,15,.4) 62%,transparent 100%);
+}
 .hero__pre{
   font-family:var(--display);font-variation-settings:"wdth" 88,"wght" 700;
-  font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);margin:0 0 14px;
+  font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:#d6e4ef;margin:0 0 14px;
+  text-shadow:0 2px 12px rgba(4,7,15,.9);
 }
 .hero__t{
   font-family:var(--display);font-variation-settings:"wdth" 60,"wght" 900;
   font-size:clamp(3rem,11vw,8.4rem);line-height:.76;
   letter-spacing:-.035em;text-transform:uppercase;margin:0;
 }
-.hero__t em{font-style:normal;color:var(--blue-hi);margin-left:.12em}
+.hero__t em{
+  font-style:normal;margin-left:.12em;
+  -webkit-text-fill-color:var(--blue-hi);color:var(--blue-hi);
+}
 .hero__sub{
-  font-family:var(--serif);font-size:clamp(1.3rem,3.2vw,2.2rem);
-  line-height:1.2;margin:18px 0 0;color:var(--white);max-width:22ch;
+  font-family:var(--serif);font-size:clamp(1.25rem,2.8vw,2rem);
+  line-height:1.25;margin:18px auto 0;color:var(--white);max-width:26ch;
 }
 .hero__sub i{color:var(--blue-hi)}
 
@@ -135,16 +167,21 @@ a{color:inherit}
 .disputas{position:relative;padding:clamp(64px,9vw,116px) 0 clamp(40px,6vw,72px);background:var(--ink-950);isolation:isolate;overflow:hidden}
 .disputas::before{
   content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:url("assets/mapa-mundi.svg") no-repeat center top/112% auto;opacity:.12;
+  background:url("assets/mapa-mundi.svg") no-repeat center top/124% auto;opacity:.2;
   -webkit-mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.5) 60%,transparent 94%);
   mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.5) 60%,transparent 94%);
 }
-.disputas__t{
-  font-family:var(--display);font-variation-settings:"wdth" 68,"wght" 900;
-  font-size:clamp(2.3rem,6.4vw,4.4rem);line-height:.9;letter-spacing:-.02em;
-  text-transform:uppercase;margin:0;max-width:14ch;
+.disputas__cab{position:relative;z-index:1;padding:8px 0 4px}
+.disputas__cab::before{
+  content:"";position:absolute;inset:-30px -8% -18px;z-index:-1;pointer-events:none;
+  background:radial-gradient(62% 78% at 50% 48%,rgba(4,7,15,.94) 34%,rgba(4,7,15,.6) 68%,transparent 100%);
 }
-.disputas__l{color:var(--muted);max-width:52ch;margin:20px 0 0;font-size:1.02rem}
+.disputas__t{
+  font-family:var(--display);font-variation-settings:"wdth" 70,"wght" 900;
+  font-size:clamp(2rem,5.4vw,3.6rem);line-height:.92;letter-spacing:-.02em;
+  text-transform:uppercase;margin:0;text-align:center;text-wrap:balance;
+}
+.disputas__l{color:var(--muted);max-width:56ch;margin:20px auto 0;font-size:1.02rem;text-align:center}
 .disputas__l b{color:var(--white);font-weight:700}
 
 .fichas{list-style:none;margin:clamp(42px,6vw,72px) 0 0;padding:0}
@@ -163,6 +200,14 @@ a{color:inherit}
   font-size:clamp(2.9rem,7vw,4.3rem);line-height:.82;letter-spacing:-.035em;
   font-variant-numeric:tabular-nums;
 }
+.ficha:not(.ficha--aberta) .lim b{
+  color:var(--white);
+  background-image:linear-gradient(177deg,#ffffff 0%,#f0f5fa 24%,#adc0d0 48%,#ffffff 58%,#dfe8f0 80%,#aabdcd 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){
+  .ficha:not(.ficha--aberta) .lim b{-webkit-text-fill-color:var(--white);background-image:none}
+}
 .lim span{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-hi);font-weight:800}
 .ficha--aberta .lim b{color:var(--gold)}
 .ficha--aberta .lim span{color:var(--gold)}
@@ -179,27 +224,44 @@ a{color:inherit}
 .ficha--aberta .ficha__x{color:var(--gold)}
 
 /* ---------- passos: horizontal, para nao repetir a tabela ---------- */
-.passos-sec{background:var(--ink-900);border-top:1px solid var(--line);padding:clamp(58px,8vw,100px) 0}
+.passos-sec{
+  position:relative;isolation:isolate;overflow:hidden;
+  background:var(--ink-900);border-top:1px solid var(--line);padding:clamp(58px,8vw,100px) 0;
+}
+.passos-sec::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:url("assets/mapa-mundi.svg") no-repeat center center/118% auto;opacity:.16;
+  -webkit-mask-image:radial-gradient(110% 86% at 50% 44%,#000 12%,transparent 76%);
+  mask-image:radial-gradient(110% 86% at 50% 44%,#000 12%,transparent 76%);
+}
 .passos-sec h2{
   font-family:var(--display);font-variation-settings:"wdth" 70,"wght" 900;
-  font-size:clamp(2rem,5vw,3.2rem);line-height:.95;text-transform:uppercase;margin:0;letter-spacing:-.015em;
+  font-size:clamp(1.8rem,4.6vw,2.9rem);line-height:.95;text-transform:uppercase;
+  margin:0;letter-spacing:.01em;white-space:nowrap;
 }
-.passos-sec p.sub{font-family:var(--serif);font-size:1.3rem;color:var(--muted);margin:12px 0 0}
-.trilha{list-style:none;margin:clamp(38px,5vw,60px) 0 0;padding:0;display:grid;gap:30px}
-@media (min-width:860px){.trilha{grid-template-columns:repeat(4,1fr);gap:26px}}
-.trilha li{position:relative;padding-top:26px}
-.trilha li::before{content:"";position:absolute;left:0;right:0;top:6px;height:1px;background:var(--line)}
-.trilha li:first-child::before{left:0}
-.trilha li::after{
-  content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border-radius:2px;
-  background:var(--ink-700);border:1px solid rgba(161,184,195,.5);transform:rotate(45deg);
+.passos-sec p.sub{
+  font-family:var(--serif);font-size:clamp(1.1rem,2.2vw,1.4rem);
+  color:var(--muted);margin:14px 0 0;text-align:center;
 }
-.trilha li.t-on::after{background:var(--blue);border-color:var(--blue-hi)}
+.trilha{list-style:none;counter-reset:tp;margin:clamp(38px,5vw,62px) 0 0;padding:0;display:grid;gap:28px}
+@media (min-width:860px){
+  .trilha{grid-template-columns:repeat(4,1fr);gap:0}
+  .trilha li{padding-inline:26px;border-left:1px solid var(--line)}
+  .trilha li:first-child{padding-left:0;border-left:0}
+  .trilha li:last-child{padding-right:0}
+}
+.trilha li{counter-increment:tp;position:relative}
+.trilha li::before{
+  content:counter(tp,decimal-leading-zero);
+  display:block;margin-bottom:10px;
+  font-family:var(--display);font-variation-settings:"wdth" 74,"wght" 800;
+  font-variant-numeric:tabular-nums;font-size:1.05rem;letter-spacing:.08em;
+  color:var(--blue-hi);
+}
 .trilha b{
   display:block;font-family:var(--display);font-variation-settings:"wdth" 80,"wght" 800;
-  font-size:1rem;text-transform:uppercase;letter-spacing:.02em;margin-bottom:6px;
+  font-size:1rem;text-transform:uppercase;letter-spacing:.02em;margin-bottom:8px;
 }
-.trilha .t-on b{color:var(--blue-hi)}
 .trilha p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.6}
 .trilha p b{display:inline;font-family:var(--body);font-size:inherit;text-transform:none;letter-spacing:0;color:var(--white);font-weight:700;margin:0}
 .trilha .btn{margin-top:14px}
@@ -217,16 +279,17 @@ a{color:inherit}
 .fecho__bg::after{
   content:"";position:absolute;inset:0;
   background:
-    linear-gradient(to right,rgba(4,7,15,.94) 0%,rgba(4,7,15,.8) 42%,rgba(4,7,15,.42) 100%),
-    linear-gradient(to top,var(--ink-950) 1%,transparent 34%);
+    radial-gradient(95% 82% at 50% 50%,rgba(4,7,15,.9) 26%,rgba(4,7,15,.62) 72%,rgba(4,7,15,.42) 100%),
+    linear-gradient(to top,var(--ink-950) 1%,transparent 32%);
 }
+.fecho{text-align:center}
 .fecho__t{
-  font-family:var(--serif);font-size:clamp(2.4rem,6.6vw,4.6rem);line-height:1.02;
-  margin:0;max-width:15ch;
+  font-family:var(--serif);font-size:clamp(2.3rem,6vw,4.2rem);line-height:1.04;
+  margin:0 auto;max-width:15ch;
 }
 .fecho__t i{color:var(--blue-hi)}
-.fecho__l{color:var(--muted);max-width:44ch;margin:18px 0 0;font-size:1.02rem}
-.fecho__cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:30px}
+.fecho__l{color:var(--muted);max-width:46ch;margin:18px auto 0;font-size:1.02rem}
+.fecho__cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:30px;justify-content:center}
 .fecho__fone{margin:18px 0 0;font-size:.86rem;color:var(--muted-2);font-variant-numeric:tabular-nums}
 .fecho__fone a{color:var(--white);font-weight:700;text-decoration:none;border-bottom:1px solid var(--line-strong)}
 .fecho__fone a:hover{color:var(--blue-hi);border-bottom-color:var(--blue-hi)}
@@ -241,18 +304,19 @@ a{color:inherit}
 .banner.is-open{display:grid}
 .banner__scrim{position:absolute;inset:0;background:rgba(2,4,9,.86);backdrop-filter:blur(10px)}
 .banner__box{
-  position:relative;width:min(460px,100%);max-height:90vh;overflow-y:auto;
+  position:relative;width:min(min(520px,94vw),100%);max-height:92vh;overflow-y:auto;
   background:var(--ink-800);border:1px solid var(--line-strong);border-radius:18px;
   box-shadow:0 34px 90px rgba(0,0,0,.68);
   animation:bannerSobe .36s cubic-bezier(.2,.7,.3,1) both;
 }
 @keyframes bannerSobe{from{opacity:0;transform:translateY(22px) scale(.985)}}
-.banner__cap{position:relative;height:138px;overflow:hidden;border-radius:17px 17px 0 0}
-.banner__cap img{width:100%;height:100%;object-fit:cover;object-position:52% 60%}
-.banner__cap::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--ink-800) 1%,rgba(10,17,32,.8) 40%,rgba(4,7,15,.25) 100%)}
-.banner__lock{position:absolute;left:24px;right:60px;bottom:15px;z-index:1}
-.banner__k{font-family:var(--display);font-variation-settings:"wdth" 86,"wght" 700;font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--blue-hi);margin:0 0 7px}
-.banner__t{font-family:var(--display);font-variation-settings:"wdth" 68,"wght" 900;font-size:1.95rem;line-height:.9;text-transform:uppercase;margin:0;letter-spacing:-.02em}
+.banner__cap{position:relative;height:clamp(190px,29vh,246px);overflow:hidden;border-radius:17px 17px 0 0}
+.banner__cap img{width:100%;height:100%;object-fit:cover;object-position:50% 57%}
+.banner__cap::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(4,7,15,.36) 0%,transparent 22%,transparent 84%,var(--ink-800) 100%);
+}
+.oculto{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .banner__x{
   position:absolute;top:12px;right:12px;z-index:3;width:32px;height:32px;padding:0;border-radius:50%;
   border:1px solid rgba(255,255,255,.26);background:rgba(4,7,15,.55);backdrop-filter:blur(4px);
@@ -342,7 +406,7 @@ a{color:inherit}
   </div>
   <div class="wrap hero__in">
     <p class="hero__pre">Safirion apresenta</p>
-    <h1 class="hero__t">Dubai<br>Experience <em>2.0</em></h1>
+    <h1 class="hero__t cromo">Dubai<br>Experience <em>2.0</em></h1>
     <p class="hero__sub">Cinco disputas correndo ao mesmo tempo, <i>até a virada do ano.</i></p>
   </div>
   <div class="faixa">
@@ -361,8 +425,8 @@ a{color:inherit}
 </section>
 
 <section class="disputas" id="disputas">
-  <div class="wrap">
-    <h2 class="disputas__t">Cinco disputas, cinco vencedores</h2>
+  <div class="wrap disputas__cab">
+    <h2 class="disputas__t cromo">Cinco disputas, cinco vencedores</h2>
     <p class="disputas__l">O número grande é o <b>mínimo que te coloca na contagem</b>. Abaixo dele o resultado não é apurado, por maior que seja. Acima, vence quem tiver o maior número.</p>
   </div>
   <div class="wrap">
@@ -425,11 +489,11 @@ a{color:inherit}
 
 <section class="passos-sec" id="participar">
   <div class="wrap">
-    <h2>Como participar</h2>
+    <div class="fios"><h2 class="cromo">Como participar</h2></div>
     <p class="sub">Quatro passos, e o primeiro é o que destrava tudo.</p>
 
     <ol class="trilha">
-      <li class="t-on">
+      <li>
         <b>Ative sua afiliação</b>
         <p>Fale no WhatsApp e receba <b>seu link</b>. Sem ele, o que você produzir não entra na contagem.</p>
         <a class="btn btn--solid btn--sm" id="ctaPasso" href="#" target="_blank" rel="noopener">Ativar agora</a>
@@ -488,12 +552,9 @@ a{color:inherit}
   <div class="banner__box" role="dialog" aria-modal="true" aria-labelledby="bannerTit">
     <button class="banner__x" type="button" data-fechar aria-label="Fechar">&times;</button>
     <div class="banner__cap">
-      <img src="assets/hero-dubai-skyline.jpg" alt="">
-      <div class="banner__lock">
-        <p class="banner__k">Dubai Experience 2.0</p>
-        <h2 class="banner__t" id="bannerTit">Ative sua<br>afiliação</h2>
-      </div>
+      <img src="assets/banner-dubai-experience.jpg" alt="" width="1122" height="1402">
     </div>
+    <h2 class="oculto" id="bannerTit">Como participar</h2>
     <ol class="passos">
       <li class="e-ativar">
         <span class="passo__n">Passo 01</span>
