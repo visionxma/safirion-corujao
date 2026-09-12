@@ -1,7 +1,11 @@
-# Corujão Safirion
+# Dubai Experience 2.0
 
-Landing page da competição **Corujão** — 24 horas corridas, do dia 18 às 18h ao dia 19 às 18h
-(horário de Brasília), com cinco disputas simultâneas.
+Landing page da competição **Dubai Experience 2.0**, da Safirion — 24 horas corridas, de
+18/09 às 18h a 19/09 às 18h (horário de Brasília), com cinco disputas simultâneas.
+
+A competição chamava **Corujão** até 12/09/2026. O nome mudou, mas a janela de 24 horas
+continua atravessando a madrugada — por isso a página mantém o vocabulário noturno
+("a noite é de quem não dorme", a madrugada hachurada no trilho).
 
 Página estática: um `index.html` sem build, sem dependências de runtime.
 
@@ -21,8 +25,10 @@ são referenciados por caminho absoluto a partir da raiz do projeto.
 index.html                          página inteira: markup, CSS e o contador
 assets/hero-dubai.jpg               hero, 1920×730 — recorte da arte original
 assets/hero-dubai-original.png      arte-fonte 1920×1080, com o lockup gravado
+assets/banner-dubai-experience.jpg  arte do banner, 1080×1350 — A GERAR
 assets/safirion-logo-horizontal.svg logo oficial, de safirion.com/_ext/icons/
 assets/safirion-icon.svg            marca isolada (touro no círculo), não usada
+assets/arquivo/                     arte do banner com o nome antigo (Corujão)
 ```
 
 O hero é um recorte dos 730px superiores da arte original: os 350px de baixo trazem o

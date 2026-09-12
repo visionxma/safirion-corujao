@@ -1,13 +1,11 @@
 # Prompt da arte do banner
 
-> **Feito.** A arte foi gerada com o Prompt A e está em `assets/banner-passo-a-passo.jpg`
-> (1080 × 1350). Revisada letra por letra: acentos e datas corretos. O PNG original do
-> gerador ficou em `assets/banner-passo-a-passo-original.png`.
->
-> Este arquivo fica como referência para regerar a arte se alguma regra mudar.
+> **A arte precisa ser regerada.** A competição se chamava *Corujão* e passou a se chamar
+> **Dubai Experience 2.0** em 12/09/2026. A arte antiga tem `CORUJÃO` gravado nos pixels e
+> foi movida para `assets/arquivo/`. Até a nova chegar, o banner mostra os quatro passos em
+> texto real — funciona, só sem arte.
 
-A página espera o arquivo em **`assets/banner-passo-a-passo.jpg`**, em **1080 × 1350 px (4:5)**.
-Se ele sumir, o banner volta a mostrar os quatro passos em texto real — funciona, só sem arte.
+A página espera o arquivo em **`assets/banner-dubai-experience.jpg`**, em **1080 × 1350 px (4:5)**.
 
 > **Leia antes:** gerador de imagem erra texto. Ele troca letras, come acentos e inventa
 > palavras — e aqui o texto carrega datas e regras, onde errar é caro. Por isso existem dois
@@ -41,7 +39,7 @@ Estilo: sóbrio, noturno, corporativo premium. Sem brilho neon, sem lens flare
 exagerado, sem estética de cassino.
 ```
 
-Depois de gerar, é só salvar como `assets/banner-passo-a-passo.png`. Me avise que eu troco o
+Depois de gerar, é só salvar como `assets/banner-dubai-experience.jpg`. Me avise que eu troco o
 banner para desenhar o texto por cima da imagem em vez de escondê-lo.
 
 ---
@@ -50,7 +48,7 @@ banner para desenhar o texto por cima da imagem em vez de escondê-lo.
 
 ```
 Crie uma imagem de 1080 x 1350 px (proporção 4:5) para o banner de uma competição
-chamada CORUJÃO, da corretora Safirion. Estética noturna, sóbria, corporativa premium.
+chamada DUBAI EXPERIENCE 2.0, da corretora Safirion. Estética noturna, sóbria, corporativa premium.
 
 FUNDO
 Gradiente diagonal de #111a2b (topo esquerdo) para #04070f (base direita). Um brilho
@@ -64,9 +62,11 @@ COMPOSIÇÃO, de cima para baixo
 
 1. Espaço vazio de 130 px de altura no topo, reservado para o logo. Deixe limpo.
 
-2. Sobretítulo: CORUJÃO
-   Caixa alta, grotesca condensada pesada, branco #ffffff, entrelinha apertada,
-   corpo grande, ocupando cerca de metade da largura útil.
+2. Sobretítulo em duas linhas:
+   DUBAI
+   EXPERIENCE 2.0
+   Caixa alta, grotesca condensada pesada, entrelinha apertada, corpo grande.
+   DUBAI e EXPERIENCE em branco #ffffff; o "2.0" em azul #7cc0ff.
 
 3. Título: COMO PARTICIPAR
    Caixa alta, mesma família condensada pesada, branco, logo abaixo do sobretítulo,
@@ -102,8 +102,8 @@ COMPOSIÇÃO, de cima para baixo
 
 REGRAS DE TEXTO
 Escreva exatamente as palavras acima, em português do Brasil, com todos os acentos:
-Corujão, participar, disputas, qualificação, mínimo, você, horário, Brasília,
-relatórios, apuração. Não traduza, não reescreva, não abrevie, não invente linhas
+Dubai Experience 2.0, participar, disputas, qualificação, mínimo, você, horário,
+Brasília, relatórios, apuração. Não traduza, não reescreva, não abrevie, não invente linhas
 novas. Nenhuma outra palavra na imagem.
 
 NÃO INCLUIR
@@ -118,7 +118,7 @@ gradiente arco-íris, sem estética de cassino.
 ### Depois de gerar com o prompt A
 
 1. Confira letra por letra os acentos e as datas — é onde o gerador erra.
-2. Salve em `assets/banner-passo-a-passo.png`.
+2. Salve em `assets/banner-dubai-experience.jpg`.
 3. Componha o logo real por cima, no espaço de 130 px do topo. Use
    `assets/safirion-logo-horizontal.svg`, que é vetor — nunca deixe o gerador
    desenhar o touro, ele sai deformado.
