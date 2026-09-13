@@ -158,7 +158,14 @@ Elas alimentam o contador e o relógio do topo, que trocam de estado sozinhos en
 O horário de encerramento — **23:59 do dia 31/12** — foi assumido a partir de "acaba dia 31
 de dezembro". Se for outro horário, é a constante `END`.
 
-## Pendência
+## Pendências de conteúdo
 
-A qualificação da disputa **Live no TikTok** ainda não foi definida. Está marcada em
-âmbar na página, em `.bout--tbd` e na linha correspondente das regras gerais.
+**Duas disputas sem regra.** `FTD` e `Live no TikTok` aparecem com `?` em laranja
+(`.ficha--aberta`). A `Live no TikTok` tem critério mas não tem mínimo; a `FTD` não tem
+nenhum dos dois — ela foi incluída porque a hero diz "6 chances" e a área de membros
+(`members.partnersafirion.com`) lista seis métricas, mas a regra nunca foi passada.
+O texto dela é deliberadamente vago para não afirmar o que não foi definido.
+
+**O prêmio não está escrito em lugar nenhum.** A hero diz "6 chances para ir para Dubai"
+e o fecho diz "o ano termina em Dubai", mas a página nunca declara o que o vencedor de
+cada disputa leva.

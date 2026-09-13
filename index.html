@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Safirion Experience 2.0</title>
-<meta name="description" content="Safirion Experience 2.0 — competição de 18/09 às 18h até 31 de dezembro. Cinco disputas, cinco vencedores.">
+<meta name="description" content="Safirion Experience 2.0 — competição de 18/09 às 18h até 31 de dezembro. Seis disputas, seis vencedores.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400..800&display=swap">
@@ -116,39 +116,63 @@ a{color:inherit}
 @media (max-width:680px){.topbar__clock{display:none}}
 
 /* ---------- heroi: foto sangrando, tipo dentro da cena ---------- */
-.hero{position:relative;min-height:min(92vh,860px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero{position:relative;min-height:min(94vh,900px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
 .hero__bg{position:absolute;inset:0;z-index:0}
 .hero__bg img{width:100%;height:100%;object-fit:cover;object-position:52% 60%}
 .hero__bg::after{
   content:"";position:absolute;inset:0;
   background:
-    linear-gradient(to top,var(--ink-950) 0%,rgba(4,7,15,.9) 20%,rgba(4,7,15,.34) 54%,rgba(4,7,15,.52) 100%),
-    radial-gradient(120% 70% at 50% 100%,rgba(4,7,15,.72),transparent 62%);
+    linear-gradient(to top,var(--ink-950) 0%,rgba(4,7,15,.78) 16%,rgba(4,7,15,.16) 44%,rgba(4,7,15,.22) 72%,rgba(4,7,15,.6) 100%);
 }
-.hero__in{position:relative;z-index:1;padding-bottom:clamp(26px,4vw,44px);text-align:center}
+.hero__in{position:relative;z-index:1;padding:clamp(80px,11vw,120px) 0 clamp(26px,4vw,44px);text-align:center}
 .hero__in::before{
   content:"";position:absolute;left:50%;top:-6%;transform:translateX(-50%);
   width:min(1000px,120%);height:128%;z-index:-1;pointer-events:none;
-  background:radial-gradient(56% 62% at 50% 52%,rgba(4,7,15,.78) 22%,rgba(4,7,15,.4) 62%,transparent 100%);
+  background:radial-gradient(60% 46% at 50% 22%,rgba(4,7,15,.82) 18%,rgba(4,7,15,.44) 58%,transparent 100%);
 }
 .hero__pre{
   font-family:var(--display);font-variation-settings:"wdth" 88,"wght" 700;
   font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:#d6e4ef;margin:0 0 14px;
   text-shadow:0 2px 12px rgba(4,7,15,.9);
 }
-.hero__t{margin:0;line-height:.8}
-.hero__nome{
+.hero__chances{
+  font-family:var(--display);font-variation-settings:"wdth" 88,"wght" 700;
+  font-size:clamp(.72rem,2.9vw,1.34rem);letter-spacing:.3em;line-height:1.3;
+  text-transform:uppercase;margin:0 0 clamp(6px,1.2vw,12px);
+  text-shadow:0 2px 14px rgba(4,7,15,.92);
+}
+.hero__chances b{color:var(--ac-hi);font-weight:inherit}
+.hero__t{margin:0;line-height:.78}
+.hero__dubai{
   display:block;
-  font-family:var(--display);font-variation-settings:"wdth" 62,"wght" 900;
-  font-size:clamp(2.6rem,9.4vw,7.2rem);letter-spacing:-.035em;text-transform:uppercase;
+  font-family:var(--display);font-variation-settings:"wdth" 64,"wght" 900;
+  font-size:clamp(4.4rem,19vw,12rem);letter-spacing:-.03em;text-transform:uppercase;
 }
-.hero__exp{
-  display:block;margin-top:.06em;
-  font-family:var(--display);font-variation-settings:"wdth" 78,"wght" 800;
-  font-size:clamp(1.3rem,4.6vw,2.9rem);letter-spacing:.03em;text-transform:uppercase;
-  text-shadow:0 2px 14px rgba(4,7,15,.85);
+.hero__evento{
+  display:block;margin-top:clamp(10px,1.8vw,18px);
+  font-family:var(--display);font-variation-settings:"wdth" 88,"wght" 700;
+  font-size:clamp(.58rem,2vw,.86rem);letter-spacing:.36em;text-transform:uppercase;
+  color:var(--muted);text-shadow:0 2px 12px rgba(4,7,15,.9);
 }
-.hero__exp em{font-style:normal;margin-left:.14em}
+.hero__evento em{font-style:normal;color:var(--ac-hi)}
+
+/* botao dourado de duas linhas, como no cartaz */
+.ouro-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:clamp(14px,2.6vw,24px);
+  margin:clamp(26px,4vw,40px) auto 0;
+  padding:clamp(13px,2.4vw,18px) clamp(24px,4vw,44px);
+  border-radius:100px;border:1px solid rgba(255,240,190,.72);
+  background:linear-gradient(180deg,#ffe9a8 0%,#f5c542 34%,#e0a62a 66%,#b8801a 100%);
+  color:#1b1204;text-decoration:none;
+  box-shadow:0 14px 40px rgba(224,166,42,.36),inset 0 1px 0 rgba(255,255,255,.6);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.ouro-btn:hover{transform:translateY(-2px);box-shadow:0 20px 52px rgba(224,166,42,.48),inset 0 1px 0 rgba(255,255,255,.6)}
+.ouro-btn svg{width:clamp(24px,4.4vw,32px);height:clamp(24px,4.4vw,32px);flex:0 0 auto}
+.ouro-btn i{width:1px;align-self:stretch;background:rgba(27,18,4,.4)}
+.ouro-btn span{display:block;text-align:left;font-family:var(--display)}
+.ouro-btn .l1{font-variation-settings:"wdth" 92,"wght" 900;font-size:clamp(1.02rem,3.4vw,1.55rem);letter-spacing:.05em;text-transform:uppercase;line-height:1.05}
+.ouro-btn .l2{font-variation-settings:"wdth" 92,"wght" 700;font-size:clamp(.66rem,2.2vw,.95rem);letter-spacing:.2em;text-transform:uppercase;line-height:1.2;margin-top:3px}
 .hero__sub{
   font-family:var(--serif);font-size:clamp(1.25rem,2.8vw,2rem);
   line-height:1.25;margin:18px auto 0;color:var(--white);max-width:26ch;
@@ -370,12 +394,24 @@ a{color:inherit}
     <img src="assets/hero-dubai-skyline.jpg" alt="Dois esportivos azuis na areia diante do skyline de Dubai ao pôr do sol, com o touro da Safirion entre eles e um avião da Emirates no céu">
   </div>
   <div class="wrap hero__in">
-    <p class="hero__pre">Safirion apresenta</p>
+    <p class="hero__chances"><b>6 chances</b> para ir para</p>
     <h1 class="hero__t">
-      <span class="hero__nome cromo">Safirion</span>
-      <span class="hero__exp">Experience <em class="cromo">2.0</em></span>
+      <span class="hero__dubai cromo">Dubai</span>
+      <span class="hero__evento">Safirion <em>Experience 2.0</em></span>
     </h1>
-    <p class="hero__sub">Cinco disputas correndo ao mesmo tempo, <i>até a virada do ano.</i></p>
+    <a class="ouro-btn" href="#disputas">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 11.2V5.6a1.6 1.6 0 0 1 3.2 0v5.1"/>
+        <path d="M12.2 10.7V9.4a1.5 1.5 0 0 1 3 0v1.6"/>
+        <path d="M15.2 11.2v-.9a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1-6 6h-1a4.7 4.7 0 0 1-3.6-1.7l-2.8-3.4a1.5 1.5 0 0 1 2.1-2.1L9 15.4"/>
+        <path d="M5.4 4 4.3 2.9M12 2.6V1.2M18.6 4l1.1-1.1"/>
+      </svg>
+      <i></i>
+      <span>
+        <span class="l1">Clique abaixo</span>
+        <span class="l2">para participar</span>
+      </span>
+    </a>
   </div>
   <div class="faixa">
     <div class="wrap faixa__in">
@@ -394,7 +430,7 @@ a{color:inherit}
 
 <section class="disputas" id="disputas">
   <div class="wrap disputas__cab">
-    <h2 class="disputas__t cromo">Cinco disputas, cinco vencedores</h2>
+    <h2 class="disputas__t cromo">Seis disputas, seis vencedores</h2>
     <p class="disputas__l">O número grande é o <b>mínimo que te coloca na contagem</b>. Abaixo dele o resultado não é apurado, por maior que seja. Acima, vence quem tiver o maior número.</p>
   </div>
   <div class="wrap">
@@ -433,11 +469,21 @@ a{color:inherit}
       <li class="ficha ficha--aberta">
         <div class="lim"><b>?</b><span>a definir</span></div>
         <div class="ficha__id">
+          <p class="ficha__cat">Quem traz depósito</p>
+          <h3 class="ficha__n">FTD</h3>
+          <p class="ficha__c">Critério a divulgar.</p>
+        </div>
+        <p class="ficha__x">Primeiros depósitos trazidos pela sua rede. Critério e mínimo saem antes da largada.</p>
+      </li>
+
+      <li class="ficha ficha--aberta">
+        <div class="lim"><b>?</b><span>a definir</span></div>
+        <div class="ficha__id">
           <p class="ficha__cat">Quem faz live</p>
           <h3 class="ficha__n">Live no TikTok</h3>
           <p class="ficha__c">Ganha o melhor balanço das métricas da live.</p>
         </div>
-        <p class="ficha__x">Único mínimo ainda em aberto. Divulgado antes da largada, dia 18.</p>
+        <p class="ficha__x">Mínimo ainda em aberto. Divulgado antes da largada, dia 18.</p>
       </li>
 
       <li class="ficha">
@@ -468,7 +514,7 @@ a{color:inherit}
       </li>
       <li>
         <b>Escolha suas disputas</b>
-        <p>Entre em <b>quantas quiser</b>. As cinco são independentes e cada uma premia o seu próprio vencedor.</p>
+        <p>Entre em <b>quantas quiser</b>. As seis são independentes e cada uma premia o seu próprio vencedor.</p>
       </li>
       <li>
         <b>Bata o mínimo</b>
@@ -482,7 +528,7 @@ a{color:inherit}
 
     <div class="notas">
       <div class="nota nota--aberta">
-        <p><span>Ainda em aberto</span>O mínimo da <b>Live no TikTok</b> sai antes das 18h do dia 18. As outras quatro já estão fechadas.</p>
+        <p><span>Ainda em aberto</span>Os mínimos de <b>FTD</b> e <b>Live no TikTok</b> saem antes das 18h do dia 18. As outras quatro já estão fechadas.</p>
       </div>
       <div class="nota">
         <p><span>Resultado</span>Apuração logo após o encerramento, com os vencedores anunciados nos <b>canais oficiais da Safirion</b>.</p>
@@ -516,7 +562,7 @@ a{color:inherit}
 </footer>
 
 <script>
-/* um unico lugar define o WhatsApp; os cinco CTAs herdam dele */
+/* um unico lugar define o WhatsApp; os CTAs herdam dele */
 (function(){
   var FONE = "5587992013884";
   var MSG  = "Olá, vim através de um amigo e quero me tornar afiliado da Safirion.";
