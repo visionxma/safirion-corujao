@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dubai Experience 2.0</title>
-<meta name="description" content="Dubai Experience 2.0 — competição da Safirion de 18/09 às 18h até 31 de dezembro. Cinco disputas, cinco vencedores.">
+<title>Safirion Experience 2.0</title>
+<meta name="description" content="Safirion Experience 2.0 — competição de 18/09 às 18h até 31 de dezembro. Cinco disputas, cinco vencedores.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400..800&display=swap">
@@ -136,7 +136,7 @@ a{color:inherit}
 }
 .hero__t{
   font-family:var(--display);font-variation-settings:"wdth" 60,"wght" 900;
-  font-size:clamp(3rem,11vw,8.4rem);line-height:.76;
+  font-size:clamp(2.6rem,9.4vw,7.2rem);line-height:.78;
   letter-spacing:-.035em;text-transform:uppercase;margin:0;
 }
 .hero__t em{
@@ -299,47 +299,6 @@ a{color:inherit}
 .foot__logo{height:32px;width:auto;opacity:.9}
 .foot p{margin:0;font-size:.78rem;color:var(--muted-2)}
 
-/* ---------- banner ---------- */
-.banner{position:fixed;inset:0;z-index:200;display:none;place-items:center;padding:18px}
-.banner.is-open{display:grid}
-.banner__scrim{position:absolute;inset:0;background:rgba(2,4,9,.86);backdrop-filter:blur(10px)}
-.banner__box{
-  position:relative;width:min(min(520px,94vw),100%);max-height:92vh;overflow-y:auto;
-  background:var(--ink-800);border:1px solid var(--line-strong);border-radius:18px;
-  box-shadow:0 34px 90px rgba(0,0,0,.68);
-  animation:bannerSobe .36s cubic-bezier(.2,.7,.3,1) both;
-}
-@keyframes bannerSobe{from{opacity:0;transform:translateY(22px) scale(.985)}}
-.banner__cap{position:relative;height:clamp(190px,29vh,246px);overflow:hidden;border-radius:17px 17px 0 0}
-.banner__cap img{width:100%;height:100%;object-fit:cover;object-position:50% 57%}
-.banner__cap::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(4,7,15,.36) 0%,transparent 22%,transparent 84%,var(--ink-800) 100%);
-}
-.oculto{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.banner__x{
-  position:absolute;top:12px;right:12px;z-index:3;width:32px;height:32px;padding:0;border-radius:50%;
-  border:1px solid rgba(255,255,255,.26);background:rgba(4,7,15,.55);backdrop-filter:blur(4px);
-  color:#fff;font-size:16px;line-height:1;cursor:pointer;transition:background .16s ease,border-color .16s ease;
-}
-.banner__x:hover{background:rgba(4,7,15,.92);border-color:var(--blue-hi)}
-.passos{list-style:none;margin:0;padding:24px 24px 4px}
-.passos li{position:relative;padding:0 0 22px 34px}
-.passos li::before{content:"";position:absolute;left:8px;top:15px;bottom:0;width:1px;background:linear-gradient(to bottom,rgba(161,184,195,.34),rgba(161,184,195,.08))}
-.passos li:last-child::before{display:none}
-.passos li::after{content:"";position:absolute;left:4px;top:6px;width:9px;height:9px;border-radius:2px;background:var(--ink-700);border:1px solid rgba(161,184,195,.5);transform:rotate(45deg)}
-.passos li.e-ativar::after{background:var(--blue);border-color:var(--blue-hi)}
-.passo__n{display:block;margin-bottom:4px;font-variant-numeric:tabular-nums;font-size:.58rem;font-weight:800;letter-spacing:.18em;color:var(--muted-2);text-transform:uppercase}
-.passo__t{font-family:var(--display);font-variation-settings:"wdth" 80,"wght" 800;font-size:1rem;letter-spacing:.02em;text-transform:uppercase;margin:0}
-.passo__d{margin:.32rem 0 0;color:var(--muted);font-size:.88rem;line-height:1.55}
-.passo__d b{color:var(--white);font-weight:700}
-.e-ativar .passo__t,.e-ativar .passo__n{color:var(--blue-hi)}
-.passos .btn{margin-top:13px}
-.banner__pe{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:15px 24px 18px;border-top:1px solid var(--line-soft)}
-.banner__pe p{margin:0;font-size:.78rem;color:var(--muted-2);font-variant-numeric:tabular-nums}
-.banner__pe button{border:0;background:transparent;padding:0;cursor:pointer;font-family:var(--body);font-size:.82rem;font-weight:700;color:var(--muted);border-bottom:1px solid var(--line-strong)}
-.banner__pe button:hover{color:var(--white);border-bottom-color:var(--blue-hi)}
-
 /* ---------- carrossel das fichas no mobile ---------- */
 .pontos{display:none}
 @media (max-width:899px){
@@ -406,7 +365,7 @@ a{color:inherit}
   </div>
   <div class="wrap hero__in">
     <p class="hero__pre">Safirion apresenta</p>
-    <h1 class="hero__t cromo">Dubai<br>Experience <em>2.0</em></h1>
+    <h1 class="hero__t cromo">Safirion<br>Experience <em>2.0</em></h1>
     <p class="hero__sub">Cinco disputas correndo ao mesmo tempo, <i>até a virada do ano.</i></p>
   </div>
   <div class="faixa">
@@ -543,47 +502,9 @@ a{color:inherit}
 <footer class="foot">
   <div class="wrap foot__in">
     <img class="foot__logo" src="assets/safirion-logo-horizontal.svg" alt="Safirion — confiança para investir" width="234" height="55">
-    <p>Dubai Experience 2.0 · 18 de setembro a 31 de dezembro · horários em Brasília (GMT−3)</p>
+    <p>Safirion Experience 2.0 · 18 de setembro a 31 de dezembro · horários em Brasília (GMT−3)</p>
   </div>
 </footer>
-
-<div class="banner" id="banner" hidden>
-  <div class="banner__scrim" data-fechar></div>
-  <div class="banner__box" role="dialog" aria-modal="true" aria-labelledby="bannerTit">
-    <button class="banner__x" type="button" data-fechar aria-label="Fechar">&times;</button>
-    <div class="banner__cap">
-      <img src="assets/banner-dubai-experience.jpg" alt="" width="1122" height="1402">
-    </div>
-    <h2 class="oculto" id="bannerTit">Como participar</h2>
-    <ol class="passos">
-      <li class="e-ativar">
-        <span class="passo__n">Passo 01</span>
-        <h3 class="passo__t">Ative sua afiliação</h3>
-        <p class="passo__d">Fale com a gente no WhatsApp e receba <b>seu link de afiliado</b>. Sem ele, o que você produzir não entra na contagem.</p>
-        <a class="btn btn--solid" id="ctaBanner" href="#" target="_blank" rel="noopener">Ativar no WhatsApp</a>
-      </li>
-      <li>
-        <span class="passo__n">Passo 02</span>
-        <h3 class="passo__t">Escolha suas disputas</h3>
-        <p class="passo__d">Entre em <b>quantas quiser</b>. As cinco são independentes e cada uma premia o seu próprio vencedor.</p>
-      </li>
-      <li>
-        <span class="passo__n">Passo 03</span>
-        <h3 class="passo__t">Bata o mínimo</h3>
-        <p class="passo__d">Cada disputa tem o seu. <b>Abaixo dele você sai da contagem</b>, mesmo com número alto.</p>
-      </li>
-      <li>
-        <span class="passo__n">Passo 04</span>
-        <h3 class="passo__t">Produza e comprove</h3>
-        <p class="passo__d">Vale o que acontecer entre <b>18/09 às 18h</b> e <b>31/12 às 23:59</b>. Guarde prints, links e relatórios para a apuração.</p>
-      </li>
-    </ol>
-    <div class="banner__pe">
-      <p>WhatsApp +55 87 99201-3884</p>
-      <button type="button" data-fechar>Ver a página</button>
-    </div>
-  </div>
-</div>
 
 <script>
 /* um unico lugar define o WhatsApp; os cinco CTAs herdam dele */
@@ -591,12 +512,12 @@ a{color:inherit}
   var FONE = "5587992013884";
   var MSG  = "Olá, vim através de um amigo e quero me tornar afiliado da Safirion.";
   var url  = "https://wa.me/" + FONE + "?text=" + encodeURIComponent(MSG);
-  ["ctaTopo","ctaFaixa","ctaPasso","ctaFecho","ctaBanner","foneFecho"].forEach(function(id){
+  ["ctaTopo","ctaFaixa","ctaPasso","ctaFecho","foneFecho"].forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.href = url;
   });
   var ico = '<svg class="btn__ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>';
-  ["ctaTopo","ctaFaixa","ctaPasso","ctaFecho","ctaBanner"].forEach(function(id){
+  ["ctaTopo","ctaFaixa","ctaPasso","ctaFecho"].forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.insertAdjacentHTML("afterbegin", ico);
   });
@@ -677,45 +598,6 @@ a{color:inherit}
   sync();
 })();
 
-/* banner do passo a passo */
-(function(){
-  var banner=document.getElementById("banner"), hero=document.querySelector(".hero");
-  if(!banner||!hero) return;
-  var caixa=banner.querySelector(".banner__box"), anterior=null, aberto=false, jaAbriu=false;
-  function visto(){ try{ return sessionStorage.getItem("dubai_banner")==="1"; }catch(e){ return false; } }
-  function marcar(){ try{ sessionStorage.setItem("dubai_banner","1"); }catch(e){} }
-  function abrir(){
-    if(aberto||jaAbriu||visto()) return;
-    aberto=jaAbriu=true; anterior=document.activeElement;
-    banner.hidden=false; banner.classList.add("is-open");
-    document.body.style.overflow="hidden"; marcar();
-    var alvo=banner.querySelector(".banner__x"); if(alvo) alvo.focus();
-  }
-  function fechar(){
-    if(!aberto) return;
-    aberto=false; banner.classList.remove("is-open"); banner.hidden=true;
-    document.body.style.overflow="";
-    if(anterior&&anterior.focus) anterior.focus();
-  }
-  banner.addEventListener("click",function(e){ if(e.target.closest("[data-fechar]")) fechar(); });
-  document.addEventListener("keydown",function(e){
-    if(!aberto) return;
-    if(e.key==="Escape"){ fechar(); return; }
-    if(e.key!=="Tab") return;
-    var foco=caixa.querySelectorAll("button, a[href]");
-    if(!foco.length) return;
-    var pri=foco[0], ult=foco[foco.length-1];
-    if(e.shiftKey&&document.activeElement===pri){ e.preventDefault(); ult.focus(); }
-    else if(!e.shiftKey&&document.activeElement===ult){ e.preventDefault(); pri.focus(); }
-  });
-  var raf;
-  function checa(){
-    if(jaAbriu){ window.removeEventListener("scroll",agenda); return; }
-    if(window.scrollY > hero.offsetHeight*0.55) abrir();
-  }
-  function agenda(){ if(raf) cancelAnimationFrame(raf); raf=requestAnimationFrame(checa); }
-  if(!visto()) window.addEventListener("scroll",agenda,{passive:true});
-})();
 </script>
 
 </body>

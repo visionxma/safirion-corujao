@@ -9,6 +9,30 @@ saiu o trilho de 24 horas ("a janela") e todo o vocabulário de virada de noite.
 
 Página estática: um `index.html` sem build, sem dependências de runtime.
 
+## Páginas
+
+| Rota | Arquivo | O que é |
+|---|---|---|
+| `/` | `index.html` | A competição: cinco disputas, mínimos, como participar |
+| `/lead/` | `lead/index.html` | Captura de lead: cadastro que segue para o WhatsApp |
+
+**Duas divergências herdadas da copy, de propósito não resolvidas por mim:**
+
+1. **Nome.** A raiz usa *Safirion Experience 2.0*; a `/lead` usa *Dubai Experience 2.0*,
+   que é como a copy foi entregue.
+2. **Datas.** A raiz diz **18/09 às 18h** a 31/12; a `/lead` diz **12 de setembro** a 31/12.
+
+Alinhar as duas é decisão de campanha, não de código.
+
+## O cadastro da /lead
+
+Não há backend. O formulário valida nome, e-mail e telefone no navegador e abre o WhatsApp
+com os três campos já escritos na mensagem — é assim que o dado chega até você.
+
+**Nada fica gravado.** Se a pessoa preencher e não enviar no WhatsApp, o lead se perde, e não
+existe lista para exportar depois. Para capturar de verdade é preciso um destino: um endpoint
+próprio, um Google Forms por trás, ou uma ferramenta de formulário.
+
 ## Rodar
 
 ```sh

@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dubai Experience 2.0</title>
+<meta name="description" content="Entre para a Dubai Experience 2.0 e concorra a uma experiência inesquecível em Dubai. Campanha de 12 de setembro a 31 de dezembro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400..800&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --ink-950:#04070f;--ink-900:#060b18;--ink-800:#0a1120;--ink-700:#111a2b;--ink-600:#16233a;
+  --line:rgba(161,184,195,.16);--line-soft:rgba(161,184,195,.09);--line-strong:rgba(161,184,195,.3);
+  --blue:#2389e6;--blue-hi:#7cc0ff;--gold:#f6b83c;--erro:#f87171;
+  --white:#fff;--muted:#a1b8c3;--muted-2:#7a8f9b;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --serif:"Instrument Serif",Georgia,serif;
+  --body:"Manrope","Helvetica Neue",Arial,sans-serif;
+  --wrap:1120px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+section[id]{scroll-margin-top:76px}
+body{margin:0;background:var(--ink-950);color:var(--white);font-family:var(--body);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blue-hi);outline-offset:3px}
+.wrap{width:min(100% - 44px,var(--wrap));margin-inline:auto}
+
+.cromo{
+  color:var(--white);
+  background-image:linear-gradient(177deg,#ffffff 0%,#f0f5fa 24%,#adc0d0 46%,#ffffff 58%,#dfe8f0 78%,#aabdcd 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 3px 14px rgba(4,7,15,.6));
+}
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){
+  .cromo{-webkit-text-fill-color:var(--white);background-image:none}
+}
+.fios{display:flex;align-items:center;gap:clamp(14px,3vw,26px);justify-content:center}
+.fios::before,.fios::after{content:"";height:1px;flex:1 1 0;min-width:18px;background:linear-gradient(to right,transparent,var(--line-strong))}
+.fios::after{background:linear-gradient(to left,transparent,var(--line-strong))}
+
+.btn{
+  -webkit-appearance:none;appearance:none;background:transparent;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 700;
+  font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:16px 30px;border-radius:100px;border:1px solid transparent;
+  text-decoration:none;cursor:pointer;
+  transition:background .16s ease,border-color .16s ease,color .16s ease;
+}
+.btn--solid{background:var(--blue);color:#fff}
+.btn--solid:hover{background:#3f9df0}
+.btn--line{border-color:var(--line-strong);color:var(--white)}
+.btn--line:hover{border-color:var(--blue-hi);color:var(--blue-hi)}
+.btn__ico{width:18px;height:18px;flex:0 0 auto;margin-right:10px}
+
+/* ---------- barra ---------- */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:80;transition:background .25s ease,border-color .25s ease;border-bottom:1px solid transparent}
+.topbar::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(4,7,15,.8),transparent);transition:opacity .25s ease}
+.topbar.is-stuck{background:rgba(4,7,15,.9);backdrop-filter:blur(14px);border-bottom-color:var(--line-soft)}
+.topbar.is-stuck::before{opacity:0}
+.topbar__in{display:flex;align-items:center;gap:16px;height:66px}
+.brand{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
+.brand img{height:30px;width:auto}
+@media (max-width:520px){.brand img{height:24px}}
+.topbar__sep{flex:1 1 auto}
+.topbar__prazo{font-size:.8rem;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:620px){.topbar__prazo{display:none}}
+.topbar .btn{padding:10px 20px;font-size:.68rem}
+
+/* ---------- heroi ---------- */
+.hero{position:relative;min-height:min(94vh,880px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero__bg{position:absolute;inset:0;z-index:0}
+.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:52% 60%}
+.hero__bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(to top,var(--ink-950) 0%,rgba(4,7,15,.9) 20%,rgba(4,7,15,.34) 54%,rgba(4,7,15,.52) 100%),
+    radial-gradient(120% 70% at 50% 100%,rgba(4,7,15,.72),transparent 62%);
+}
+.hero__in{position:relative;z-index:1;text-align:center;padding-bottom:clamp(30px,5vw,54px)}
+.hero__in::before{
+  content:"";position:absolute;left:50%;top:-6%;transform:translateX(-50%);
+  width:min(1000px,120%);height:130%;z-index:-1;pointer-events:none;
+  background:radial-gradient(56% 62% at 50% 52%,rgba(4,7,15,.8) 22%,rgba(4,7,15,.42) 62%,transparent 100%);
+}
+.hero__pre{font-family:var(--display);font-variation-settings:"wdth" 88,"wght" 700;font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:#d6e4ef;margin:0 0 14px;text-shadow:0 2px 12px rgba(4,7,15,.9)}
+.hero__t{font-family:var(--display);font-variation-settings:"wdth" 60,"wght" 900;font-size:clamp(2.6rem,9.4vw,7.2rem);line-height:.78;letter-spacing:-.035em;text-transform:uppercase;margin:0}
+.hero__t em{font-style:normal;margin-left:.12em;-webkit-text-fill-color:var(--blue-hi);color:var(--blue-hi)}
+.hero__sub{font-family:var(--serif);font-size:clamp(1.3rem,3vw,2.15rem);line-height:1.22;margin:20px auto 0;max-width:24ch}
+.hero__sub i{color:var(--blue-hi)}
+.hero__l{color:var(--muted);max-width:50ch;margin:16px auto 0;font-size:1.02rem}
+.hero__l b{color:var(--white);font-weight:700}
+.hero__cta{margin-top:28px}
+
+.faixa{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.14);background:rgba(4,7,15,.5);backdrop-filter:blur(10px)}
+.faixa__in{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 18px;padding:15px 0;text-align:center}
+.faixa__in span{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-2);font-weight:800}
+.faixa__in b{font-family:var(--display);font-variation-settings:"wdth" 84,"wght" 800;font-size:1rem;letter-spacing:.03em;font-variant-numeric:tabular-nums}
+
+/* ---------- cadastro ---------- */
+.form-sec{position:relative;isolation:isolate;overflow:hidden;background:var(--ink-950);padding:clamp(60px,8vw,104px) 0;border-top:1px solid var(--line)}
+.form-sec::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:url("../assets/mapa-mundi.svg") no-repeat center center/124% auto;opacity:.18;
+  -webkit-mask-image:radial-gradient(108% 88% at 50% 46%,#000 10%,transparent 76%);
+  mask-image:radial-gradient(108% 88% at 50% 46%,#000 10%,transparent 76%);
+}
+.sec-t{font-family:var(--display);font-variation-settings:"wdth" 70,"wght" 900;font-size:clamp(1.9rem,5vw,3.2rem);line-height:.94;text-transform:uppercase;margin:0;letter-spacing:.005em;text-align:center;text-wrap:balance}
+.sec-s{font-family:var(--serif);font-size:clamp(1.15rem,2.3vw,1.5rem);color:var(--muted);margin:14px auto 0;text-align:center;max-width:40ch}
+.sec-s b{color:var(--white);font-weight:400;font-style:italic}
+
+.cartao{
+  position:relative;
+  width:min(560px,100%);margin:clamp(34px,5vw,50px) auto 0;
+  background:linear-gradient(158deg,rgba(17,26,43,.92),rgba(6,11,24,.94));
+  border:1px solid var(--line-strong);border-radius:20px;
+  padding:clamp(26px,4vw,38px);
+  box-shadow:0 26px 70px rgba(0,0,0,.5);
+}
+.campo{display:block;margin-bottom:18px}
+.campo span{display:block;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-2);font-weight:800;margin-bottom:8px}
+.campo input{
+  width:100%;font-family:var(--body);font-size:1rem;color:var(--white);
+  background:rgba(4,7,15,.6);border:1px solid var(--line);border-radius:12px;
+  padding:14px 16px;transition:border-color .16s ease,background .16s ease;
+}
+.campo input::placeholder{color:var(--muted-2)}
+.campo input:focus{outline:none;border-color:var(--blue-hi);background:rgba(4,7,15,.85)}
+.campo input[aria-invalid="true"]{border-color:var(--erro)}
+.campo em{display:none;font-style:normal;font-size:.8rem;color:var(--erro);margin-top:7px}
+.campo input[aria-invalid="true"] ~ em{display:block}
+.cartao .btn{width:100%;margin-top:6px}
+.cartao__pe{margin:14px 0 0;font-size:.82rem;color:var(--muted-2);text-align:center}
+
+/* ---------- dubai ---------- */
+.dubai{position:relative;isolation:isolate;overflow:hidden;padding:clamp(66px,9vw,120px) 0}
+.dubai__bg{position:absolute;inset:0;z-index:-1}
+.dubai__bg img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.dubai__bg::after{content:"";position:absolute;inset:0;background:radial-gradient(96% 84% at 50% 50%,rgba(4,7,15,.9) 24%,rgba(4,7,15,.66) 70%,rgba(4,7,15,.46) 100%),linear-gradient(to top,var(--ink-950) 1%,transparent 30%),linear-gradient(to bottom,var(--ink-950) 1%,transparent 26%)}
+.dubai__l{color:var(--muted);text-align:center;max-width:46ch;margin:16px auto 0}
+.lugares{list-style:none;margin:clamp(36px,5vw,54px) auto 0;padding:0;width:min(700px,100%);display:grid;gap:0}
+.lugares li{position:relative;padding:16px 0 16px 30px;border-top:1px solid var(--line)}
+.lugares li:last-child{border-bottom:1px solid var(--line)}
+.lugares li::before{content:"";position:absolute;left:2px;top:23px;width:9px;height:9px;border-radius:2px;background:var(--blue);border:1px solid var(--blue-hi);transform:rotate(45deg)}
+.lugares b{font-family:var(--display);font-variation-settings:"wdth" 78,"wght" 800;font-size:clamp(1.1rem,2.4vw,1.4rem);text-transform:uppercase;letter-spacing:.01em}
+.dubai__fim{color:var(--muted);text-align:center;max-width:52ch;margin:clamp(32px,4vw,44px) auto 0}
+.dubai__fim b{color:var(--white);font-weight:700}
+.dubai__marca{text-align:center;margin-top:clamp(30px,4vw,42px)}
+.dubai__marca p{margin:0;font-family:var(--display);font-variation-settings:"wdth" 86,"wght" 700;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue-hi)}
+.dubai__marca q{display:block;font-family:var(--serif);font-size:clamp(1.3rem,2.6vw,1.7rem);quotes:none;margin:8px 0 22px}
+
+/* ---------- como participar ---------- */
+.como{background:var(--ink-900);border-top:1px solid var(--line);padding:clamp(58px,8vw,100px) 0}
+.trilha{list-style:none;counter-reset:tp;margin:clamp(38px,5vw,60px) 0 0;padding:0;display:grid;gap:28px}
+@media (min-width:820px){
+  .trilha{grid-template-columns:repeat(3,1fr);gap:0}
+  .trilha li{padding-inline:30px;border-left:1px solid var(--line)}
+  .trilha li:first-child{padding-left:0;border-left:0}
+  .trilha li:last-child{padding-right:0}
+}
+.trilha li{counter-increment:tp}
+.trilha li::before{content:counter(tp,decimal-leading-zero);display:block;margin-bottom:10px;font-family:var(--display);font-variation-settings:"wdth" 74,"wght" 800;font-variant-numeric:tabular-nums;font-size:1.05rem;letter-spacing:.08em;color:var(--blue-hi)}
+.trilha b{display:block;font-family:var(--display);font-variation-settings:"wdth" 80,"wght" 800;font-size:1rem;text-transform:uppercase;letter-spacing:.02em;margin-bottom:8px}
+.trilha p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.6}
+
+/* ---------- fecho ---------- */
+.fecho{position:relative;overflow:hidden;isolation:isolate;padding:clamp(72px,10vw,130px) 0;text-align:center}
+.fecho__bg{position:absolute;inset:0;z-index:-1}
+.fecho__bg img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.fecho__bg::after{content:"";position:absolute;inset:0;background:radial-gradient(92% 80% at 50% 50%,rgba(4,7,15,.92) 26%,rgba(4,7,15,.66) 72%,rgba(4,7,15,.46) 100%),linear-gradient(to top,var(--ink-950) 1%,transparent 30%)}
+.fecho__t{font-family:var(--display);font-variation-settings:"wdth" 68,"wght" 900;font-size:clamp(2rem,5.6vw,3.8rem);line-height:.94;text-transform:uppercase;margin:0 auto;max-width:16ch;letter-spacing:.005em}
+.fecho__l{font-family:var(--serif);font-size:clamp(1.2rem,2.5vw,1.6rem);color:var(--muted);margin:18px auto 0;max-width:34ch}
+.fecho .btn{margin-top:30px}
+.fecho__fone{margin:18px 0 0;font-size:.86rem;color:var(--muted-2);font-variant-numeric:tabular-nums}
+.fecho__fone a{color:var(--white);font-weight:700;text-decoration:none;border-bottom:1px solid var(--line-strong)}
+.fecho__fone a:hover{color:var(--blue-hi);border-bottom-color:var(--blue-hi)}
+
+.foot{border-top:1px solid var(--line-soft);padding:24px 0;background:var(--ink-950)}
+.foot__in{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between}
+.foot__logo{height:32px;width:auto;opacity:.9}
+.foot p{margin:0;font-size:.78rem;color:var(--muted-2)}
+.foot a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line-strong)}
+.foot a:hover{color:var(--blue-hi)}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+</style>
+</head>
+<body>
+
+<header class="topbar" id="topbar">
+  <div class="wrap topbar__in">
+    <a class="brand" href="https://safirion.com" target="_blank" rel="noopener" aria-label="Safirion">
+      <img src="../assets/safirion-logo-horizontal.svg" alt="Safirion — confiança para investir" width="234" height="55">
+    </a>
+    <span class="topbar__sep"></span>
+    <span class="topbar__prazo">Até 31 de dezembro</span>
+    <a class="btn btn--solid" href="#cadastro">Quero participar</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="hero__bg">
+    <img src="../assets/hero-dubai-skyline.jpg" alt="Dois esportivos azuis na areia diante do skyline de Dubai ao pôr do sol, com o touro da Safirion entre eles e um avião da Emirates no céu">
+  </div>
+  <div class="wrap hero__in">
+    <p class="hero__pre">Safirion apresenta</p>
+    <h1 class="hero__t cromo">Dubai<br>Experience <em>2.0</em></h1>
+    <p class="hero__sub">Sua próxima experiência pode <i>começar em Dubai.</i></p>
+    <p class="hero__l">Entre agora para a <b>Dubai Experience 2.0</b> e concorra a uma experiência inesquecível em Dubai.</p>
+    <div class="hero__cta"><a class="btn btn--solid" href="#cadastro">Quero participar</a></div>
+  </div>
+  <div class="faixa">
+    <div class="wrap faixa__in">
+      <span>Período da campanha</span>
+      <b>12 de setembro a 31 de dezembro</b>
+    </div>
+  </div>
+</section>
+
+<section class="form-sec" id="cadastro">
+  <div class="wrap">
+    <div class="fios"><h2 class="sec-t cromo">Quer concorrer?</h2></div>
+    <p class="sec-s">É simples: <b>faça seu cadastro e participe.</b></p>
+
+    <form class="cartao" id="form" novalidate>
+      <label class="campo">
+        <span>Nome completo</span>
+        <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Como você se chama" required>
+        <em>Digite seu nome completo.</em>
+      </label>
+      <label class="campo">
+        <span>E-mail</span>
+        <input type="email" id="email" name="email" autocomplete="email" placeholder="voce@email.com" required>
+        <em>Digite um e-mail válido.</em>
+      </label>
+      <label class="campo">
+        <span>Telefone com DDD</span>
+        <input type="tel" id="fone" name="fone" autocomplete="tel" inputmode="numeric" placeholder="(87) 99999-9999" required>
+        <em>Digite um telefone com DDD, só números.</em>
+      </label>
+      <button class="btn btn--solid" type="submit" id="enviar">Quero participar</button>
+      <p class="cartao__pe">Preencha seus dados para continuar.</p>
+    </form>
+  </div>
+</section>
+
+<section class="dubai">
+  <div class="dubai__bg"><img src="../assets/cards-deserto.jpg" alt=""></div>
+  <div class="wrap">
+    <div class="fios"><h2 class="sec-t cromo">Imagine viver Dubai de verdade</h2></div>
+    <p class="dubai__l">Uma experiência que vai muito além de uma viagem.</p>
+
+    <ul class="lugares">
+      <li><b>Burj Khalifa</b></li>
+      <li><b>Marina de Dubai</b></li>
+      <li><b>Deserto</b></li>
+      <li><b>Carros de luxo</b></li>
+      <li><b>Os lugares mais exclusivos de Dubai</b></li>
+    </ul>
+
+    <p class="dubai__fim">Prepare-se para conhecer uma cidade onde <b>luxo, negócios e experiências extraordinárias</b> fazem parte do dia a dia.</p>
+
+    <div class="dubai__marca">
+      <p>Dubai Experience 2.0</p>
+      <q>Uma experiência Safirion.</q>
+      <a class="btn btn--solid" href="#cadastro">Quero concorrer</a>
+    </div>
+  </div>
+</section>
+
+<section class="como">
+  <div class="wrap">
+    <div class="fios"><h2 class="sec-t cromo">Como participar?</h2></div>
+    <ol class="trilha">
+      <li>
+        <b>Cadastre seus dados</b>
+        <p>Nome, e-mail e telefone.</p>
+      </li>
+      <li>
+        <b>Continue pelo WhatsApp</b>
+        <p>Após o cadastro, você será direcionado para o WhatsApp.</p>
+      </li>
+      <li>
+        <b>Siga as instruções</b>
+        <p>Complete sua participação e acompanhe as novidades da Dubai Experience 2.0.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="fecho">
+  <div class="fecho__bg"><img src="../assets/hero-dubai-skyline.jpg" alt=""></div>
+  <div class="wrap">
+    <h2 class="fecho__t cromo">Dubai está esperando por você</h2>
+    <p class="fecho__l">A próxima grande experiência pode ser a sua.</p>
+    <a class="btn btn--solid" href="#cadastro">Quero participar agora</a>
+    <p class="fecho__fone">WhatsApp <a id="foneFecho" href="#" target="_blank" rel="noopener">+55 87 99201-3884</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <img class="foot__logo" src="../assets/safirion-logo-horizontal.svg" alt="Safirion — confiança para investir" width="234" height="55">
+    <p>Dubai Experience 2.0 · 12 de setembro a 31 de dezembro · <a href="../index.html">ver a competição</a></p>
+  </div>
+</footer>
+
+<script>
+var FONE = "5587992013884";
+
+(function(){
+  var el = document.getElementById("foneFecho");
+  if(el) el.href = "https://wa.me/" + FONE + "?text=" +
+    encodeURIComponent("Olá! Quero participar da Dubai Experience 2.0.");
+})();
+
+/* barra fica solida assim que sai de cima da foto */
+(function(){
+  var bar=document.getElementById("topbar"), raf;
+  function ver(){ bar.classList.toggle("is-stuck", window.scrollY > 40); }
+  window.addEventListener("scroll",function(){
+    if(raf) cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(ver);
+  },{passive:true});
+  ver();
+})();
+
+/* cadastro: valida, monta a mensagem e leva para o WhatsApp */
+(function(){
+  var form = document.getElementById("form");
+  if(!form) return;
+  var nome  = document.getElementById("nome");
+  var email = document.getElementById("email");
+  var fone  = document.getElementById("fone");
+
+  function soDigitos(v){ return (v||"").replace(/\D+/g,""); }
+
+  function mascara(){
+    var d = soDigitos(fone.value).slice(0,11);
+    if(d.length > 6){
+      fone.value = "(" + d.slice(0,2) + ") " + d.slice(2, d.length>10?7:6) + "-" + d.slice(d.length>10?7:6);
+    } else if(d.length > 2){
+      fone.value = "(" + d.slice(0,2) + ") " + d.slice(2);
+    } else if(d.length){
+      fone.value = "(" + d;
+    } else {
+      fone.value = "";
+    }
+  }
+  fone.addEventListener("input", mascara);
+
+  function valida(campo, ok){
+    campo.setAttribute("aria-invalid", ok ? "false" : "true");
+    return ok;
+  }
+  function checa(){
+    var a = valida(nome,  nome.value.trim().split(/\s+/).length >= 2);
+    var b = valida(email, /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim()));
+    var c = valida(fone,  soDigitos(fone.value).length >= 10);
+    return a && b && c;
+  }
+  [nome,email,fone].forEach(function(c){
+    c.addEventListener("blur", checa);
+    c.addEventListener("input", function(){ if(c.getAttribute("aria-invalid")==="true") checa(); });
+  });
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(!checa()){
+      var falho = form.querySelector('[aria-invalid="true"]');
+      if(falho) falho.focus();
+      return;
+    }
+    var texto =
+      "Olá! Quero participar da Dubai Experience 2.0.\n\n" +
+      "Nome: "     + nome.value.trim()  + "\n" +
+      "E-mail: "   + email.value.trim() + "\n" +
+      "Telefone: " + fone.value.trim();
+    window.open("https://wa.me/" + FONE + "?text=" + encodeURIComponent(texto), "_blank", "noopener");
+  });
+})();
+</script>
+
+</body>
+</html>
