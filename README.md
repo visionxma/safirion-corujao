@@ -122,6 +122,22 @@ Vem da arte do banner (`assets/banner-dubai-experience.jpg`), gerada pelo prompt
 
 Mais os fios finos ladeando os títulos (`.fios`) e separando as colunas dos passos.
 
+## A hero em dois arranjos
+
+A foto é 16:9 e a tela do celular é perto de 1:2. Com `object-fit: cover` preenchendo a
+altura, só cabem **27% da largura** da imagem — os dois carros e o touro ficam de fora e
+sobra só o skyline. Não é questão de ajustar `object-position`: é geometria.
+
+Por isso os arranjos são estruturalmente diferentes:
+
+- **Computador** — foto sangrando no fundo, título e botão sobrepostos ao centro.
+- **Celular (≤819px)** — título no escuro, **foto como faixa 16:9 de borda a borda** com
+  o assunto inteiro visível, botão embaixo. A ordem vem de `order` no flex, sem duplicar
+  marcação.
+
+No celular o botão dourado da faixa inferior some: ele repetiria um segundo dourado a
+200px do primeiro.
+
 ## A ideia da página
 
 **O limiar é o herói.** Numa competição o que decide tudo é o mínimo que te coloca na
