@@ -19,9 +19,11 @@
   --line:rgba(161,184,195,.16);
   --line-soft:rgba(161,184,195,.09);
   --line-strong:rgba(161,184,195,.3);
+  --ac:#e0a62a;
+  --ac-hi:#f5c542;
+  --ac-claro:#ffe9a8;
+  --alerta:#f47133;
   --blue:#2389e6;
-  --blue-hi:#7cc0ff;
-  --gold:#f6b83c;
   --white:#fff;
   --muted:#a1b8c3;
   --muted-2:#7a8f9b;
@@ -42,23 +44,23 @@ body{
 }
 img{max-width:100%;display:block}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--blue-hi);outline-offset:3px}
+:focus-visible{outline:2px solid var(--ac-hi);outline-offset:3px}
 .wrap{width:min(100% - 44px,var(--wrap));margin-inline:auto}
 .tnum{font-variant-numeric:tabular-nums}
 
 /* cromado da arte: prata com brilho no meio. cor solida como base, para o
    caso de background-clip:text nao pegar */
 .cromo{
-  color:var(--white);
+  color:var(--ac-hi);
   background-image:linear-gradient(177deg,
-    #ffffff 0%, #f0f5fa 24%, #adc0d0 46%,
-    #ffffff 58%, #dfe8f0 78%, #aabdcd 100%);
+    #fff6d6 0%, #f7d264 20%, #c9911d 44%,
+    #fff1bd 56%, #e3ab2c 76%, #a8700d 100%);
   -webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;
   filter:drop-shadow(0 3px 14px rgba(4,7,15,.6));
 }
 @supports not ((-webkit-background-clip:text) or (background-clip:text)){
-  .cromo{-webkit-text-fill-color:var(--white);background-image:none}
+  .cromo{-webkit-text-fill-color:var(--ac-hi);background-image:none}
 }
 
 /* titulo ladeado por fios, como na arte */
@@ -78,10 +80,10 @@ a{color:inherit}
   text-decoration:none;cursor:pointer;
   transition:background .16s ease,border-color .16s ease,color .16s ease;
 }
-.btn--solid{background:var(--blue);color:#fff}
+.btn--solid{background:var(--ac);color:#fff}
 .btn--solid:hover{background:#3f9df0}
 .btn--line{border-color:var(--line-strong);color:var(--white)}
-.btn--line:hover{border-color:var(--blue-hi);color:var(--blue-hi)}
+.btn--line:hover{border-color:var(--ac-hi);color:var(--ac-hi)}
 .btn--sm{padding:10px 18px;font-size:.68rem}
 .btn__ico{width:17px;height:17px;flex:0 0 auto;margin-right:9px}
 .btn--sm .btn__ico{width:14px;height:14px;margin-right:7px}
@@ -134,20 +136,24 @@ a{color:inherit}
   font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:#d6e4ef;margin:0 0 14px;
   text-shadow:0 2px 12px rgba(4,7,15,.9);
 }
-.hero__t{
-  font-family:var(--display);font-variation-settings:"wdth" 60,"wght" 900;
-  font-size:clamp(2.6rem,9.4vw,7.2rem);line-height:.78;
-  letter-spacing:-.035em;text-transform:uppercase;margin:0;
+.hero__t{margin:0;line-height:.8}
+.hero__nome{
+  display:block;
+  font-family:var(--display);font-variation-settings:"wdth" 62,"wght" 900;
+  font-size:clamp(2.6rem,9.4vw,7.2rem);letter-spacing:-.035em;text-transform:uppercase;
 }
-.hero__t em{
-  font-style:normal;margin-left:.12em;
-  -webkit-text-fill-color:var(--blue-hi);color:var(--blue-hi);
+.hero__exp{
+  display:block;margin-top:.06em;
+  font-family:var(--display);font-variation-settings:"wdth" 78,"wght" 800;
+  font-size:clamp(1.3rem,4.6vw,2.9rem);letter-spacing:.03em;text-transform:uppercase;
+  text-shadow:0 2px 14px rgba(4,7,15,.85);
 }
+.hero__exp em{font-style:normal;margin-left:.14em}
 .hero__sub{
   font-family:var(--serif);font-size:clamp(1.25rem,2.8vw,2rem);
   line-height:1.25;margin:18px auto 0;color:var(--white);max-width:26ch;
 }
-.hero__sub i{color:var(--blue-hi)}
+.hero__sub i{color:var(--ac-hi)}
 
 /* faixa de informacao no rodape da foto */
 .faixa{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.14);background:rgba(4,7,15,.5);backdrop-filter:blur(10px)}
@@ -202,15 +208,15 @@ a{color:inherit}
 }
 .ficha:not(.ficha--aberta) .lim b{
   color:var(--white);
-  background-image:linear-gradient(177deg,#ffffff 0%,#f0f5fa 24%,#adc0d0 48%,#ffffff 58%,#dfe8f0 80%,#aabdcd 100%);
+  background-image:linear-gradient(177deg,#fff6d6 0%,#f7d264 22%,#c9911d 46%,#fff1bd 56%,#e3ab2c 78%,#a8700d 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
 @supports not ((-webkit-background-clip:text) or (background-clip:text)){
   .ficha:not(.ficha--aberta) .lim b{-webkit-text-fill-color:var(--white);background-image:none}
 }
-.lim span{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-hi);font-weight:800}
-.ficha--aberta .lim b{color:var(--gold)}
-.ficha--aberta .lim span{color:var(--gold)}
+.lim span{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ac-hi);font-weight:800}
+.ficha--aberta .lim b{color:var(--alerta);-webkit-text-fill-color:var(--alerta);background-image:none}
+.ficha--aberta .lim span{color:var(--alerta)}
 
 .ficha__id{min-width:0;padding-top:6px}
 .ficha__cat{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted-2);font-weight:800;margin:0 0 8px}
@@ -221,7 +227,7 @@ a{color:inherit}
 .ficha__c{margin:.5rem 0 0;color:var(--white);font-size:1rem;font-weight:600;max-width:36ch}
 .ficha__x{margin:0;padding-top:10px;color:var(--muted);font-size:.9rem;line-height:1.6}
 .ficha__x b{color:var(--white);font-weight:700}
-.ficha--aberta .ficha__x{color:var(--gold)}
+.ficha--aberta .ficha__x{color:var(--alerta)}
 
 /* ---------- passos: horizontal, para nao repetir a tabela ---------- */
 .passos-sec{
@@ -256,7 +262,7 @@ a{color:inherit}
   display:block;margin-bottom:10px;
   font-family:var(--display);font-variation-settings:"wdth" 74,"wght" 800;
   font-variant-numeric:tabular-nums;font-size:1.05rem;letter-spacing:.08em;
-  color:var(--blue-hi);
+  color:var(--ac-hi);
 }
 .trilha b{
   display:block;font-family:var(--display);font-variation-settings:"wdth" 80,"wght" 800;
@@ -270,7 +276,7 @@ a{color:inherit}
 .nota p{margin:0;color:var(--muted);font-size:.92rem;max-width:46ch}
 .nota p b{color:var(--white);font-weight:700}
 .nota span{display:block;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-2);font-weight:800;margin-bottom:7px}
-.nota--aberta span{color:var(--gold)}
+.nota--aberta span{color:var(--alerta)}
 
 /* ---------- fecho: foto sangrando ---------- */
 .fecho{position:relative;overflow:hidden;isolation:isolate;padding:clamp(70px,10vw,130px) 0}
@@ -287,12 +293,12 @@ a{color:inherit}
   font-family:var(--serif);font-size:clamp(2.3rem,6vw,4.2rem);line-height:1.04;
   margin:0 auto;max-width:15ch;
 }
-.fecho__t i{color:var(--blue-hi)}
+.fecho__t i{color:var(--ac-hi)}
 .fecho__l{color:var(--muted);max-width:46ch;margin:18px auto 0;font-size:1.02rem}
 .fecho__cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:30px;justify-content:center}
 .fecho__fone{margin:18px 0 0;font-size:.86rem;color:var(--muted-2);font-variant-numeric:tabular-nums}
 .fecho__fone a{color:var(--white);font-weight:700;text-decoration:none;border-bottom:1px solid var(--line-strong)}
-.fecho__fone a:hover{color:var(--blue-hi);border-bottom-color:var(--blue-hi)}
+.fecho__fone a:hover{color:var(--ac-hi);border-bottom-color:var(--ac-hi)}
 
 .foot{border-top:1px solid var(--line-soft);padding:24px 0;background:var(--ink-950)}
 .foot__in{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between}
@@ -333,7 +339,7 @@ a{color:inherit}
 }
 .ponto{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(161,184,195,.32);cursor:pointer;transition:background .18s ease,transform .18s ease}
 .ponto:hover{background:rgba(161,184,195,.6)}
-.ponto.is-on{background:var(--blue-hi);transform:scale(1.35)}
+.ponto.is-on{background:var(--ac-hi);transform:scale(1.35)}
 
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms !important;transition-duration:.001ms !important}
@@ -365,7 +371,10 @@ a{color:inherit}
   </div>
   <div class="wrap hero__in">
     <p class="hero__pre">Safirion apresenta</p>
-    <h1 class="hero__t cromo">Safirion<br>Experience <em>2.0</em></h1>
+    <h1 class="hero__t">
+      <span class="hero__nome cromo">Safirion</span>
+      <span class="hero__exp">Experience <em class="cromo">2.0</em></span>
+    </h1>
     <p class="hero__sub">Cinco disputas correndo ao mesmo tempo, <i>até a virada do ano.</i></p>
   </div>
   <div class="faixa">

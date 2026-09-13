@@ -24,15 +24,18 @@ Página estática: um `index.html` sem build, sem dependências de runtime.
 
 Alinhar as duas é decisão de campanha, não de código.
 
-## Paleta da /lead: ouro, não azul
+## Paleta: ouro nas duas páginas
 
-A `/lead` roda numa paleta própria, vinda do cartaz de campanha: ouro
-(`#ffe9a8` · `#f5c542` · `#e0a62a` · `#a96f0c`) sobre o pôr do sol da foto. O azul
-continua só onde ele é da marca — o logo e os carros da imagem.
+Vem do cartaz de campanha: ouro (`#ffe9a8` · `#f5c542` · `#e0a62a` · `#a96f0c`) sobre o
+pôr do sol da foto. O azul da marca ficou onde ele é insubstituível — o logo, os carros
+da imagem e os pontos do mapa, que sozinhos dão a tensão fria contra o dourado.
 
-O acento sai dos tokens `--ac` / `--ac-hi` / `--ac-claro` / `--ac-esc`, e o `.cromo`
-dessa página usa gradiente dourado em vez do prata da raiz. Trocar a campanha de cor
-é mexer nesses quatro valores.
+O acento sai dos tokens `--ac` / `--ac-hi` / `--ac-claro`, e o `.cromo` usa gradiente
+dourado. Trocar a campanha de cor é mexer nesses valores.
+
+**O alerta precisou de cor nova.** A pendência da Live no TikTok era âmbar `#f6b83c`,
+que some no meio de uma página dourada. Passou para o laranja `#f47133`, também da
+paleta do safirion.com, que se distingue do ouro sem introduzir um matiz estranho.
 
 A hero é o mesmo cartaz em dois arranjos, os dois vindos das peças de campanha —
 não é o layout de celular esticado:
