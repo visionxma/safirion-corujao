@@ -34,8 +34,21 @@ O acento sai dos tokens `--ac` / `--ac-hi` / `--ac-claro` / `--ac-esc`, e o `.cr
 dessa página usa gradiente dourado em vez do prata da raiz. Trocar a campanha de cor
 é mexer nesses quatro valores.
 
-A hero é um cartaz vertical: assinatura no topo, nota no canto, `DUBAI` em ouro
-metálico, quatro chamarizes separados por fios e o botão dourado.
+A hero é o mesmo cartaz em dois arranjos, os dois vindos das peças de campanha —
+não é o layout de celular esticado:
+
+| | Celular | Computador (≥900px) |
+|---|---|---|
+| Alinhamento | centralizado | coluna à esquerda |
+| Lista `viagem / luxo / liberdade / oportunidades` | escondida | coluna lateral direita |
+| Chamarizes | centralizados, ícone em cima | alinhados à esquerda, sob o botão |
+| "Dubai te espera." | caixa alta espaçada, com fios | serifada em itálico dourado, canto inferior direito |
+
+Uma grade de áreas (`marca / lado / col / espera`) faz a troca; o conteúdo é o mesmo
+nos dois, sem duplicar marcação.
+
+A barra do topo fica escondida até 260px de rolagem: a hero já assina a marca, e o
+logo dela batia no `SAFIRION` do cartaz.
 
 ## O cadastro da /lead
 
