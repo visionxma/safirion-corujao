@@ -24,6 +24,19 @@ Página estática: um `index.html` sem build, sem dependências de runtime.
 
 Alinhar as duas é decisão de campanha, não de código.
 
+## Paleta da /lead: ouro, não azul
+
+A `/lead` roda numa paleta própria, vinda do cartaz de campanha: ouro
+(`#ffe9a8` · `#f5c542` · `#e0a62a` · `#a96f0c`) sobre o pôr do sol da foto. O azul
+continua só onde ele é da marca — o logo e os carros da imagem.
+
+O acento sai dos tokens `--ac` / `--ac-hi` / `--ac-claro` / `--ac-esc`, e o `.cromo`
+dessa página usa gradiente dourado em vez do prata da raiz. Trocar a campanha de cor
+é mexer nesses quatro valores.
+
+A hero é um cartaz vertical: assinatura no topo, nota no canto, `DUBAI` em ouro
+metálico, quatro chamarizes separados por fios e o botão dourado.
+
 ## O cadastro da /lead
 
 Não há backend. O formulário valida nome, e-mail e telefone no navegador e abre o WhatsApp
