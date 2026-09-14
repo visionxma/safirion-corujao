@@ -88,34 +88,34 @@ a{color:inherit}
 }
 .hero__in{
   position:relative;z-index:1;padding:26px 0 30px;text-align:center;
-  display:grid;gap:0 20px;
-  grid-template-columns:minmax(0,1fr) auto;
-  grid-template-areas:"marca lado" "col col" "espera espera";
-  align-items:start;
+  display:grid;gap:0;
+  grid-template-columns:minmax(0,1fr);
+  grid-template-areas:"marca" "lado" "col" "espera";
+  justify-items:center;
 }
-.hero__marca{grid-area:marca;text-align:left}
-.hero__lado{grid-area:lado;text-align:right}
+.hero__marca{grid-area:marca;display:flex;flex-direction:column;align-items:center;gap:9px}
+.hero__lado{grid-area:lado;text-align:center;margin-top:14px}
 .hero__col{grid-area:col;min-width:0}
 .hero__espera{grid-area:espera}
 
-.hero__safirion{
-  font-family:var(--display);font-variation-settings:"wdth" 96,"wght" 800;
-  font-size:clamp(1.15rem,4.4vw,1.9rem);letter-spacing:.2em;text-transform:uppercase;
-  margin:0;text-shadow:0 2px 14px rgba(4,7,15,.9);
+.hero__logo{
+  height:clamp(32px,8vw,46px);width:auto;
+  filter:drop-shadow(0 2px 14px rgba(4,7,15,.95));
 }
 .hero__apresenta{
   font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
-  font-size:clamp(.6rem,2.3vw,.78rem);letter-spacing:.42em;text-transform:uppercase;
-  color:var(--muted);margin:7px 0 0;text-shadow:0 2px 10px rgba(4,7,15,.9);
+  font-size:clamp(.58rem,2.2vw,.78rem);letter-spacing:.42em;text-transform:uppercase;
+  color:#cfdbe5;margin:0;text-shadow:0 2px 12px rgba(4,7,15,.95);
 }
 .palavras{display:none}
 .hero__nota{
-  margin:2px 0 0;max-width:13ch;margin-left:auto;
-  font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
-  font-size:clamp(.54rem,2vw,.68rem);letter-spacing:.24em;line-height:1.9;
+  margin:0 auto;max-width:30ch;
+  font-family:var(--display);font-variation-settings:"wdth" 90,"wght" 600;
+  font-size:clamp(.56rem,2.1vw,.7rem);letter-spacing:.24em;line-height:1.8;
   text-transform:uppercase;color:var(--ac-claro);
+  text-shadow:0 2px 12px rgba(4,7,15,.95);
 }
-.hero__nota::after{content:"";display:block;width:42px;height:2px;margin:10px 0 0 auto;background:var(--ac)}
+.hero__nota::before{content:"";display:block;width:46px;height:2px;margin:0 auto 13px;background:var(--ac)}
 
 .hero__t{margin:clamp(22px,5vw,38px) 0 0;line-height:.8}
 .hero__dubai{
@@ -192,9 +192,15 @@ a{color:inherit}
     grid-template-areas:"marca lado" "col lado" "col espera";
     align-content:center;
   }
-  .hero__marca{display:flex;align-items:center;gap:clamp(16px,2.4vw,30px)}
+  .hero__in{
+    grid-template-columns:minmax(0,1fr) auto;
+    justify-items:stretch;
+  }
+  .hero__marca{flex-direction:row;align-items:center;gap:clamp(16px,2.4vw,28px);justify-content:flex-start}
   .hero__marca::after{content:"";height:1px;width:clamp(40px,6vw,86px);background:var(--ac);opacity:.85}
-  .hero__apresenta{margin:0}
+  .hero__lado{text-align:right;margin-top:0}
+  .hero__nota{margin:0 0 0 auto;max-width:15ch;line-height:2.1}
+  .hero__nota::before{display:none}
   .hero__col{max-width:min(660px,54vw);padding-top:clamp(14px,2.4vw,26px)}
   .hero__lado{align-self:start;padding-top:6px}
   .palavras{
@@ -379,7 +385,8 @@ a{color:inherit}
   <div class="wrap hero__in">
 
     <div class="hero__marca">
-      <p class="hero__safirion">Safirion</p>
+      <img class="hero__logo" src="../assets/safirion-logo-horizontal.svg"
+           alt="Safirion — confiança para investir" width="234" height="55">
       <p class="hero__apresenta">Apresenta</p>
     </div>
 
