@@ -90,25 +90,13 @@ Três cuidados no player:
 O véu escuro dessa seção é mais leve que o das outras: calibrado para foto
 parada, ele engolia o movimento. O texto ganhou `text-shadow` própria em troca.
 
-## Placar ao vivo
-
-A seção existe, está desenhada e renderiza assim que houver dados. Hoje mostra o estado
-*"ainda não abriu"*, porque falta uma rota pública no repositório `safirion-members`:
-`/api/corujao-preview` devolve **401** sem sessão e nenhuma rota de lá manda CORS.
-
-`functions/api/ranking.js` é uma Pages Function no domínio da própria landing que busca no
-servidor — CORS é restrição de navegador, chamada servidor-a-servidor não esbarra nela.
-Configure `RANKING_ORIGEM` em Pages → Settings → Environment variables.
-
-O passo que falta, com o código da rota pronto, está em **[RANKING.md](RANKING.md)**.
-
 ## Contadores
 
 Cada página conta uma coisa diferente, porque as janelas são diferentes:
 
 | Página | Conta até | Rótulo |
 |---|---|---|
-| `/` | 31/12 23:59 (começou 13/09) | troca sozinho entre *faltam para a largada*, *ao vivo* e *encerrada* |
+| `/` | 31/12 23:59 (começou 13/09) | troca sozinho entre *ao vivo* e *encerrada* |
 | `/lead/` | 31/12 23:59 | *falta para o encerramento* (a campanha começou em 12/09) |
 
 O rótulo existe porque um contador sem legenda não diz o que está contando — era o caso
