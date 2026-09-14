@@ -94,6 +94,30 @@ com os três campos já escritos na mensagem — é assim que o dado chega até 
 existe lista para exportar depois. Para capturar de verdade é preciso um destino: um endpoint
 próprio, um Google Forms por trás, ou uma ferramenta de formulário.
 
+## Responsividade
+
+Auditado nas duas páginas em **13 larguras** — 320, 360, 390, 412, 430, 540, 768, 834,
+900, 1024, 1280, 1440 e 1920px — checando quatro coisas por vez:
+
+| O que se mede | Critério |
+|---|---|
+| Rolagem horizontal | `scrollWidth === innerWidth` |
+| Alvos de toque | nenhum link ou botão abaixo de 32px |
+| Texto miúdo | nenhum `font-size` abaixo de 10px |
+| `alt` e `id` duplicado | zero ocorrências |
+
+**26 de 26 combinações limpas.** O script da auditoria não ficou no repo; ele roda um
+iframe por largura e lê o DOM renderizado, e vale recriar antes de qualquer mudança grande
+de layout — chutar responsividade olhando print não funciona.
+
+Três correções que só apareceram medindo:
+
+- Os pontos do carrossel tinham **8×8px**. O ponto continua com 8px, mas o botão virou
+  40×40 com o círculo desenhado em `::before`.
+- 17 tamanhos de fonte entre **8,3 e 9,5px** foram elevados ao piso de 10px.
+- `.faixa__datas span` pegava também o `<span>` que embrulha o par, e a caixa alta vazava
+  para dentro do valor: a data saía como *"18/09, 18H"*.
+
 ## Rodar
 
 ```sh
