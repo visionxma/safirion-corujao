@@ -39,14 +39,15 @@ paleta do safirion.com, que se distingue do ouro sem introduzir um matiz estranh
 
 A hero é uma **coluna única centralizada** nas duas larguras, seguindo a raiz.
 
-**Duas fotos, uma por formato.** Um `<picture>` entrega a peça vertical (`900×1600`) abaixo
-de 900px e a horizontal (`1600×900`) acima. O navegador baixa só a que vai usar — não são
-duas imagens carregadas e uma escondida.
+**A mesma foto da raiz** (`hero-dubai-skyline.jpg`), em todas as larguras.
 
-Isso existe porque 16:9 não preenche tela de celular sem perder o assunto: com `cover`
-enchendo a altura, só cabem ~27% da largura da imagem, e os carros e o touro ficam de fora.
-A peça vertical resolve na origem, e o `object-position` no celular volta a `50% 50%` — ela
-já vem enquadrada.
+Chegou a existir uma peça vertical `900×1600` servida por `<picture>` abaixo de 900px, para
+resolver o corte no celular. Foi revertida a pedido, para as duas páginas usarem a mesma
+imagem. O arquivo está em `assets/arquivo/hero-dubai-vertical.jpg`, caso volte a fazer falta.
+
+Consequência a saber: no celular, 16:9 preenchendo a altura mostra só cerca de 27% da largura
+da foto — sobra o skyline, e os carros e o touro saem do enquadramento. A raiz contorna isso
+empilhando a foto como faixa 16:9; a `/lead` mantém a foto como fundo da coluna centralizada.
 
 Ela já foi uma grade de duas colunas, com a lista de palavras numa coluna lateral direita.
 Ficou ilegível: o véu era fraco demais e a coluna da direita caía sobre a parte clara do céu.
