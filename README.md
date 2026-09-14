@@ -13,14 +13,25 @@ Página estática: um `index.html` sem build, sem dependências de runtime.
 
 | Rota | Arquivo | O que é |
 |---|---|---|
-| `/` | `index.html` | A competição: cinco disputas, mínimos, como participar |
-| `/lead/` | `lead/index.html` | Captura de lead: cadastro que segue para o WhatsApp |
+| `/afiliado/` | `afiliado/index.html` | A competição: seis disputas, mínimos, como participar |
+| `/experience/` | `experience/index.html` | Captura de lead: cadastro que segue para o WhatsApp |
+
+A raiz não serve página própria — `_redirects` manda `/` para `/afiliado/`.
+
+**Os caminhos de assets são absolutos** (`/assets/…`), não relativos. As duas páginas vivem
+em subpastas, e caminho relativo quebraria de novo na próxima vez que uma rota mudasse.
+
+### Rotas antigas
+
+`/experience` respondia por essa captura até 14/09/2026 e virou `/experience`. O `_redirects`
+mantém o caminho antigo funcionando com **301**, para links já divulgados não morrerem.
+O `/` → `/afiliado/` é **302** de propósito: se a entrada mudar, nenhum cache precisa expirar.
 
 **Duas divergências herdadas da copy, de propósito não resolvidas por mim:**
 
-1. **Nome.** A raiz usa *Safirion Experience 2.0*; a `/lead` usa *Dubai Experience 2.0*,
+1. **Nome.** A raiz usa *Safirion Experience 2.0*; a `/experience` usa *Dubai Experience 2.0*,
    que é como a copy foi entregue.
-2. **Datas.** A raiz diz **18/09 às 18h** a 31/12; a `/lead` diz **12 de setembro** a 31/12.
+2. **Datas.** A raiz diz **18/09 às 18h** a 31/12; a `/experience` diz **12 de setembro** a 31/12.
 
 Alinhar as duas é decisão de campanha, não de código.
 
@@ -49,7 +60,7 @@ imagem. O arquivo está em `assets/arquivo/hero-dubai-vertical.jpg`, caso volte 
 faixa 16:9 de borda a borda, e a chamada embaixo. É o que resolve o corte — 16:9 preenchendo
 a altura de um celular mostra só ~27% da largura, e os carros e o touro saem do enquadramento.
 
-No computador a `/lead` volta a ser coluna centralizada com a foto sangrando ao fundo. A
+No computador a `/experience` volta a ser coluna centralizada com a foto sangrando ao fundo. A
 troca é por `order` no flex, com o mesmo conteúdo nos dois — a marcação é dividida em
 `.hero__in` (marca, palavras, lockup) e `.hero__baixo` (copy, botão, chamarizes), para a
 faixa poder entrar entre elas.
@@ -97,19 +108,19 @@ Cada página conta uma coisa diferente, porque as janelas são diferentes:
 | Página | Conta até | Rótulo |
 |---|---|---|
 | `/` | 31/12 23:59 (começou 13/09) | troca sozinho entre *ao vivo* e *encerrada* |
-| `/lead/` | 31/12 23:59 | *falta para o encerramento* (a campanha começou em 12/09) |
+| `/experience/` | 31/12 23:59 | *falta para o encerramento* (a campanha começou em 12/09) |
 
 O rótulo existe porque um contador sem legenda não diz o que está contando — era o caso
 da faixa antes.
 
-## O cadastro da /lead
+## O cadastro da /experience
 
 Valida nome, e-mail e telefone no navegador, grava numa planilha do Google e abre o WhatsApp
 com os três campos já escritos na mensagem. O WhatsApp é a segunda via: se a planilha falhar,
 o lead ainda chega pela conversa.
 
 **Está ligado e testado** (14/09/2026 — o endpoint respondeu `{"ok":true}`). A URL do app
-da Web fica na constante `PLANILHA`, no fim de `lead/index.html`. Se o script for
+da Web fica na constante `PLANILHA`, no fim de `experience/index.html`. Se o script for
 republicado, a URL muda e precisa ser atualizada ali.
 
 O passo a passo — criar a planilha, publicar o Apps Script, colar a URL — está em
@@ -150,8 +161,12 @@ Três correções que só apareceram medindo:
 
 ```sh
 python3 -m http.server 4321
-# http://127.0.0.1:4321/index.html
+# http://127.0.0.1:4321/afiliado/
+# http://127.0.0.1:4321/experience/
 ```
+
+O `_redirects` é do Cloudflare Pages: **localmente a raiz não redireciona**, é preciso abrir
+`/afiliado/` direto.
 
 Precisa de servidor local (não abrir o arquivo direto por `file://`) porque os assets
 são referenciados por caminho absoluto a partir da raiz do projeto.
@@ -279,7 +294,7 @@ O horário de encerramento — **23:59 do dia 31/12** — foi assumido a partir 
 de dezembro". O de início, **00:00 de 13/09**, foi assumido a partir de "já começou dia 13".
 Se algum for outro horário, são as constantes `START` e `END`.
 
-A `/lead` diz que a campanha vai de **12/09** a 31/12, e a raiz diz que a competição começou
+A `/experience` diz que a campanha vai de **12/09** a 31/12, e a raiz diz que a competição começou
 em **13/09**. As duas datas vieram de fontes diferentes e podem ser a mesma coisa dita de dois
 jeitos — vale confirmar antes de anunciar.
 

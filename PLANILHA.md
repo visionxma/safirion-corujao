@@ -1,6 +1,6 @@
 # Salvar os cadastros numa planilha
 
-A `/lead` é estática — não tem servidor. O caminho para gravar numa planilha sem contratar
+A `/experience` é estática — não tem servidor. O caminho para gravar numa planilha sem contratar
 nada é um **Google Apps Script** publicado como app da web: a página manda os dados, o
 script escreve a linha na planilha.
 
@@ -94,7 +94,7 @@ Copie a **URL do app da Web**. Ela termina em `/exec`.
 
 ## 5. Cole a URL na página
 
-Em `lead/index.html`, procure a linha:
+Em `experience/index.html`, procure a linha:
 
 ```javascript
 var PLANILHA = "";
@@ -119,11 +119,11 @@ teste. A linha deve aparecer na aba **Leads** em segundos.
 |---|---|
 | Data/hora | Relógio do servidor do Google |
 | Nome, E-mail, Telefone | Os três campos do formulário |
-| Origem | Caminho da página (`/lead/`) |
+| Origem | Caminho da página (`/experience/`) |
 | utm_source, utm_medium, utm_campaign | Da URL, quando existirem |
 
 As três últimas colunas valem ouro se você rodar anúncio: chamando a página como
-`…/lead/?utm_source=instagram&utm_campaign=stories-set`, cada lead chega sabendo de onde
+`…/experience/?utm_source=instagram&utm_campaign=stories-set`, cada lead chega sabendo de onde
 veio, e dá para comparar canais por conversão em vez de por achismo.
 
 ---

@@ -1,0 +1,8 @@
+# A rota /lead virou /experience em 14/09/2026. Permanente: links ja
+# divulgados continuam funcionando e os buscadores atualizam o indice.
+/lead/*   /experience/:splat   301
+/lead     /experience/         301
+
+# A raiz nao serve pagina propria: a competicao mora em /afiliado.
+# Temporario de proposito — se a entrada mudar, nenhum cache precisa expirar.
+/         /afiliado/           302
