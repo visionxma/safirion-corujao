@@ -91,14 +91,12 @@ Valida nome, e-mail e telefone no navegador, grava numa planilha do Google e abr
 com os três campos já escritos na mensagem. O WhatsApp é a segunda via: se a planilha falhar,
 o lead ainda chega pela conversa.
 
-**A gravação depende de uma constante.** No fim de `lead/index.html`:
+**Está ligado e testado** (14/09/2026 — o endpoint respondeu `{"ok":true}`). A URL do app
+da Web fica na constante `PLANILHA`, no fim de `lead/index.html`. Se o script for
+republicado, a URL muda e precisa ser atualizada ali.
 
-```javascript
-var PLANILHA = "";   // vazio = nada é gravado
-```
-
-O passo a passo para preencher isso — criar a planilha, publicar o Apps Script, colar a URL —
-está em **[PLANILHA.md](PLANILHA.md)**. São seis passos dentro da sua conta Google.
+O passo a passo — criar a planilha, publicar o Apps Script, colar a URL — está em
+**[PLANILHA.md](PLANILHA.md)**, caso precise refazer.
 
 Além dos três campos, cada linha grava data/hora, a página de origem e os parâmetros
 `utm_source`, `utm_medium` e `utm_campaign` da URL — para saber de qual anúncio veio o lead.
