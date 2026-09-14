@@ -87,12 +87,25 @@ da faixa antes.
 
 ## O cadastro da /lead
 
-Não há backend. O formulário valida nome, e-mail e telefone no navegador e abre o WhatsApp
-com os três campos já escritos na mensagem — é assim que o dado chega até você.
+Valida nome, e-mail e telefone no navegador, grava numa planilha do Google e abre o WhatsApp
+com os três campos já escritos na mensagem. O WhatsApp é a segunda via: se a planilha falhar,
+o lead ainda chega pela conversa.
 
-**Nada fica gravado.** Se a pessoa preencher e não enviar no WhatsApp, o lead se perde, e não
-existe lista para exportar depois. Para capturar de verdade é preciso um destino: um endpoint
-próprio, um Google Forms por trás, ou uma ferramenta de formulário.
+**A gravação depende de uma constante.** No fim de `lead/index.html`:
+
+```javascript
+var PLANILHA = "";   // vazio = nada é gravado
+```
+
+O passo a passo para preencher isso — criar a planilha, publicar o Apps Script, colar a URL —
+está em **[PLANILHA.md](PLANILHA.md)**. São seis passos dentro da sua conta Google.
+
+Além dos três campos, cada linha grava data/hora, a página de origem e os parâmetros
+`utm_source`, `utm_medium` e `utm_campaign` da URL — para saber de qual anúncio veio o lead.
+
+O formulário tem armadilha para robô (campo escondido fora da viewport e fora da tabulação) e
+usa `navigator.sendBeacon`, que enfileira o envio no navegador e sobrevive à navegação para o
+WhatsApp.
 
 ## Responsividade
 

@@ -314,7 +314,11 @@ a{color:inherit}
 .campo em{display:none;font-style:normal;font-size:.8rem;color:var(--erro);margin-top:7px}
 .campo input[aria-invalid="true"] ~ em{display:block}
 .cartao .btn{width:100%;margin-top:6px}
-.cartao__pe{margin:14px 0 0;font-size:.82rem;color:var(--muted-2);text-align:center}
+.cartao__pe{margin:14px 0 0;font-size:.82rem;color:var(--muted-2);text-align:center;transition:color .18s ease}
+.cartao__pe.ok{color:var(--ac-hi);font-weight:700}
+.cartao__pe.ruim{color:var(--erro);font-weight:700}
+.mel{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.btn[aria-busy="true"]{opacity:.72;pointer-events:none}
 
 /* ---------- dubai ---------- */
 .dubai{position:relative;isolation:isolate;overflow:hidden;padding:clamp(66px,9vw,120px) 0}
@@ -494,8 +498,11 @@ a{color:inherit}
         <input type="tel" id="fone" name="fone" autocomplete="tel" inputmode="numeric" placeholder="(87) 99999-9999" required>
         <em>Digite um telefone com DDD, só números.</em>
       </label>
+      <div class="mel" aria-hidden="true">
+        <label>Deixe em branco<input type="text" name="empresa" tabindex="-1" autocomplete="off"></label>
+      </div>
       <button class="btn btn--solid" type="submit" id="enviar">Quero participar</button>
-      <p class="cartao__pe">Preencha seus dados para continuar.</p>
+      <p class="cartao__pe" id="recado">Preencha seus dados para continuar.</p>
     </form>
   </div>
 </section>
@@ -581,6 +588,11 @@ a{color:inherit}
 
 <script>
 var FONE = "5587992013884";
+
+/* Cole aqui a URL do app do Apps Script (termina em /exec).
+   Enquanto estiver vazio, o cadastro segue direto para o WhatsApp e
+   NADA e gravado. Passo a passo em PLANILHA.md. */
+var PLANILHA = "";
 
 /* video de fundo: so carrega e roda quando entra em cena, e nunca com
    prefers-reduced-motion — nesse caso fica no frame do poster */
@@ -685,19 +697,66 @@ var FONE = "5587992013884";
     c.addEventListener("input", function(){ if(c.getAttribute("aria-invalid")==="true") checa(); });
   });
 
+  var botao  = document.getElementById("enviar");
+  var recado = document.getElementById("recado");
+  var mel    = form.querySelector('input[name="empresa"]');
+  var enviado = false;
+
+  function diz(t, classe){
+    recado.textContent = t;
+    recado.className = "cartao__pe" + (classe ? " " + classe : "");
+  }
+
+  function paraPlanilha(dados){
+    if(!PLANILHA) return false;                 // sem URL configurada, segue direto
+    var corpo = new Blob([JSON.stringify(dados)], {type:"text/plain;charset=utf-8"});
+    // sendBeacon sobrevive a navegacao para o WhatsApp; fetch e a rede de seguranca
+    if(navigator.sendBeacon && navigator.sendBeacon(PLANILHA, corpo)) return true;
+    try{
+      fetch(PLANILHA, {method:"POST", mode:"no-cors", body:corpo, keepalive:true});
+      return true;
+    }catch(err){ return false; }
+  }
+
   form.addEventListener("submit", function(e){
     e.preventDefault();
+    if(enviado) return;
+    if(mel && mel.value) return;                // robo preencheu o campo escondido
     if(!checa()){
       var falho = form.querySelector('[aria-invalid="true"]');
       if(falho) falho.focus();
+      diz("Confira os campos marcados.", "ruim");
       return;
     }
+
+    var q = new URLSearchParams(location.search);
+    var dados = {
+      nome: nome.value.trim(),
+      email: email.value.trim(),
+      telefone: fone.value.trim(),
+      origem: location.pathname,
+      utm_source:   q.get("utm_source")   || "",
+      utm_medium:   q.get("utm_medium")   || "",
+      utm_campaign: q.get("utm_campaign") || ""
+    };
+
+    enviado = true;
+    botao.setAttribute("aria-busy","true");
+    diz("Enviando…");
+    paraPlanilha(dados);
+
     var texto =
       "Olá! Quero participar da Dubai Experience 2.0.\n\n" +
-      "Nome: "     + nome.value.trim()  + "\n" +
-      "E-mail: "   + email.value.trim() + "\n" +
-      "Telefone: " + fone.value.trim();
+      "Nome: "     + dados.nome     + "\n" +
+      "E-mail: "   + dados.email    + "\n" +
+      "Telefone: " + dados.telefone;
     window.open("https://wa.me/" + FONE + "?text=" + encodeURIComponent(texto), "_blank", "noopener");
+
+    diz("Cadastro enviado. Continue no WhatsApp para concluir.", "ok");
+    setTimeout(function(){
+      botao.removeAttribute("aria-busy");
+      enviado = false;
+    }, 2500);
   });
 })();
 </script>
