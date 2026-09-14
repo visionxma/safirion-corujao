@@ -257,6 +257,16 @@ a{color:inherit}
   font-family:var(--display);font-variation-settings:"wdth" 88,"wght" 700;
   font-size:.56rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ac-claro);
 }
+.crono--solto{
+  border:0;background:none;padding:0;
+  width:min(420px,100%);margin:clamp(20px,3vw,28px) auto clamp(24px,3.4vw,32px);
+}
+.crono--solto .crono__e{
+  margin:0 0 12px;padding-top:0;border-top:0;
+  text-shadow:0 2px 12px rgba(4,7,15,.9);
+}
+.crono--solto .crono__cel b{text-shadow:0 2px 16px rgba(4,7,15,.85)}
+.crono--solto .crono__cel span{text-shadow:0 2px 10px rgba(4,7,15,.9)}
 .crono__rel{display:flex;align-items:flex-end;justify-content:center}
 .crono__cel{padding:0 clamp(11px,3vw,20px);border-left:1px solid rgba(245,197,66,.22)}
 .crono__cel:first-child{border-left:0}
@@ -430,12 +440,12 @@ a{color:inherit}
     <div class="crono">
       <p class="crono__k">Período da campanha</p>
       <p class="crono__d">12 de setembro a 31 de dezembro</p>
-      <p class="crono__e" id="cronoEstado">Falta para o encerramento</p>
+      <p class="crono__e">Falta para o encerramento</p>
       <div class="crono__rel" aria-live="polite">
-        <div class="crono__cel"><b id="cd-d">--</b><span>Dias</span></div>
-        <div class="crono__cel"><b id="cd-h">--</b><span>Horas</span></div>
-        <div class="crono__cel"><b id="cd-m">--</b><span>Min</span></div>
-        <div class="crono__cel"><b id="cd-s">--</b><span>Seg</span></div>
+        <div class="crono__cel"><b data-cd="d">--</b><span>Dias</span></div>
+        <div class="crono__cel"><b data-cd="h">--</b><span>Horas</span></div>
+        <div class="crono__cel"><b data-cd="m">--</b><span>Min</span></div>
+        <div class="crono__cel"><b data-cd="s">--</b><span>Seg</span></div>
       </div>
     </div>
     <div class="fios"><h2 class="sec-t cromo">Quer concorrer?</h2></div>
@@ -482,6 +492,17 @@ a{color:inherit}
     <div class="dubai__marca">
       <p>Dubai Experience 2.0</p>
       <q>Uma experiência Safirion.</q>
+
+      <div class="crono crono--solto">
+        <p class="crono__e">Falta para o encerramento</p>
+        <div class="crono__rel" aria-live="polite">
+          <div class="crono__cel"><b data-cd="d">--</b><span>Dias</span></div>
+          <div class="crono__cel"><b data-cd="h">--</b><span>Horas</span></div>
+          <div class="crono__cel"><b data-cd="m">--</b><span>Min</span></div>
+          <div class="crono__cel"><b data-cd="s">--</b><span>Seg</span></div>
+        </div>
+      </div>
+
       <a class="btn btn--solid" href="#cadastro">Quero concorrer</a>
     </div>
   </div>
@@ -532,21 +553,21 @@ var FONE = "5587992013884";
 /* cronometro ate o fim da campanha */
 (function(){
   var FIM = new Date("2026-12-31T23:59:59-03:00").getTime();
-  var d=document.getElementById("cd-d"), h=document.getElementById("cd-h"),
-      m=document.getElementById("cd-m"), s=document.getElementById("cd-s"),
-      est=document.getElementById("cronoEstado");
-  if(!d) return;
+  var celulas = document.querySelectorAll("[data-cd]");
+  var rotulos = document.querySelectorAll(".crono__e");
+  if(!celulas.length) return;
   function pad(n){ return n<10 ? "0"+n : ""+n; }
   function tick(){
-    var left = FIM - Date.now();
-    if(left <= 0){
-      left = 0;
-      if(est) est.textContent = "Campanha encerrada";
-    }
-    d.textContent=pad(Math.floor(left/86400000));
-    h.textContent=pad(Math.floor(left/3600000)%24);
-    m.textContent=pad(Math.floor(left/60000)%60);
-    s.textContent=pad(Math.floor(left/1000)%60);
+    var left = FIM - Date.now(), fim = left <= 0;
+    if(fim) left = 0;
+    var v = {
+      d: pad(Math.floor(left/86400000)),
+      h: pad(Math.floor(left/3600000)%24),
+      m: pad(Math.floor(left/60000)%60),
+      s: pad(Math.floor(left/1000)%60)
+    };
+    celulas.forEach(function(c){ c.textContent = v[c.getAttribute("data-cd")]; });
+    if(fim) rotulos.forEach(function(r){ r.textContent = "Campanha encerrada"; });
   }
   tick(); setInterval(tick,1000);
 })();
