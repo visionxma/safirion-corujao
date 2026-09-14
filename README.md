@@ -45,9 +45,14 @@ Chegou a existir uma peça vertical `900×1600` servida por `<picture>` abaixo d
 resolver o corte no celular. Foi revertida a pedido, para as duas páginas usarem a mesma
 imagem. O arquivo está em `assets/arquivo/hero-dubai-vertical.jpg`, caso volte a fazer falta.
 
-Consequência a saber: no celular, 16:9 preenchendo a altura mostra só cerca de 27% da largura
-da foto — sobra o skyline, e os carros e o touro saem do enquadramento. A raiz contorna isso
-empilhando a foto como faixa 16:9; a `/lead` mantém a foto como fundo da coluna centralizada.
+**As duas páginas usam o mesmo arranjo no celular:** bloco de título no escuro, foto como
+faixa 16:9 de borda a borda, e a chamada embaixo. É o que resolve o corte — 16:9 preenchendo
+a altura de um celular mostra só ~27% da largura, e os carros e o touro saem do enquadramento.
+
+No computador a `/lead` volta a ser coluna centralizada com a foto sangrando ao fundo. A
+troca é por `order` no flex, com o mesmo conteúdo nos dois — a marcação é dividida em
+`.hero__in` (marca, palavras, lockup) e `.hero__baixo` (copy, botão, chamarizes), para a
+faixa poder entrar entre elas.
 
 Ela já foi uma grade de duas colunas, com a lista de palavras numa coluna lateral direita.
 Ficou ilegível: o véu era fraco demais e a coluna da direita caía sobre a parte clara do céu.
