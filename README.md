@@ -91,7 +91,7 @@ Cada página conta uma coisa diferente, porque as janelas são diferentes:
 
 | Página | Conta até | Rótulo |
 |---|---|---|
-| `/` | 18/09 18h, depois 31/12 23:59 | troca sozinho entre *faltam para a largada*, *ao vivo* e *encerrada* |
+| `/` | 31/12 23:59 (começou 13/09) | troca sozinho entre *faltam para a largada*, *ao vivo* e *encerrada* |
 | `/lead/` | 31/12 23:59 | *falta para o encerramento* (a campanha começou em 12/09) |
 
 O rótulo existe porque um contador sem legenda não diz o que está contando — era o caso
@@ -263,7 +263,7 @@ Decorre daí o resto:
 A janela vive em duas constantes no `<script>` ao final do `index.html`:
 
 ```js
-var START = new Date("2026-09-18T18:00:00-03:00").getTime();
+var START = new Date("2026-09-13T00:00:00-03:00").getTime();
 var END   = new Date("2026-12-31T23:59:59-03:00").getTime();
 ```
 
@@ -271,13 +271,18 @@ Elas alimentam o contador e o relógio do topo, que trocam de estado sozinhos en
 *faltam para a largada*, *ao vivo* e *encerrado*.
 
 O horário de encerramento — **23:59 do dia 31/12** — foi assumido a partir de "acaba dia 31
-de dezembro". Se for outro horário, é a constante `END`.
+de dezembro". O de início, **00:00 de 13/09**, foi assumido a partir de "já começou dia 13".
+Se algum for outro horário, são as constantes `START` e `END`.
+
+A `/lead` diz que a campanha vai de **12/09** a 31/12, e a raiz diz que a competição começou
+em **13/09**. As duas datas vieram de fontes diferentes e podem ser a mesma coisa dita de dois
+jeitos — vale confirmar antes de anunciar.
 
 ## Pendências de conteúdo
 
-**Uma disputa sem mínimo.** A `Live no TikTok` tem critério definido — vence quem somar mais
-horas — mas o mínimo de horas ainda não foi divulgado. Aparece com `?` em laranja
-(`.ficha--aberta`). As outras cinco estão fechadas.
+**As seis regras estão fechadas** desde 14/09/2026. O estado pendente (`.ficha--aberta`, o `?`
+em laranja `#f47133`) continua no CSS de propósito: se alguma regra reabrir, é trocar a classe
+do `<li>` e o conteúdo do `.lim`.
 
 **O prêmio não está escrito em lugar nenhum.** A hero diz "6 chances para ir para Dubai"
 e o fecho diz "o ano termina em Dubai", mas a página nunca declara o que o vencedor de
