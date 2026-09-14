@@ -73,6 +73,18 @@ Três cuidados no player:
 O véu escuro dessa seção é mais leve que o das outras: calibrado para foto
 parada, ele engolia o movimento. O texto ganhou `text-shadow` própria em troca.
 
+## Placar ao vivo
+
+A seção existe, está desenhada e renderiza assim que houver dados. Hoje mostra o estado
+*"ainda não abriu"*, porque falta uma rota pública no repositório `safirion-members`:
+`/api/corujao-preview` devolve **401** sem sessão e nenhuma rota de lá manda CORS.
+
+`functions/api/ranking.js` é uma Pages Function no domínio da própria landing que busca no
+servidor — CORS é restrição de navegador, chamada servidor-a-servidor não esbarra nela.
+Configure `RANKING_ORIGEM` em Pages → Settings → Environment variables.
+
+O passo que falta, com o código da rota pronto, está em **[RANKING.md](RANKING.md)**.
+
 ## Contadores
 
 Cada página conta uma coisa diferente, porque as janelas são diferentes:
@@ -263,11 +275,9 @@ de dezembro". Se for outro horário, é a constante `END`.
 
 ## Pendências de conteúdo
 
-**Duas disputas sem regra.** `FTD` e `Live no TikTok` aparecem com `?` em laranja
-(`.ficha--aberta`). A `Live no TikTok` tem critério mas não tem mínimo; a `FTD` não tem
-nenhum dos dois — ela foi incluída porque a hero diz "6 chances" e a área de membros
-(`members.partnersafirion.com`) lista seis métricas, mas a regra nunca foi passada.
-O texto dela é deliberadamente vago para não afirmar o que não foi definido.
+**Uma disputa sem mínimo.** A `Live no TikTok` tem critério definido — vence quem somar mais
+horas — mas o mínimo de horas ainda não foi divulgado. Aparece com `?` em laranja
+(`.ficha--aberta`). As outras cinco estão fechadas.
 
 **O prêmio não está escrito em lugar nenhum.** A hero diz "6 chances para ir para Dubai"
 e o fecho diz "o ano termina em Dubai", mas a página nunca declara o que o vencedor de

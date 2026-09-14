@@ -316,6 +316,75 @@ a{color:inherit}
 .ficha__x b{color:var(--white);font-weight:700}
 .ficha--aberta .ficha__x{color:var(--alerta)}
 
+/* ---------- placar ao vivo ---------- */
+.placar-sec{
+  position:relative;isolation:isolate;overflow:hidden;
+  background:var(--ink-950);border-top:1px solid var(--line);
+  padding:clamp(56px,8vw,96px) 0;
+}
+.placar-sec::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:url("assets/mapa-mundi.svg") no-repeat center center/120% auto;opacity:.13;
+  -webkit-mask-image:radial-gradient(104% 86% at 50% 46%,#000 14%,transparent 78%);
+  mask-image:radial-gradient(104% 86% at 50% 46%,#000 14%,transparent 78%);
+}
+.sec-t{
+  font-family:var(--display);font-variation-settings:"wdth" 70,"wght" 900;
+  font-size:clamp(1.8rem,4.6vw,2.9rem);line-height:.95;text-transform:uppercase;
+  margin:0;letter-spacing:.01em;white-space:nowrap;
+}
+.placar__sub{
+  font-family:var(--serif);font-size:clamp(1.1rem,2.2vw,1.4rem);
+  color:var(--muted);margin:14px 0 0;text-align:center;
+}
+.placar{margin-top:clamp(32px,4.6vw,48px)}
+
+.placar__fechado{
+  display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;
+  max-width:min(560px,100%);margin-inline:auto;
+  padding:clamp(28px,4.4vw,40px) clamp(22px,3.4vw,34px);
+  border:1px dashed rgba(245,197,66,.3);border-radius:20px;
+  background:linear-gradient(168deg,rgba(22,35,58,.5),rgba(6,11,24,.6));
+}
+.placar__fechado svg{width:34px;height:34px;color:var(--ac-hi);flex:0 0 auto}
+.placar__fechado p{margin:0;color:var(--muted);max-width:44ch;font-size:.98rem}
+.placar__fechado p b{color:var(--white);font-weight:700}
+
+.placar__grade{display:grid;gap:14px}
+@media (min-width:760px){.placar__grade{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+@media (min-width:1080px){.placar__grade{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.quadro{
+  border:1px solid var(--line);border-radius:18px;
+  background:linear-gradient(158deg,rgba(17,26,43,.86),rgba(6,11,24,.9));
+  padding:20px 20px 16px;
+}
+.quadro__t{
+  font-family:var(--display);font-variation-settings:"wdth" 80,"wght" 800;
+  font-size:.94rem;text-transform:uppercase;letter-spacing:.04em;margin:0 0 14px;
+  padding-bottom:12px;border-bottom:1px solid var(--line-soft);
+}
+.quadro__linhas{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.quadro__linhas li{
+  display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:12px;align-items:baseline;
+  font-size:.92rem;
+}
+.quadro__pos{
+  font-family:var(--display);font-variation-settings:"wdth" 76,"wght" 800;
+  font-variant-numeric:tabular-nums;color:var(--muted-2);font-size:.84rem;
+}
+.quadro__linhas li:nth-child(1) .quadro__pos{color:var(--ac-hi)}
+.quadro__nome{
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--white);font-weight:600;
+}
+.quadro__val{
+  font-family:var(--display);font-variation-settings:"wdth" 80,"wght" 800;
+  font-variant-numeric:tabular-nums;color:var(--ac-hi);
+}
+.quadro__linhas li[data-fora] .quadro__nome,
+.quadro__linhas li[data-fora] .quadro__val{color:var(--muted-2)}
+.quadro__vazio{margin:0;color:var(--muted-2);font-size:.88rem}
+.placar__pe{margin:18px 0 0;text-align:center;font-size:.8rem;color:var(--muted-2)}
+
 /* ---------- passos: horizontal, para nao repetir a tabela ---------- */
 .passos-sec{
   position:relative;isolation:isolate;overflow:hidden;
@@ -491,6 +560,7 @@ a{color:inherit}
     </a>
     <nav class="topbar__nav" aria-label="Seções da página">
       <a href="#disputas">As disputas</a>
+      <a href="#placar">Placar</a>
       <a href="#participar">Como participar</a>
     </nav>
     <span class="topbar__sep"></span>
@@ -522,7 +592,7 @@ a{color:inherit}
       </svg>
       <i></i>
       <span>
-        <span class="l1">Clique abaixo</span>
+        <span class="l1">Clique aqui</span>
         <span class="l2">para participar</span>
       </span>
     </a>
@@ -597,14 +667,14 @@ a{color:inherit}
         <p class="ficha__x">Um afiliado só conta depois de <b>10 FTD</b> — primeiros depósitos na conta dele.</p>
       </li>
 
-      <li class="ficha ficha--aberta">
-        <div class="lim"><b>?</b><span>a definir</span></div>
+      <li class="ficha">
+        <div class="lim"><b>1000</b><span>FTD</span></div>
         <div class="ficha__id">
           <p class="ficha__cat">Quem traz depósito</p>
           <h3 class="ficha__n">FTD</h3>
-          <p class="ficha__c">Critério a divulgar.</p>
+          <p class="ficha__c">Ganha quem trouxer mais FTD.</p>
         </div>
-        <p class="ficha__x">Primeiros depósitos trazidos pela sua rede. Critério e mínimo saem antes da largada.</p>
+        <p class="ficha__x">Primeiros depósitos trazidos pela sua rede. Abaixo de <b>1000</b> o resultado não é apurado.</p>
       </li>
 
       <li class="ficha ficha--aberta">
@@ -612,9 +682,9 @@ a{color:inherit}
         <div class="ficha__id">
           <p class="ficha__cat">Quem faz live</p>
           <h3 class="ficha__n">Live no TikTok</h3>
-          <p class="ficha__c">Ganha o melhor balanço das métricas da live.</p>
+          <p class="ficha__c">Ganha quem somar mais horas de live.</p>
         </div>
-        <p class="ficha__x">Mínimo ainda em aberto. Divulgado antes da largada, dia 18.</p>
+        <p class="ficha__x">Critério fechado. O mínimo de horas ainda não foi divulgado.</p>
       </li>
 
       <li class="ficha">
@@ -629,6 +699,25 @@ a{color:inherit}
 
     </ol>
     <div class="pontos" id="pontos" role="group" aria-label="Navegar entre as disputas"></div>
+  </div>
+</section>
+
+<section class="placar-sec" id="placar">
+  <div class="wrap">
+    <div class="fios"><h2 class="sec-t cromo">Placar ao vivo</h2></div>
+    <p class="placar__sub" id="placarSub">Abre quando a competição começar, dia 18/09 às 18h.</p>
+
+    <div class="placar" id="placar" aria-live="polite">
+      <div class="placar__fechado" id="placarFechado">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3.5" y="10.5" width="17" height="11" rx="2.5"/>
+          <path d="M7.5 10.5V7a4.5 4.5 0 0 1 9 0v3.5"/>
+          <circle cx="12" cy="16" r="1.4" fill="currentColor" stroke="none"/>
+        </svg>
+        <p><b>O placar ainda não abriu.</b> Assim que a primeira apuração rodar, as seis disputas aparecem aqui, com as posições e o quanto falta para o mínimo.</p>
+        <a class="btn btn--line" href="https://members.partnersafirion.com/#corujao-preview" target="_blank" rel="noopener">Ver na área de membros</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -659,7 +748,7 @@ a{color:inherit}
 
     <div class="notas">
       <div class="nota nota--aberta">
-        <p><span>Ainda em aberto</span>Os mínimos de <b>FTD</b> e <b>Live no TikTok</b> saem antes das 18h do dia 18. As outras quatro já estão fechadas.</p>
+        <p><span>Ainda em aberto</span>Só falta o mínimo de horas da <b>Live no TikTok</b>, que sai antes das 18h do dia 18. As outras cinco disputas estão fechadas.</p>
       </div>
       <div class="nota">
         <p><span>Resultado</span>Apuração logo após o encerramento, com os vencedores anunciados nos <b>canais oficiais da Safirion</b>.</p>
@@ -854,6 +943,80 @@ a{color:inherit}
     }, {rootMargin:"120px"}).observe(arco);
   } else {
     liga(true);
+  }
+})();
+
+/* placar: busca na Function do proprio dominio (a rota da area de membros
+   exige sessao e nao manda CORS, entao o navegador nunca a leria direto).
+   Sem dados, o estado fechado continua — melhor que numero inventado. */
+(function(){
+  var caixa = document.getElementById("placar");
+  var fechado = document.getElementById("placarFechado");
+  var sub = document.getElementById("placarSub");
+  if(!caixa || !fechado) return;
+
+  function numero(v, unidade){
+    if(unidade === "dinheiro") return "R$ " + Number(v).toLocaleString("pt-BR", {maximumFractionDigits:0});
+    if(unidade === "horas"){
+      var m = Math.max(0, Math.round(Number(v)));
+      return Math.floor(m/60) + "h" + String(m%60).padStart(2,"0");
+    }
+    return Number(v).toLocaleString("pt-BR", {maximumFractionDigits:2});
+  }
+
+  function escapa(t){
+    return String(t).replace(/[&<>"]/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];
+    });
+  }
+
+  function pinta(placares, quando){
+    var grade = document.createElement("div");
+    grade.className = "placar__grade";
+    grade.innerHTML = placares.map(function(p){
+      var linhas = (p.linhas || []).length
+        ? "<ol class=\"quadro__linhas\">" + p.linhas.map(function(l, i){
+            return "<li" + (l.qualificado ? "" : " data-fora") + ">" +
+              "<span class=\"quadro__pos\">" + (i+1) + "</span>" +
+              "<span class=\"quadro__nome\">" + escapa(l.nome) + "</span>" +
+              "<span class=\"quadro__val\">" + escapa(numero(l.valor, p.unidade)) + "</span>" +
+            "</li>";
+          }).join("") + "</ol>"
+        : "<p class=\"quadro__vazio\">Ninguém pontuou ainda.</p>";
+      return "<article class=\"quadro\"><h3 class=\"quadro__t\">" + escapa(p.titulo) + "</h3>" + linhas + "</article>";
+    }).join("");
+
+    caixa.innerHTML = "";
+    caixa.appendChild(grade);
+
+    var pe = document.createElement("p");
+    pe.className = "placar__pe";
+    var h = new Date(quando || Date.now());
+    pe.textContent = "Atualizado às " + String(h.getHours()).padStart(2,"0") + ":" +
+      String(h.getMinutes()).padStart(2,"0") + " · quem está em cinza ainda não bateu o mínimo.";
+    caixa.appendChild(pe);
+
+    if(sub) sub.textContent = "Seis disputas correndo. As posições mudam a cada apuração.";
+  }
+
+  function busca(){
+    fetch("/api/ranking", {cache:"no-store"})
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if(d && d.ok && d.placares && d.placares.length) pinta(d.placares, d.atualizado);
+      })
+      .catch(function(){ /* fica no estado fechado */ });
+  }
+
+  if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(itens){
+      itens.forEach(function(it){
+        if(it.isIntersecting){ io.disconnect(); busca(); }
+      });
+    }, {rootMargin:"300px"});
+    io.observe(caixa);
+  } else {
+    busca();
   }
 })();
 
