@@ -53,6 +53,18 @@ nos dois, sem duplicar marcação.
 A barra do topo fica escondida até 260px de rolagem: a hero já assina a marca, e o
 logo dela batia no `SAFIRION` do cartaz.
 
+## Contadores
+
+Cada página conta uma coisa diferente, porque as janelas são diferentes:
+
+| Página | Conta até | Rótulo |
+|---|---|---|
+| `/` | 18/09 18h, depois 31/12 23:59 | troca sozinho entre *faltam para a largada*, *ao vivo* e *encerrada* |
+| `/lead/` | 31/12 23:59 | *falta para o encerramento* (a campanha começou em 12/09) |
+
+O rótulo existe porque um contador sem legenda não diz o que está contando — era o caso
+da faixa antes.
+
 ## O cadastro da /lead
 
 Não há backend. O formulário valida nome, e-mail e telefone no navegador e abre o WhatsApp
