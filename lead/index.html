@@ -88,20 +88,26 @@ a{color:inherit}
 .hero__bg::after{
   content:"";position:absolute;inset:0;
   background:
-    linear-gradient(to bottom,rgba(4,7,15,.84) 0%,rgba(4,7,15,.34) 26%,rgba(4,7,15,.12) 46%,rgba(4,7,15,.6) 78%,var(--ink-950) 100%),
-    radial-gradient(78% 40% at 50% 24%,rgba(4,7,15,.62),transparent 70%);
+    linear-gradient(to bottom,
+      rgba(4,7,15,.9) 0%,
+      rgba(4,7,15,.62) 18%,
+      rgba(4,7,15,.5) 38%,
+      rgba(4,7,15,.72) 62%,
+      rgba(4,7,15,.93) 84%,
+      var(--ink-950) 100%),
+    radial-gradient(90% 62% at 50% 50%,rgba(4,7,15,.55),transparent 72%);
 }
 .hero__in{
   position:relative;z-index:1;padding:26px 0 30px;text-align:center;
-  display:grid;gap:0;
-  grid-template-columns:minmax(0,1fr);
-  grid-template-areas:"marca" "lado" "col" "espera";
-  justify-items:center;
+  display:flex;flex-direction:column;align-items:center;gap:0;
 }
-.hero__marca{grid-area:marca;display:flex;flex-direction:column;align-items:center;gap:9px}
-.hero__lado{grid-area:lado;text-align:center;margin-top:14px}
-.hero__col{grid-area:col;min-width:0}
-.hero__espera{grid-area:espera}
+.hero__marca{display:flex;flex-direction:column;align-items:center;gap:9px}
+.hero__lado{text-align:center;margin-top:clamp(14px,2.6vw,20px);width:100%}
+.hero__col{min-width:0;width:100%}
+.hero__espera{
+  width:min(420px,100%);margin:clamp(20px,3.4vw,30px) auto 0;
+  display:flex;align-items:center;gap:14px;
+}
 
 .hero__logo{
   height:clamp(32px,8vw,46px);width:auto;
@@ -112,15 +118,27 @@ a{color:inherit}
   font-size:clamp(.64rem,2.2vw,.78rem);letter-spacing:.42em;text-transform:uppercase;
   color:#cfdbe5;margin:0;text-shadow:0 2px 12px rgba(4,7,15,.95);
 }
-.palavras{display:none}
-.hero__nota{
-  margin:0 auto;max-width:30ch;
-  font-family:var(--display);font-variation-settings:"wdth" 90,"wght" 600;
-  font-size:clamp(.64rem,2.1vw,.7rem);letter-spacing:.24em;line-height:1.8;
-  text-transform:uppercase;color:var(--ac-claro);
-  text-shadow:0 2px 12px rgba(4,7,15,.95);
+.palavras{
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  gap:clamp(8px,2.2vw,20px);list-style:none;margin:0;padding:0;
 }
-.hero__nota::before{content:"";display:block;width:46px;height:2px;margin:0 auto 13px;background:var(--ac)}
+.palavras li{
+  font-family:var(--display);font-variation-settings:"wdth" 90,"wght" 700;
+  font-size:clamp(.64rem,1.9vw,.78rem);letter-spacing:.28em;text-transform:uppercase;
+  color:#e7eef4;text-shadow:0 2px 12px rgba(4,7,15,.95);
+}
+.palavras li + li::before{
+  content:"";display:inline-block;vertical-align:middle;
+  width:4px;height:4px;border-radius:50%;background:var(--ac);
+  margin-right:clamp(8px,2.2vw,20px);
+}
+.hero__nota{
+  margin:clamp(12px,2.2vw,16px) auto 0;max-width:34ch;
+  font-family:var(--serif);font-style:italic;font-variation-settings:normal;
+  font-size:clamp(1rem,2.4vw,1.3rem);letter-spacing:0;line-height:1.35;
+  text-transform:none;color:var(--ac-claro);
+  text-shadow:0 2px 14px rgba(4,7,15,.95);
+}
 
 .hero__t{margin:clamp(22px,5vw,38px) 0 0;line-height:.8}
 .hero__dubai{
@@ -145,11 +163,15 @@ a{color:inherit}
 .hero__tag b{color:var(--ac-hi);font-weight:inherit}
 
 .hero__l{
-  position:relative;margin:clamp(18px,3.4vw,26px) auto 0;max-width:34ch;
-  padding-left:16px;text-align:left;color:#e4edf4;font-size:clamp(.88rem,3.2vw,1rem);
-  text-shadow:0 2px 12px rgba(4,7,15,.9);
+  position:relative;margin:clamp(16px,3vw,22px) auto 0;max-width:42ch;
+  padding-top:clamp(14px,2.4vw,18px);text-align:center;
+  color:#e4edf4;font-size:clamp(.9rem,2.4vw,1.04rem);
+  text-shadow:0 2px 12px rgba(4,7,15,.95);
 }
-.hero__l::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:2px;background:var(--ac)}
+.hero__l::before{
+  content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);
+  width:52px;height:2px;background:var(--ac);
+}
 .hero__l b{color:var(--ac-hi);font-weight:700}
 
 .perks{list-style:none;margin:clamp(26px,5vw,40px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
@@ -191,56 +213,13 @@ a{color:inherit}
 
 /* ---- desktop: coluna a esquerda, lateral a direita ---- */
 @media (min-width:900px){
-  .hero{min-height:min(92vh,900px)}
-  .hero__in{
-    text-align:left;padding:44px 0 48px;gap:0 clamp(30px,5vw,70px);
-    grid-template-areas:"marca lado" "col lado" "col espera";
-    align-content:center;
-  }
-  .hero__in{
-    grid-template-columns:minmax(0,1fr) auto;
-    justify-items:stretch;
-  }
-  .hero__marca{flex-direction:row;align-items:center;gap:clamp(16px,2.4vw,28px);justify-content:flex-start}
-  .hero__marca::after{content:"";height:1px;width:clamp(40px,6vw,86px);background:var(--ac);opacity:.85}
-  .hero__lado{text-align:right;margin-top:0}
-  .hero__nota{margin:0 0 0 auto;max-width:15ch;line-height:2.1}
-  .hero__nota::before{display:none}
-  .hero__col{max-width:min(660px,54vw);padding-top:clamp(14px,2.4vw,26px)}
-  .hero__lado{align-self:start;padding-top:6px}
-  .palavras{
-    display:block;list-style:none;margin:0 0 clamp(16px,2.4vw,24px);padding:0;
-  }
-  .palavras li{
-    font-family:var(--display);font-variation-settings:"wdth" 92,"wght" 600;
-    font-size:clamp(.64rem,1vw,.74rem);letter-spacing:.3em;line-height:2.5;
-    text-transform:uppercase;color:#e7eef4;text-shadow:0 2px 10px rgba(4,7,15,.9);
-  }
-  .palavras::after{content:"";display:block;width:52px;height:2px;margin:14px 0 0 auto;background:var(--ac)}
-  .hero__nota{margin-top:0;max-width:15ch;line-height:2.1}
-  .hero__nota::after{display:none}
-  .hero__tag,.hero__l{margin-left:0;margin-right:0}
-  .hero__tag{max-width:30ch}
-  .hero__l{max-width:38ch}
-  .ouro-btn{margin-left:0;max-width:440px}
-  .perks{max-width:560px}
-  .perks li{align-items:flex-start;text-align:left;padding-inline:clamp(10px,1.6vw,20px)}
-  .perks li:first-child{padding-left:0}
-  .perks span{text-align:left}
-  .hero__espera{
-    align-self:end;justify-self:end;margin:0;display:block;text-align:right;
-  }
-  .hero__espera::before,.hero__espera::after{display:none}
-  .hero__espera span{
-    font-family:var(--serif);font-variation-settings:normal;font-style:italic;
-    font-size:clamp(1.5rem,2.4vw,2.1rem);letter-spacing:0;text-transform:none;
-    color:var(--ac-hi);line-height:1.15;display:block;
-  }
-  .hero__espera::marker{content:none}
-}
-@media (min-width:900px){
-  .hero__espera{position:relative;padding-bottom:14px}
-  .hero__espera-fio{display:block;width:78px;height:2px;background:var(--ac);margin:12px 0 0 auto}
+  .hero{min-height:min(94vh,940px)}
+  .hero__in{padding:40px 0 46px}
+  .hero__marca{flex-direction:row;align-items:center;gap:clamp(16px,2.4vw,28px)}
+  .hero__col{max-width:760px}
+  .hero__l{max-width:46ch}
+  .ouro-btn{max-width:440px}
+  .perks{max-width:620px;margin-inline:auto}
 }
 
 /* ---------- cadastro ---------- */

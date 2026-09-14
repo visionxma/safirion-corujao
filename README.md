@@ -37,18 +37,20 @@ dourado. Trocar a campanha de cor é mexer nesses valores.
 que some no meio de uma página dourada. Passou para o laranja `#f47133`, também da
 paleta do safirion.com, que se distingue do ouro sem introduzir um matiz estranho.
 
-A hero é o mesmo cartaz em dois arranjos, os dois vindos das peças de campanha —
-não é o layout de celular esticado:
+A hero é uma **coluna única centralizada** nas duas larguras, seguindo a raiz.
 
-| | Celular | Computador (≥900px) |
-|---|---|---|
-| Alinhamento | centralizado | coluna à esquerda |
-| Lista `viagem / luxo / liberdade / oportunidades` | escondida | coluna lateral direita |
-| Chamarizes | centralizados, ícone em cima | alinhados à esquerda, sob o botão |
-| "Dubai te espera." | caixa alta espaçada, com fios | serifada em itálico dourado, canto inferior direito |
+Ela já foi uma grade de duas colunas, com a lista de palavras numa coluna lateral direita.
+Ficou ilegível: o véu era fraco demais e a coluna da direita caía sobre a parte clara do céu.
+O que mudou:
 
-Uma grade de áreas (`marca / lado / col / espera`) faz a troca; o conteúdo é o mesmo
-nos dois, sem duplicar marcação.
+- **Véu muito mais forte** — seis paradas, fechando em `var(--ink-950)` na base, mais um
+  radial central. A foto vira fundo, não concorrente.
+- A lista `viagem · luxo · liberdade · oportunidades` virou **uma linha centralizada** com
+  pontos dourados entre as palavras, em vez de uma coluna empilhada no canto.
+- A nota "mais que uma viagem" virou **serifada em itálico**, que separa por voz em vez de
+  por posição.
+- O corpo do texto perdeu o fio lateral (que só funcionava alinhado à esquerda) e ganhou um
+  fio curto acima, centralizado.
 
 A barra do topo fica escondida até 260px de rolagem: a hero já assina a marca, e o
 logo dela batia no `SAFIRION` do cartaz.
