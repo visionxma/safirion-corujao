@@ -219,11 +219,56 @@ a{color:inherit}
   -webkit-mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.5) 60%,transparent 94%);
   mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.5) 60%,transparent 94%);
 }
-.disputas__cab{position:relative;z-index:1;padding:8px 0 4px}
-.disputas__cab::before{
-  content:"";position:absolute;inset:-30px -8% -18px;z-index:-1;pointer-events:none;
-  background:radial-gradient(62% 78% at 50% 48%,rgba(4,7,15,.94) 34%,rgba(4,7,15,.6) 68%,transparent 100%);
+/* arco: as disputas orbitam o titulo, e o conjunto se arrasta */
+.arco{
+  position:relative;
+  height:clamp(190px,24vw,290px);
+  margin-bottom:0;
+  cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;
 }
+.arco.arrastando{cursor:grabbing}
+.arco.arrastando .arco__tag{transition:none}
+.arco__fio{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.arco__fio path{
+  stroke:rgba(245,197,66,.4);stroke-width:1.5;
+  stroke-dasharray:2 9;stroke-linecap:round;
+}
+.arco__tags{position:absolute;inset:0;pointer-events:none}
+.arco__tag{
+  position:absolute;top:0;left:0;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 22px;border-radius:999px;white-space:nowrap;
+  background:linear-gradient(158deg,rgba(22,35,58,.94),rgba(6,11,24,.96));
+  border:1px solid rgba(245,197,66,.26);
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+  font-family:var(--display);font-variation-settings:"wdth" 88,"wght" 700;
+  font-size:clamp(.68rem,1.5vw,.9rem);letter-spacing:.06em;text-transform:uppercase;
+  backdrop-filter:blur(6px);
+  will-change:transform,opacity;
+  transition:opacity .3s ease;
+}
+.arco__tag::before{
+  content:"";width:7px;height:7px;border-radius:2px;flex:0 0 auto;
+  background:var(--ac);transform:rotate(45deg);
+}
+.disputas__cab{
+  position:relative;z-index:250;
+  margin-top:clamp(-70px,-7vw,-40px);
+  padding:0 0 4px;
+}
+.disputas__cab::before{
+  content:"";position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);z-index:-1;
+  width:min(880px,128%);height:190%;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(4,7,15,.95) 26%,rgba(4,7,15,.78) 52%,transparent 76%);
+}
+@media (max-width:640px){
+  .arco{height:clamp(215px,52vw,260px)}
+  .arco__tag{padding:9px 15px;gap:8px}
+  .arco__tag::before{width:6px;height:6px}
+}
+@media (prefers-reduced-motion:reduce){.arco{cursor:default}}
+
+
 .disputas__t{
   font-family:var(--display);font-variation-settings:"wdth" 70,"wght" 900;
   font-size:clamp(2rem,5.4vw,3.6rem);line-height:.92;letter-spacing:-.02em;
@@ -502,9 +547,22 @@ a{color:inherit}
 </section>
 
 <section class="disputas" id="disputas">
-  <div class="wrap disputas__cab">
-    <h2 class="disputas__t cromo">Seis disputas, seis vencedores</h2>
-    <p class="disputas__l">O número grande é o <b>mínimo que te coloca na contagem</b>. Abaixo dele o resultado não é apurado, por maior que seja. Acima, vence quem tiver o maior número.</p>
+  <div class="wrap">
+    <div class="arco" id="arco">
+      <svg class="arco__fio" aria-hidden="true"><path id="arcoFio" fill="none"/></svg>
+      <div class="arco__tags" id="arcoTags">
+        <span class="arco__tag">PNL</span>
+        <span class="arco__tag">FTD</span>
+        <span class="arco__tag">Rede de afiliado</span>
+        <span class="arco__tag">Vídeo no YouTube</span>
+        <span class="arco__tag">Live no TikTok</span>
+        <span class="arco__tag">Venda de produto</span>
+      </div>
+    </div>
+    <div class="disputas__cab">
+      <h2 class="disputas__t cromo">Seis disputas, seis vencedores</h2>
+      <p class="disputas__l">O número grande é o <b>mínimo que te coloca na contagem</b>. Abaixo dele o resultado não é apurado, por maior que seja. Acima, vence quem tiver o maior número.</p>
+    </div>
   </div>
   <div class="wrap">
     <ol class="fichas">
@@ -691,6 +749,112 @@ a{color:inherit}
     raf=requestAnimationFrame(ver);
   }, {passive:true});
   ver();
+})();
+
+/* arco das disputas: pilulas viajando sobre uma elipse, com o fio pontilhado
+   desenhado na mesma geometria. Arrastavel; parado com prefers-reduced-motion. */
+(function(){
+  var arco = document.getElementById("arco");
+  var caixa = document.getElementById("arcoTags");
+  var fio  = document.getElementById("arcoFio");
+  if(!arco || !caixa || !fio) return;
+
+  var tags = Array.prototype.slice.call(caixa.querySelectorAll(".arco__tag"));
+  if(!tags.length) return;
+
+  var N = tags.length;
+  var ABERTURA = 2.45;          // recalculado em medir(), conforme a largura
+  var VELOCIDADE = 0.000045;    // volta por milissegundo — bem lenta
+  var quieto = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var base = 0, w = 0, h = 0, cx = 0, cy = 0, rx = 0, ry = 0;
+
+  function medir(){
+    w = arco.clientWidth; h = arco.clientHeight;
+    // seis rotulos longos num arco estreito se atropelam: abre o angulo
+    ABERTURA = w < 520 ? 3.9 : (w < 760 ? 3.2 : 2.45);
+    cx = w / 2;
+    cy = h * 1.28;
+    rx = w * 0.47;
+    ry = h * 1.16;
+    var d = "", passos = 64;
+    for(var i = 0; i <= passos; i++){
+      var ang = (i / passos - 0.5) * ABERTURA;
+      var x = cx + rx * Math.sin(ang);
+      var y = cy - ry * Math.cos(ang);
+      d += (i ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1);
+    }
+    fio.setAttribute("d", d);
+  }
+
+  function pousar(){
+    for(var i = 0; i < N; i++){
+      var t = ((i / N) + base) % 1;
+      if(t < 0) t += 1;
+      var ang = (t - 0.5) * ABERTURA;
+      var x = cx + rx * Math.sin(ang);
+      var y = cy - ry * Math.cos(ang);
+      var borda = Math.min(1, Math.abs(ang) / (ABERTURA / 2));
+      var op = Math.max(0, 1 - Math.pow(borda, 1.7) * 1.38);
+      var esc = 0.78 + 0.22 * (1 - borda);
+      var el = tags[i];
+      el.style.transform = "translate(-50%,-50%) translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) scale(" + esc.toFixed(3) + ")";
+      el.style.opacity = op.toFixed(3);
+      el.style.zIndex = String(Math.round(100 * (1 - borda)));
+    }
+  }
+
+  medir(); pousar();
+  window.addEventListener("resize", function(){ medir(); pousar(); });
+
+  /* arrastar */
+  var pegando = false, x0 = 0, base0 = 0, moveu = 0;
+  arco.addEventListener("pointerdown", function(e){
+    pegando = true; moveu = 0; x0 = e.clientX; base0 = base;
+    arco.classList.add("arrastando");
+    arco.setPointerCapture(e.pointerId);
+  });
+  arco.addEventListener("pointermove", function(e){
+    if(!pegando) return;
+    var d = e.clientX - x0;
+    moveu = Math.abs(d);
+    base = base0 - d / Math.max(320, w);
+    pousar();
+  });
+  function soltar(e){
+    if(!pegando) return;
+    pegando = false;
+    arco.classList.remove("arrastando");
+    try{ arco.releasePointerCapture(e.pointerId); }catch(err){}
+  }
+  arco.addEventListener("pointerup", soltar);
+  arco.addEventListener("pointercancel", soltar);
+
+  /* giro lento, so com a secao em cena */
+  if(quieto) return;
+  var rodando = false, ultimo = 0, raf = 0;
+  function quadro(agora){
+    if(!rodando) return;
+    if(ultimo){
+      var dt = Math.min(64, agora - ultimo);
+      if(!pegando){ base += VELOCIDADE * dt; pousar(); }
+    }
+    ultimo = agora;
+    raf = requestAnimationFrame(quadro);
+  }
+  function liga(v){
+    if(v === rodando) return;
+    rodando = v;
+    if(v){ ultimo = 0; raf = requestAnimationFrame(quadro); }
+    else { cancelAnimationFrame(raf); }
+  }
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(function(itens){
+      itens.forEach(function(it){ liga(it.isIntersecting); });
+    }, {rootMargin:"120px"}).observe(arco);
+  } else {
+    liga(true);
+  }
 })();
 
 /* carrossel das fichas no mobile */

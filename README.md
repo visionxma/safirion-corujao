@@ -205,6 +205,26 @@ Por isso os arranjos são estruturalmente diferentes:
 No celular o botão dourado da faixa inferior some: ele repetiria um segundo dourado a
 200px do primeiro.
 
+## O arco das disputas
+
+Referência: a seção de ativos da [avalonbroker.com/torneio1000-2](https://avalonbroker.com/torneio1000-2).
+Lá as categorias de ativo orbitam o título; aqui são as seis disputas.
+
+As pílulas viajam sobre uma **elipse**, e o fio pontilhado é desenhado com a mesma
+geometria — um `<path>` recalculado a cada `resize`, então o fio nunca descola das pílulas.
+Cada uma esmaece e encolhe conforme se afasta do centro do arco.
+
+- **Arrastável** com ponteiro (mouse, toque, caneta), via Pointer Events.
+- **Gira sozinho, bem devagar** — uma volta a cada ~6 minutos. Só anima com a seção em
+  cena (IntersectionObserver) e nunca com `prefers-reduced-motion: reduce`.
+- **A abertura do arco muda com a largura**: 2,45 rad no computador, 3,9 rad abaixo de
+  520px. Seis rótulos longos num arco estreito se atropelam — abrir o ângulo separa as
+  pílulas e joga as das pontas para fora da tela, onde elas já estão esmaecidas.
+
+O título **não** fica posicionado por absoluto dentro do arco: ele segue no fluxo e sobe
+com margem negativa. A primeira versão usava `position:absolute` e as pílulas atropelavam
+o texto, porque a altura do título muda com a largura.
+
 ## A ideia da página
 
 **O limiar é o herói.** Numa competição o que decide tudo é o mínimo que te coloca na
