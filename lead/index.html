@@ -314,14 +314,29 @@ a{color:inherit}
 /* ---------- dubai ---------- */
 .dubai{position:relative;isolation:isolate;overflow:hidden;padding:clamp(66px,9vw,120px) 0}
 .dubai__bg{position:absolute;inset:0;z-index:-1}
-.dubai__bg img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}
-.dubai__bg::after{content:"";position:absolute;inset:0;background:radial-gradient(96% 84% at 50% 50%,rgba(4,7,15,.9) 24%,rgba(4,7,15,.66) 70%,rgba(4,7,15,.46) 100%),linear-gradient(to top,var(--ink-950) 1%,transparent 30%),linear-gradient(to bottom,var(--ink-950) 1%,transparent 26%)}
+.dubai__bg video,.dubai__bg img{
+  width:100%;height:100%;object-fit:cover;object-position:50% 56%;
+  pointer-events:none;
+}
+.dubai__bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(84% 66% at 50% 46%,rgba(4,7,15,.72) 20%,rgba(4,7,15,.38) 66%,rgba(4,7,15,.14) 100%),
+    linear-gradient(to top,var(--ink-950) 1%,rgba(4,7,15,.5) 14%,transparent 34%),
+    linear-gradient(to bottom,var(--ink-950) 1%,rgba(4,7,15,.45) 12%,transparent 30%);
+}
 .dubai__l{color:var(--muted);text-align:center;max-width:46ch;margin:16px auto 0}
 .lugares{list-style:none;margin:clamp(36px,5vw,54px) auto 0;padding:0;width:min(700px,100%);display:grid;gap:0}
 .lugares li{position:relative;padding:16px 0 16px 30px;border-top:1px solid var(--line)}
 .lugares li:last-child{border-bottom:1px solid var(--line)}
 .lugares li::before{content:"";position:absolute;left:2px;top:23px;width:9px;height:9px;border-radius:2px;background:var(--ac);border:1px solid var(--ac-hi);transform:rotate(45deg)}
-.lugares b{font-family:var(--display);font-variation-settings:"wdth" 78,"wght" 800;font-size:clamp(1.1rem,2.4vw,1.4rem);text-transform:uppercase;letter-spacing:.01em}
+.lugares b{
+  font-family:var(--display);font-variation-settings:"wdth" 78,"wght" 800;
+  font-size:clamp(1.1rem,2.4vw,1.4rem);text-transform:uppercase;letter-spacing:.01em;
+  text-shadow:0 2px 14px rgba(4,7,15,.95);
+}
+.dubai__l,.dubai__fim,.dubai__marca q{text-shadow:0 2px 14px rgba(4,7,15,.95)}
+.lugares li{border-color:rgba(161,184,195,.26)}
 .dubai__fim{color:var(--muted);text-align:center;max-width:52ch;margin:clamp(32px,4vw,44px) auto 0}
 .dubai__fim b{color:var(--white);font-weight:700}
 .dubai__marca{text-align:center;margin-top:clamp(30px,4vw,42px)}
@@ -481,7 +496,12 @@ a{color:inherit}
 </section>
 
 <section class="dubai">
-  <div class="dubai__bg"><img src="../assets/cards-deserto.jpg" alt=""></div>
+  <div class="dubai__bg">
+    <video class="dubai__video" poster="../assets/dubai-fundo.jpg"
+           muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+      <source src="../assets/dubai-fundo.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="wrap">
     <div class="fios"><h2 class="sec-t cromo">Imagine viver Dubai de verdade</h2></div>
     <p class="dubai__l">Uma experiência que vai muito além de uma viagem.</p>
@@ -556,6 +576,31 @@ a{color:inherit}
 
 <script>
 var FONE = "5587992013884";
+
+/* video de fundo: so carrega e roda quando entra em cena, e nunca com
+   prefers-reduced-motion — nesse caso fica no frame do poster */
+(function(){
+  var v = document.querySelector(".dubai__video");
+  if(!v) return;
+  v.muted = true;
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if(!("IntersectionObserver" in window)){
+    v.preload = "auto";
+    var p0 = v.play(); if(p0 && p0.catch) p0.catch(function(){});
+    return;
+  }
+  var io = new IntersectionObserver(function(itens){
+    itens.forEach(function(it){
+      if(it.isIntersecting){
+        if(v.preload !== "auto") v.preload = "auto";
+        var p = v.play(); if(p && p.catch) p.catch(function(){});
+      } else if(!v.paused){
+        v.pause();
+      }
+    });
+  }, {rootMargin:"250px 0px"});
+  io.observe(v);
+})();
 
 /* cronometro ate o fim da campanha */
 (function(){

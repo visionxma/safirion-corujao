@@ -53,6 +53,26 @@ nos dois, sem duplicar marcação.
 A barra do topo fica escondida até 260px de rolagem: a hero já assina a marca, e o
 logo dela batia no `SAFIRION` do cartaz.
 
+## O vídeo de fundo
+
+A seção "Imagine viver Dubai de verdade" tem vídeo no fundo:
+`assets/dubai-fundo.mp4` (buggy nas dunas ao pôr do sol).
+
+O arquivo entregue tinha 8,7 MB com áudio. Foi reencodado sem áudio, em 1600px
+e CRF 27, com `faststart`: **1,8 MB**, cinco vezes menor. `dubai-fundo.jpg` é o
+frame 18, usado como `poster`.
+
+Três cuidados no player:
+
+- `preload="none"` e play só quando a seção entra em cena (IntersectionObserver,
+  margem de 250px). Ninguém baixa 1,8 MB para uma seção que talvez não veja.
+- Pausa ao sair de cena.
+- Com `prefers-reduced-motion: reduce`, o vídeo nunca roda — fica no frame do
+  poster, que é uma imagem perfeitamente boa.
+
+O véu escuro dessa seção é mais leve que o das outras: calibrado para foto
+parada, ele engolia o movimento. O texto ganhou `text-shadow` própria em troca.
+
 ## Contadores
 
 Cada página conta uma coisa diferente, porque as janelas são diferentes:
