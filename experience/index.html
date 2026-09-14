@@ -332,6 +332,11 @@ a{color:inherit}
   width:100%;height:100%;object-fit:cover;object-position:50% 56%;
   pointer-events:none;
 }
+@media (max-width:899px){
+  /* tela alta corta as laterais do 16:9; ancorar a esquerda decide qual
+     lado do enquadramento sobrevive, em vez de ficar com o miolo */
+  .dubai__bg video,.dubai__bg img{object-position:0% 56%}
+}
 .dubai__bg::after{
   content:"";position:absolute;inset:0;
   background:
