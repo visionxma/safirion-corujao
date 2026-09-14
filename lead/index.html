@@ -84,7 +84,12 @@ a{color:inherit}
 /* ---------- heroi: cartaz. vertical no celular, largo no desktop ---------- */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
 .hero__bg{position:absolute;inset:0;z-index:0}
+.hero__bg picture{display:block;width:100%;height:100%}
 .hero__bg img{width:100%;height:100%;object-fit:cover;object-position:50% 62%}
+@media (max-width:899px){
+  /* a peca vertical ja tem o enquadramento certo: nao precisa cortar nada */
+  .hero__bg img{object-position:50% 50%}
+}
 .hero__bg::after{
   content:"";position:absolute;inset:0;
   background:
@@ -96,6 +101,18 @@ a{color:inherit}
       rgba(4,7,15,.93) 84%,
       var(--ink-950) 100%),
     radial-gradient(90% 62% at 50% 50%,rgba(4,7,15,.55),transparent 72%);
+}
+@media (max-width:899px){
+  .hero__bg::after{
+    background:
+      linear-gradient(to bottom,
+        rgba(4,7,15,.88) 0%,
+        rgba(4,7,15,.55) 15%,
+        rgba(4,7,15,.34) 34%,
+        rgba(4,7,15,.62) 58%,
+        rgba(4,7,15,.9) 80%,
+        var(--ink-950) 100%);
+  }
 }
 .hero__in{
   position:relative;z-index:1;padding:26px 0 30px;text-align:center;
@@ -383,7 +400,11 @@ a{color:inherit}
 
 <section class="hero">
   <div class="hero__bg">
-    <img src="../assets/hero-dubai-skyline.jpg" alt="Dois esportivos azuis na areia diante do skyline de Dubai ao pôr do sol, com o touro da Safirion entre eles e um avião da Emirates no céu">
+    <picture>
+      <source media="(max-width: 899px)" srcset="../assets/hero-dubai-vertical.jpg" width="900" height="1600">
+      <img src="../assets/hero-dubai-skyline.jpg" width="1600" height="900"
+           alt="Dois esportivos azuis na areia diante do skyline de Dubai ao pôr do sol, com o touro da Safirion entre eles e um avião da Emirates no céu">
+    </picture>
   </div>
   <div class="wrap hero__in">
 
